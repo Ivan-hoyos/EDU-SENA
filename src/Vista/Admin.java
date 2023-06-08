@@ -5,7 +5,7 @@
  */
 package Vista;
 
-
+import Controlador.Controlador_Admin;
 import java.awt.Color;
 
 import javax.swing.JOptionPane;
@@ -45,6 +45,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Icon_sena = new javax.swing.JLabel();
         Lbl_Exit = new javax.swing.JLabel();
+        x = new javax.swing.JButton();
         Panel_right = new javax.swing.JPanel();
         Background_image = new javax.swing.JLabel();
         Lbl_Edusena = new javax.swing.JLabel();
@@ -131,9 +132,6 @@ public class Admin extends javax.swing.JFrame {
         Lbl_Students.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Lbl_Students.setOpaque(true);
         Lbl_Students.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Lbl_StudentsMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 Lbl_StudentsMouseEntered(evt);
             }
@@ -191,6 +189,9 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         Left_Panel.add(Lbl_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 603, 250, 70));
+
+        x.setText("jButton1");
+        Left_Panel.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, -1, -1));
 
         Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 1310));
 
@@ -287,7 +288,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void Item_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Item_exitActionPerformed
         //Menu_item exit
-        exit();
+        // exit();
 
     }//GEN-LAST:event_Item_exitActionPerformed
 
@@ -303,7 +304,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_Left_CreateMouseExited
 
     private void Left_CreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Left_CreateMouseClicked
- 
+
 
     }//GEN-LAST:event_Left_CreateMouseClicked
 
@@ -314,10 +315,6 @@ public class Admin extends javax.swing.JFrame {
     private void Lbl_ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_ExitMouseClicked
         exit();
     }//GEN-LAST:event_Lbl_ExitMouseClicked
-
-    private void Lbl_StudentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_StudentsMouseClicked
-
-    }//GEN-LAST:event_Lbl_StudentsMouseClicked
 
     private void Lbl_StudentsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_StudentsMouseEntered
         Lbl_Students.setBackground(new Color(235, 235, 235));
@@ -340,11 +337,11 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_teachersMouseClicked
 
     private void lbl_teachersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_teachersMouseEntered
-         lbl_teachers.setBackground(new Color(235, 235, 235));
+        lbl_teachers.setBackground(new Color(235, 235, 235));
     }//GEN-LAST:event_lbl_teachersMouseEntered
 
     private void lbl_teachersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_teachersMouseExited
-       lbl_teachers.setBackground(new Color(255, 255, 255));
+        lbl_teachers.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_lbl_teachersMouseExited
 
     /**
@@ -376,6 +373,9 @@ public class Admin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        Admin admin = new Admin();
+        Controlador_Admin c = new Controlador_Admin(admin);
+        admin.setVisible(true);
 
         /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -392,18 +392,19 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem Item_exit;
     private javax.swing.JMenuItem Item_new;
     private javax.swing.JLabel Lbl_Edusena;
-    private javax.swing.JLabel Lbl_Exit;
-    private javax.swing.JLabel Lbl_Students;
-    private javax.swing.JLabel Left_Create;
-    private javax.swing.JPanel Left_Panel;
+    public javax.swing.JLabel Lbl_Exit;
+    public javax.swing.JLabel Lbl_Students;
+    public javax.swing.JLabel Left_Create;
+    public javax.swing.JPanel Left_Panel;
     private javax.swing.JMenu Menu_Archivo;
     private javax.swing.JMenu Menu_edit;
     private javax.swing.JMenu Menu_help;
     private javax.swing.JMenuBar Menu_rapido;
     private javax.swing.JPanel North_Panel;
-    private javax.swing.JPanel Panel_right;
-    private javax.swing.JDesktopPane Ventana;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lbl_teachers;
+    public javax.swing.JPanel Panel_right;
+    public javax.swing.JDesktopPane Ventana;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel lbl_teachers;
+    public javax.swing.JButton x;
     // End of variables declaration//GEN-END:variables
 }

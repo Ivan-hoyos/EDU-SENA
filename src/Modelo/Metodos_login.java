@@ -23,7 +23,7 @@ public class Metodos_login extends Conexion {
         int r = 1;
 
         // mode.setContraseña(password);
-        String sql = "select id_Estudiante, Nombres, Apellidos,  Contraseña, Rol from estudiantes where id_Estudiante='"+log.getid_Estudiante()+"'";
+        String sql = "select id_Estudiantes, Nombres, Apellidos,  Contraseña, Rol from estudiantes where id_Estudiantes='"+log.getid_Estudiante()+"'";
         if (r == 1) {
             try {
 
@@ -32,7 +32,7 @@ public class Metodos_login extends Conexion {
 
                 if (rs_Student.next()) {
                     //Si existe el usuario
-                    String us = rs_Student.getString("id_Estudiante");
+                    String us = rs_Student.getString("id_Estudiantes");
                     String pass = rs_Student.getString("Contraseña");
                     String rol = rs_Student.getString("Rol");
                     String nombre = rs_Student.getString("Nombres");

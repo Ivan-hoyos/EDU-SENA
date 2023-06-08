@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/TPS-34/PROYECTO_POO/src/Vista/Login.java</file>
-            <file>file:/D:/TPS-34/PROYECTO_POO/src/Controlador/Controlador_Login.java</file>
-            <file>file:/D:/TPS-34/PROYECTO_POO/src/Modelo/Conexion.java</file>
-            <file>file:/D:/TPS-34/PROYECTO_POO/src/Modelo/Estudiantes_Modelo.java</file>
-            <file>file:/D:/TPS-34/PROYECTO_POO/src/Modelo/Metodos_login.java</file>
+            <file>file:/C:/Users/Familia%20Chichona/Desktop/Luis/GitHub_Sena/EDUSENA/src/Controlador/Controlador_Admin.java</file>
+            <file>file:/C:/Users/Familia%20Chichona/Desktop/Luis/GitHub_Sena/EDUSENA/src/Vista/Login.java</file>
+            <file>file:/C:/Users/Familia%20Chichona/Desktop/Luis/GitHub_Sena/EDUSENA/src/Modelo/Metodos_Admin.java</file>
+            <file>file:/C:/Users/Familia%20Chichona/Desktop/Luis/GitHub_Sena/EDUSENA/src/Vista/Admin.java</file>
+            <file>file:/C:/Users/Familia%20Chichona/Desktop/Luis/GitHub_Sena/EDUSENA/src/Controlador/Controlador_Login.java</file>
+            <file>file:/C:/Users/Familia%20Chichona/Desktop/Luis/GitHub_Sena/EDUSENA/src/Modelo/Metodos_login.java</file>
         </group>
     </open-files>
 </project-private>

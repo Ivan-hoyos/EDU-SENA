@@ -42,8 +42,10 @@ public class create_Student extends javax.swing.JInternalFrame {
         Txt_email = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
         Txt_password = new javax.swing.JTextField();
-        txt_sex = new javax.swing.JTextField();
-        Guardar = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btn_M = new javax.swing.JRadioButton();
+        btn_F = new javax.swing.JRadioButton();
 
         setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -157,7 +159,15 @@ public class create_Student extends javax.swing.JInternalFrame {
         Txt_password.setBackground(new java.awt.Color(235, 235, 235));
         Txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        Guardar.setText("jButton1");
+        Back.setText("Back");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 173, 0));
+        jLabel1.setText("Sexo");
+
+        btn_M.setText("Masculino");
+
+        btn_F.setText("Femenino");
 
         javax.swing.GroupLayout Input_panelLayout = new javax.swing.GroupLayout(Input_panel);
         Input_panel.setLayout(Input_panelLayout);
@@ -169,14 +179,29 @@ public class create_Student extends javax.swing.JInternalFrame {
                     .addGroup(Input_panelLayout.createSequentialGroup()
                         .addGap(355, 355, 355)
                         .addComponent(Lbl_Student, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Input_panelLayout.createSequentialGroup()
+                        .addComponent(Back)
+                        .addGap(107, 107, 107)
+                        .addComponent(Btn_Save_New, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(597, 597, 597))
                     .addGroup(Input_panelLayout.createSequentialGroup()
                         .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Lbl_Document, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Txt_DocumentStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Lbl_Telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Lbl_Format, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Lbl_Born, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(126, 126, 126)
                         .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Input_panelLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(120, 120, 120)
+                                .addComponent(btn_M)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_F))
                             .addComponent(Lbl_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Input_panelLayout.createSequentialGroup()
@@ -202,19 +227,7 @@ public class create_Student extends javax.swing.JInternalFrame {
                                     .addComponent(Lbl_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Input_panelLayout.createSequentialGroup()
-                        .addComponent(Guardar)
-                        .addGap(134, 134, 134)
-                        .addComponent(Btn_Save_New, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(570, 570, 570))
-                    .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Lbl_Format, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_Born, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_sex, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(182, Short.MAX_VALUE))
         );
         Input_panelLayout.setVerticalGroup(
@@ -239,9 +252,7 @@ public class create_Student extends javax.swing.JInternalFrame {
                 .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Input_panelLayout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbl_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_sex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Lbl_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Lbl_Format, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -251,7 +262,12 @@ public class create_Student extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
+                        .addGap(68, 68, 68)
+                        .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_M)
+                            .addComponent(btn_F)
+                            .addComponent(jLabel1))
+                        .addGap(38, 38, 38)
                         .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(Lbl_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,11 +288,14 @@ public class create_Student extends javax.swing.JInternalFrame {
                                 .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(62, 62, 62)
-                .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Save_New, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Guardar))
-                .addGap(0, 99, Short.MAX_VALUE))
+                .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Input_panelLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(Back))
+                    .addGroup(Input_panelLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(Btn_Save_New, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
 
         jPanel1.add(Input_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1620, 767));
@@ -290,7 +309,7 @@ public class create_Student extends javax.swing.JInternalFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(11, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,10 +331,10 @@ public class create_Student extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Back;
     public javax.swing.JComboBox<String> Box_grade;
     public javax.swing.JComboBox<String> Box_section;
     public javax.swing.JButton Btn_Save_New;
-    public javax.swing.JButton Guardar;
     private javax.swing.JPanel Input_panel;
     private javax.swing.JLabel Lbl_Born;
     private javax.swing.JLabel Lbl_Direction;
@@ -337,7 +356,9 @@ public class create_Student extends javax.swing.JInternalFrame {
     public javax.swing.JTextField Txt_nameStudent;
     public javax.swing.JTextField Txt_password;
     public javax.swing.JTextField Txt_telephone;
+    public javax.swing.JRadioButton btn_F;
+    public javax.swing.JRadioButton btn_M;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField txt_sex;
     // End of variables declaration//GEN-END:variables
 }
