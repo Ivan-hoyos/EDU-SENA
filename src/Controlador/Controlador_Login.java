@@ -22,12 +22,14 @@ public class Controlador_Login implements ActionListener{
     Login log = new Login();
     private MouseListener l;
 
-    public Controlador_Login(Login log) {
+    public Controlador_Login(Login log, Admin admin) {
         this.log = log;
         this.mte = mte;
         this.mode = mode;
         this.log.Btn_Login.addActionListener(this);
     }
+
+  
 
     public void log() {
         String pass = new String(log.Password_user.getPassword());

@@ -44,12 +44,11 @@ public class Admin extends javax.swing.JFrame {
         Lbl_Students = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Icon_sena = new javax.swing.JLabel();
-        Lbl_Exit = new javax.swing.JLabel();
         x = new javax.swing.JButton();
+        Lbl_Exit = new javax.swing.JLabel();
         Panel_right = new javax.swing.JPanel();
         Background_image = new javax.swing.JLabel();
         Lbl_Edusena = new javax.swing.JLabel();
-        Ventana = new javax.swing.JDesktopPane();
         Menu_rapido = new javax.swing.JMenuBar();
         Menu_Archivo = new javax.swing.JMenu();
         Item_new = new javax.swing.JMenuItem();
@@ -169,6 +168,11 @@ public class Admin extends javax.swing.JFrame {
         });
         Left_Panel.add(Icon_sena, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 250, 183));
 
+        x.setText("jButton1");
+        x.setBorderPainted(false);
+        x.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Left_Panel.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 250, 70));
+
         Lbl_Exit.setBackground(new java.awt.Color(255, 255, 255));
         Lbl_Exit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Lbl_Exit.setForeground(new java.awt.Color(0, 173, 0));
@@ -189,9 +193,6 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         Left_Panel.add(Lbl_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 603, 250, 70));
-
-        x.setText("jButton1");
-        Left_Panel.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, -1, -1));
 
         Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 1310));
 
@@ -228,21 +229,6 @@ public class Admin extends javax.swing.JFrame {
         );
 
         Background.add(Panel_right, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 100, 1770, 1210));
-
-        Ventana.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout VentanaLayout = new javax.swing.GroupLayout(Ventana);
-        Ventana.setLayout(VentanaLayout);
-        VentanaLayout.setHorizontalGroup(
-            VentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1780, Short.MAX_VALUE)
-        );
-        VentanaLayout.setVerticalGroup(
-            VentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-
-        Background.add(Ventana, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 1780, 1140));
 
         getContentPane().add(Background, java.awt.BorderLayout.CENTER);
 
@@ -313,7 +299,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_Icon_senaMouseClicked
 
     private void Lbl_ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_ExitMouseClicked
-        exit();
+        //exit();
     }//GEN-LAST:event_Lbl_ExitMouseClicked
 
     private void Lbl_StudentsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_StudentsMouseEntered
@@ -374,7 +360,8 @@ public class Admin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         Admin admin = new Admin();
-        Controlador_Admin c = new Controlador_Admin(admin);
+        Students s = new Students();
+        Controlador_Admin c = new Controlador_Admin(admin,s);
         admin.setVisible(true);
 
         /* Create and display the form 
@@ -402,7 +389,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JMenuBar Menu_rapido;
     private javax.swing.JPanel North_Panel;
     public javax.swing.JPanel Panel_right;
-    public javax.swing.JDesktopPane Ventana;
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel lbl_teachers;
     public javax.swing.JButton x;

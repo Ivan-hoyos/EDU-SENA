@@ -385,7 +385,8 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         
         Login usuarios = new Login();
-        Controlador_Login c = new Controlador_Login(usuarios);
+        Admin admin = new Admin();
+        Controlador_Login c = new Controlador_Login(usuarios, admin);
         usuarios.setVisible(true);
         
         /*java.awt.EventQueue.invokeLater(new Runnable() {

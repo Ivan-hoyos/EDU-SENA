@@ -23,7 +23,7 @@ public class Metodos_login extends Conexion {
         int r = 1;
 
         // mode.setContraseña(password);
-        String sql = "select id_Estudiantes, Nombres, Apellidos,  Contraseña, Rol from estudiantes where id_Estudiantes='"+log.getid_Estudiante()+"'";
+        String sql = "select id_Estudiantes, Nombres, Apellidos,  Contraseña, Rol from estudiantes where id_Estudiantes='" + log.getid_Estudiante() + "'";
         if (r == 1) {
             try {
 
@@ -43,9 +43,9 @@ public class Metodos_login extends Conexion {
 
                         if (rol.equals("student")) {
                             JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nEstudiante: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION);
-
-                            admin.setVisible(true);
+                            
                             login.dispose();
+                            admin.setVisible(true);
 
                         }
 
