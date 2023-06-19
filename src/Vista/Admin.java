@@ -37,118 +37,26 @@ public class Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         Background = new javax.swing.JPanel();
-        North_Panel = new javax.swing.JPanel();
         Left_Panel = new javax.swing.JPanel();
-        Left_Create = new javax.swing.JLabel();
-        lbl_teachers = new javax.swing.JLabel();
-        Lbl_Students = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         Icon_sena = new javax.swing.JLabel();
-        x = new javax.swing.JButton();
-        Lbl_Exit = new javax.swing.JLabel();
+        Estudiantes = new javax.swing.JButton();
+        Profesores = new javax.swing.JButton();
+        Cursos = new javax.swing.JButton();
+        Horarios = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
         Panel_right = new javax.swing.JPanel();
         Background_image = new javax.swing.JLabel();
         Lbl_Edusena = new javax.swing.JLabel();
-        Menu_rapido = new javax.swing.JMenuBar();
-        Menu_Archivo = new javax.swing.JMenu();
-        Item_new = new javax.swing.JMenuItem();
-        Item_exit = new javax.swing.JMenuItem();
-        Menu_edit = new javax.swing.JMenu();
-        Menu_help = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
+        Background.setPreferredSize(new java.awt.Dimension(1366, 768));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        North_Panel.setBackground(new java.awt.Color(0, 173, 0));
-
-        javax.swing.GroupLayout North_PanelLayout = new javax.swing.GroupLayout(North_Panel);
-        North_Panel.setLayout(North_PanelLayout);
-        North_PanelLayout.setHorizontalGroup(
-            North_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1780, Short.MAX_VALUE)
-        );
-        North_PanelLayout.setVerticalGroup(
-            North_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        Background.add(North_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1780, -1));
 
         Left_Panel.setBackground(new java.awt.Color(0, 173, 0));
         Left_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Left_Create.setBackground(new java.awt.Color(255, 255, 255));
-        Left_Create.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Left_Create.setForeground(new java.awt.Color(0, 173, 0));
-        Left_Create.setText("Create New Student");
-        Left_Create.setToolTipText("0");
-        Left_Create.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, java.awt.Color.yellow));
-        Left_Create.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Left_Create.setOpaque(true);
-        Left_Create.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Left_CreateMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Left_CreateMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Left_CreateMouseExited(evt);
-            }
-        });
-        Left_Panel.add(Left_Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 250, 70));
-
-        lbl_teachers.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_teachers.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbl_teachers.setForeground(new java.awt.Color(0, 173, 0));
-        lbl_teachers.setText("Profesores");
-        lbl_teachers.setToolTipText("0");
-        lbl_teachers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        lbl_teachers.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lbl_teachers.setOpaque(true);
-        lbl_teachers.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_teachersMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbl_teachersMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbl_teachersMouseExited(evt);
-            }
-        });
-        Left_Panel.add(lbl_teachers, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 361, 250, 70));
-
-        Lbl_Students.setBackground(new java.awt.Color(255, 255, 255));
-        Lbl_Students.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Lbl_Students.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_Students.setText("Estudiantes");
-        Lbl_Students.setToolTipText("0");
-        Lbl_Students.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        Lbl_Students.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Lbl_Students.setOpaque(true);
-        Lbl_Students.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Lbl_StudentsMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Lbl_StudentsMouseExited(evt);
-            }
-        });
-        Left_Panel.add(Lbl_Students, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 250, 70));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 173, 0));
-        jLabel4.setText("Cursos");
-        jLabel4.setToolTipText("0");
-        jLabel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.setOpaque(true);
-        Left_Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 521, 250, 70));
 
         Icon_sena.setBackground(new java.awt.Color(0, 173, 0));
         Icon_sena.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -166,35 +74,59 @@ public class Admin extends javax.swing.JFrame {
                 Icon_senaMouseClicked(evt);
             }
         });
-        Left_Panel.add(Icon_sena, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 250, 183));
+        Left_Panel.add(Icon_sena, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 183));
 
-        x.setText("jButton1");
-        x.setBorderPainted(false);
-        x.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Left_Panel.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 250, 70));
+        Estudiantes.setBackground(new java.awt.Color(255, 255, 255));
+        Estudiantes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Estudiantes.setForeground(new java.awt.Color(0, 173, 0));
+        Estudiantes.setText("Estudiantes");
+        Estudiantes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        Estudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Estudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Estudiantes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Left_Panel.add(Estudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 250, 70));
 
-        Lbl_Exit.setBackground(new java.awt.Color(255, 255, 255));
-        Lbl_Exit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Lbl_Exit.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_Exit.setText("Exit");
-        Lbl_Exit.setToolTipText("0");
-        Lbl_Exit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        Lbl_Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Lbl_Exit.setOpaque(true);
-        Lbl_Exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Lbl_ExitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Lbl_ExitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Lbl_ExitMouseExited(evt);
-            }
-        });
-        Left_Panel.add(Lbl_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 603, 250, 70));
+        Profesores.setBackground(new java.awt.Color(255, 255, 255));
+        Profesores.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Profesores.setForeground(new java.awt.Color(0, 173, 0));
+        Profesores.setText("Profesores");
+        Profesores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        Profesores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Profesores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Profesores.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Left_Panel.add(Profesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 250, 70));
 
-        Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 1310));
+        Cursos.setBackground(new java.awt.Color(255, 255, 255));
+        Cursos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Cursos.setForeground(new java.awt.Color(0, 173, 0));
+        Cursos.setText("Cursos");
+        Cursos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        Cursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Cursos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Left_Panel.add(Cursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 70));
+
+        Horarios.setBackground(new java.awt.Color(255, 255, 255));
+        Horarios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Horarios.setForeground(new java.awt.Color(0, 173, 0));
+        Horarios.setText("Horarios");
+        Horarios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        Horarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Horarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Horarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Left_Panel.add(Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 250, 70));
+
+        Exit.setBackground(new java.awt.Color(255, 255, 255));
+        Exit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Exit.setForeground(new java.awt.Color(0, 173, 0));
+        Exit.setText("Salir");
+        Exit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Exit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Exit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 250, 70));
+
+        Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 768));
 
         Panel_right.setBackground(new java.awt.Color(255, 255, 255));
         Panel_right.setPreferredSize(new java.awt.Dimension(1600, 1310));
@@ -212,123 +144,32 @@ public class Admin extends javax.swing.JFrame {
         Panel_rightLayout.setHorizontalGroup(
             Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_rightLayout.createSequentialGroup()
-                .addGap(591, 591, 591)
-                .addGroup(Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Background_image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lbl_Edusena, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(686, Short.MAX_VALUE))
+                .addGap(340, 340, 340)
+                .addGroup(Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Background_image, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lbl_Edusena, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         Panel_rightLayout.setVerticalGroup(
             Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_rightLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(Background_image, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_rightLayout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(Background_image, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Lbl_Edusena, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addGap(191, 191, 191))
         );
 
-        Background.add(Panel_right, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 100, 1770, 1210));
+        Background.add(Panel_right, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 0, 1360, 770));
 
         getContentPane().add(Background, java.awt.BorderLayout.CENTER);
-
-        Menu_rapido.setBackground(new java.awt.Color(0, 51, 90));
-        Menu_rapido.setForeground(new java.awt.Color(255, 255, 255));
-        Menu_rapido.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        Menu_Archivo.setText("File");
-
-        Item_new.setText("New Student");
-        Item_new.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Item_newActionPerformed(evt);
-            }
-        });
-        Menu_Archivo.add(Item_new);
-
-        Item_exit.setText("Exit");
-        Item_exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Item_exitActionPerformed(evt);
-            }
-        });
-        Menu_Archivo.add(Item_exit);
-
-        Menu_rapido.add(Menu_Archivo);
-
-        Menu_edit.setText("Edit");
-        Menu_rapido.add(Menu_edit);
-
-        Menu_help.setText("Help");
-        Menu_rapido.add(Menu_help);
-
-        setJMenuBar(Menu_rapido);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Item_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Item_newActionPerformed
-
-
-    }//GEN-LAST:event_Item_newActionPerformed
-
-    private void Item_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Item_exitActionPerformed
-        //Menu_item exit
-        // exit();
-
-    }//GEN-LAST:event_Item_exitActionPerformed
-
-    private void Left_CreateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Left_CreateMouseEntered
-        // TODO add your handling code here:
-        Left_Create.setBackground(new Color(235, 235, 235));
-
-    }//GEN-LAST:event_Left_CreateMouseEntered
-
-    private void Left_CreateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Left_CreateMouseExited
-        // TODO add your handling code here:
-        Left_Create.setBackground(new Color(255, 255, 255));
-    }//GEN-LAST:event_Left_CreateMouseExited
-
-    private void Left_CreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Left_CreateMouseClicked
-
-
-    }//GEN-LAST:event_Left_CreateMouseClicked
-
     private void Icon_senaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_senaMouseClicked
 
     }//GEN-LAST:event_Icon_senaMouseClicked
-
-    private void Lbl_ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_ExitMouseClicked
-        //exit();
-    }//GEN-LAST:event_Lbl_ExitMouseClicked
-
-    private void Lbl_StudentsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_StudentsMouseEntered
-        Lbl_Students.setBackground(new Color(235, 235, 235));
-    }//GEN-LAST:event_Lbl_StudentsMouseEntered
-
-    private void Lbl_StudentsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_StudentsMouseExited
-        Lbl_Students.setBackground(new Color(255, 255, 255));
-    }//GEN-LAST:event_Lbl_StudentsMouseExited
-
-    private void Lbl_ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_ExitMouseEntered
-        Lbl_Exit.setBackground(new Color(235, 235, 235));
-    }//GEN-LAST:event_Lbl_ExitMouseEntered
-
-    private void Lbl_ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_ExitMouseExited
-        Lbl_Exit.setBackground(new Color(255, 255, 255));
-    }//GEN-LAST:event_Lbl_ExitMouseExited
-
-    private void lbl_teachersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_teachersMouseClicked
-
-    }//GEN-LAST:event_lbl_teachersMouseClicked
-
-    private void lbl_teachersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_teachersMouseEntered
-        lbl_teachers.setBackground(new Color(235, 235, 235));
-    }//GEN-LAST:event_lbl_teachersMouseEntered
-
-    private void lbl_teachersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_teachersMouseExited
-        lbl_teachers.setBackground(new Color(255, 255, 255));
-    }//GEN-LAST:event_lbl_teachersMouseExited
 
     /**
      * @param args the command line arguments
@@ -375,22 +216,14 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
     private javax.swing.JLabel Background_image;
+    public javax.swing.JButton Cursos;
+    public javax.swing.JButton Estudiantes;
+    public javax.swing.JButton Exit;
+    public javax.swing.JButton Horarios;
     private javax.swing.JLabel Icon_sena;
-    private javax.swing.JMenuItem Item_exit;
-    private javax.swing.JMenuItem Item_new;
     private javax.swing.JLabel Lbl_Edusena;
-    public javax.swing.JLabel Lbl_Exit;
-    public javax.swing.JLabel Lbl_Students;
-    public javax.swing.JLabel Left_Create;
     public javax.swing.JPanel Left_Panel;
-    private javax.swing.JMenu Menu_Archivo;
-    private javax.swing.JMenu Menu_edit;
-    private javax.swing.JMenu Menu_help;
-    private javax.swing.JMenuBar Menu_rapido;
-    private javax.swing.JPanel North_Panel;
     public javax.swing.JPanel Panel_right;
-    public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel lbl_teachers;
-    public javax.swing.JButton x;
+    public javax.swing.JButton Profesores;
     // End of variables declaration//GEN-END:variables
 }

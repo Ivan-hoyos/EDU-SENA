@@ -3,7 +3,6 @@ package Modelo;
 
 import Vista.Admin;
 import Vista.Students;
-import Vista.create_Student;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,7 +11,6 @@ import javax.swing.JOptionPane;
 public class Metodos_Admin extends Conexion {
 
     private final Students students = new Students();//Formulario students
-    private final create_Student createStudent = new create_Student();//Formulario create_Student
     Estudiantes_Modelo mdl = new Estudiantes_Modelo();//Modelo estudiantes
     Admin admin = new Admin();//Formulario Admin
 
@@ -51,18 +49,7 @@ public class Metodos_Admin extends Conexion {
 
     }
 
-    public int exit() {//Metodo para cerrar el programa
-        int r = 1;
 
-        if (r == 1) {
-            JOptionPane.showMessageDialog(null, "Hasta luego :D");
-
-            return 1;
-        } else {
-            return 0;
-        }
-
-    }
 
     public int show_e() {//Metodo para mostrar el formulario Student
         int r = 1;
@@ -74,14 +61,5 @@ public class Metodos_Admin extends Conexion {
         }
     }
 
-    public int show_create() {//Metodo para mostrar el formulario create_Student
-        int r = 1;
-        if (r == 1) {
-
-            return 1;
-        } else {
-            return 0;
-        }
-    }
 
 }

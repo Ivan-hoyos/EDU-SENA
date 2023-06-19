@@ -36,15 +36,16 @@ public class Login extends javax.swing.JFrame {
         Password_user = new javax.swing.JPasswordField();
         Lbl_Password = new javax.swing.JLabel();
         Btn_Login = new javax.swing.JButton();
-        Icon_right = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
         setLocationByPlatform(true);
+        setPreferredSize(new java.awt.Dimension(1360, 760));
         setResizable(false);
         getContentPane().setLayout(new java.awt.BorderLayout(2, 0));
 
         Background_black.setBackground(new java.awt.Color(255, 255, 255));
+        Background_black.setPreferredSize(new java.awt.Dimension(1360, 760));
 
         Left_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Left_Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -72,15 +73,16 @@ public class Login extends javax.swing.JFrame {
         Left_PanelLayout.setVerticalGroup(
             Left_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Left_PanelLayout.createSequentialGroup()
-                .addGap(251, 251, 251)
+                .addGap(227, 227, 227)
                 .addComponent(Icon_Sena, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91)
                 .addComponent(Edusena, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         Input_panel.setBackground(new java.awt.Color(255, 255, 255));
-        Input_panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 0), 1, true));
+        Input_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        Input_panel.setPreferredSize(new java.awt.Dimension(480, 590));
 
         Lbl_Login.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         Lbl_Login.setForeground(new java.awt.Color(0, 173, 0));
@@ -176,32 +178,27 @@ public class Login extends javax.swing.JFrame {
             .addGroup(Input_panelLayout.createSequentialGroup()
                 .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(Lbl_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(73, 73, 73)
+                        .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Input_panelLayout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(Lbl_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Input_panelLayout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(Lbl_icon_login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Lbl_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Password_user, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Lbl_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(Lbl_icon_login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(Lbl_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(Txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(Lbl_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(Password_user, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(189, 189, 189)
+                        .addGap(163, 163, 163)
                         .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(93, 93, 93))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         Input_panelLayout.setVerticalGroup(
             Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Input_panelLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(53, 53, 53)
                 .addComponent(Lbl_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Lbl_icon_login, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,12 +210,10 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Lbl_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Password_user, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGap(50, 50, 50))
         );
-
-        Icon_right.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sena_Colombia_logo.svg - copia.png"))); // NOI18N
 
         javax.swing.GroupLayout Background_blackLayout = new javax.swing.GroupLayout(Background_black);
         Background_black.setLayout(Background_blackLayout);
@@ -226,21 +221,19 @@ public class Login extends javax.swing.JFrame {
             Background_blackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Background_blackLayout.createSequentialGroup()
                 .addComponent(Left_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Input_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
-                .addComponent(Icon_right)
-                .addGap(346, 346, 346))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addComponent(Input_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250))
         );
         Background_blackLayout.setVerticalGroup(
             Background_blackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Left_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(Background_blackLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(Background_blackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Icon_right)
-                    .addComponent(Input_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addComponent(Left_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Background_blackLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Input_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
         );
 
         getContentPane().add(Background_black, java.awt.BorderLayout.CENTER);
@@ -403,7 +396,6 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JButton Btn_Login;
     private javax.swing.JLabel Edusena;
     private javax.swing.JLabel Icon_Sena;
-    private javax.swing.JLabel Icon_right;
     private javax.swing.JPanel Input_panel;
     private javax.swing.JLabel Lbl_Login;
     private javax.swing.JLabel Lbl_Password;
