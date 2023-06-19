@@ -1,12 +1,12 @@
 package Vista;
 
+import Controlador.Controlador_Admin;
 import java.awt.Color;
 import Controlador.Controlador_Login;
-import Modelo.Metodos_login;
-import java.awt.event.KeyEvent;
+
 
 public class Login extends javax.swing.JFrame {
-
+   
     public Login() {
         initComponents();
 

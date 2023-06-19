@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Modelo/Metodos_Admin.java</file>
             <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Vista/Students.java</file>
+            <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Controlador/Controlador_Login.java</file>
             <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Vista/Login.java</file>
             <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Controlador/Controlador_Admin.java</file>
             <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Vista/Admin.java</file>
+            <file>file:/C:/Users/CPE/Documents/NetBeansProjects/EDUSENA/src/Modelo/Metodos_login.java</file>
         </group>
     </open-files>
 </project-private>

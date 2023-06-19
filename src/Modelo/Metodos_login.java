@@ -44,8 +44,7 @@ public class Metodos_login extends Conexion {
                         if (rol.equals("student")) {
                             JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nEstudiante: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION);
                             
-                            login.dispose();
-                            admin.setVisible(true);
+                           
 
                         }
 

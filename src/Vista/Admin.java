@@ -6,12 +6,15 @@
 package Vista;
 
 import Controlador.Controlador_Admin;
+import Controlador.Controlador_Login;
+
 import java.awt.Color;
+
 
 import javax.swing.JOptionPane;
 
 public class Admin extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Admin
      */
@@ -84,6 +87,11 @@ public class Admin extends javax.swing.JFrame {
         Estudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Estudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Estudiantes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Estudiantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstudiantesActionPerformed(evt);
+            }
+        });
         Left_Panel.add(Estudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 250, 70));
 
         Profesores.setBackground(new java.awt.Color(255, 255, 255));
@@ -171,6 +179,13 @@ public class Admin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Icon_senaMouseClicked
 
+    private void EstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstudiantesActionPerformed
+
+        //c.show_e();
+        //c.show_table();
+// TODO add your handling code here:*/
+    }//GEN-LAST:event_EstudiantesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,12 +215,14 @@ public class Admin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        Admin admin = new Admin();
-        Students s = new Students();
-        Controlador_Admin c = new Controlador_Admin(admin,s);
-        admin.setVisible(true);
-
-        /* Create and display the form 
+    
+        //Students es = new Students();
+      
+       // Admin admin = new Admin();
+        //Controlador_Admin c = new Controlador_Admin(admin, es);
+        //admin.setVisible(true);
+     
+        /*Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Admin().setVisible(true);
