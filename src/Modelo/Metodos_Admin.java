@@ -8,18 +8,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Metodos_Admin extends Conexion {
 
     private final Students students = new Students();//Formulario students
     Estudiantes_Modelo mdl = new Estudiantes_Modelo();//Modelo estudiantes
+    ProfModel pmdl = new ProfModel();//Modelo Profesor
     Admin admin = new Admin();//Formulario Admin
 
+    //////////////////Estudiantes \\\\\\\\\\\\\\\\\\\\\\\\\\\
     public int create_Student(Estudiantes_Modelo mdl) {//Metodo para crear estudiantes en la bd
         int r = 1;
 
@@ -42,7 +41,7 @@ public class Metodos_Admin extends Conexion {
             ps.setString(12, mdl.getSexo());
             ps.executeUpdate();
             if (r == 1) {
-                JOptionPane.showMessageDialog(null, "Registro guardado");
+
                 return 1;
             } else {
                 return 0;
@@ -56,7 +55,7 @@ public class Metodos_Admin extends Conexion {
     }
 
     //Método para actualizar registros
-    public int actualizar(Estudiantes_Modelo mdl){
+    public int modificar(Estudiantes_Modelo mdl) {
         int r = 1;
         String sql = "UPDATE estudiantes SET Nombres=?, Apellidos=?, Fecha_Nacimiento=?, Direccion=?,Telefono=?,Email=?,Grado=?,Seccion=?,id_Curso=?,Contraseña=?,Sexo=? WHERE id_Estudiantes=?";
         try {
@@ -83,12 +82,12 @@ public class Metodos_Admin extends Conexion {
         }
         return r;
     }
-    
+
     //Método para eliminar registro por documento
-    public void eliminar(int doc){
-        String sql = "DELETE FROM estudiantes WHERE id_Estudiantes = "+doc;
+    public void eliminar(int doc) {
+        String sql = "DELETE FROM estudiantes WHERE id_Estudiantes = " + doc;
         try {
-             Connection con = getConnection();
+            Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
@@ -127,8 +126,8 @@ public class Metodos_Admin extends Conexion {
                 mdl.setSeccion(rs.getString(9));
                 mdl.setId_Curso(rs.getString(10));
                 mdl.setContraseña(rs.getString(11));
-                mdl.setRol(rs.getString(11));
-                mdl.setSexo(rs.getString(12));
+                mdl.setRol(rs.getString(12));
+                mdl.setSexo(rs.getString(13));
                 lista.add(mdl);
             }
         } catch (Exception e) {
@@ -137,4 +136,34 @@ public class Metodos_Admin extends Conexion {
         return lista;
     }
 
+    //////////////////Profesores \\\\\\\\\\\\\\\\\\\\\\\\\\\
+    public int createProf(ProfModel pmdl) {//Metodo para crear profesores en la bd
+        int r = 1;
+
+        try {
+
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO profesores (id_Profesor, Nombres, Apellidos, Direccion,Telefono, Email, Contraseña) VALUES (?,?,?,?,?,?,?)");
+
+            ps.setLong(1, pmdl.getId_Profesor());
+            ps.setString(2, pmdl.getNombres());
+            ps.setString(3, pmdl.getApellidos());
+            ps.setString(4, pmdl.getDireccion());
+            ps.setLong(5, pmdl.getTelefono());
+            ps.setString(6, pmdl.getEmail());
+            ps.setString(7, pmdl.getContraseña());
+            ps.executeUpdate();
+            if (r == 1) {
+
+                return 1;
+            } else {
+                return 0;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+
+        return r;
+
+    }
 }

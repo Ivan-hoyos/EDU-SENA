@@ -7,8 +7,8 @@ package Vista;
 
 import Controlador.Controlador_Admin;
 import Controlador.Controlador_Login;
-
 import java.awt.Color;
+
 
 
 import javax.swing.JOptionPane;
@@ -82,11 +82,21 @@ public class Admin extends javax.swing.JFrame {
         Estudiantes.setBackground(new java.awt.Color(255, 255, 255));
         Estudiantes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Estudiantes.setForeground(new java.awt.Color(0, 173, 0));
+        Estudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estudiante.png"))); // NOI18N
         Estudiantes.setText("Estudiantes");
         Estudiantes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Estudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Estudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Estudiantes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Estudiantes.setIconTextGap(30);
+        Estudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EstudiantesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EstudiantesMouseExited(evt);
+            }
+        });
         Estudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EstudiantesActionPerformed(evt);
@@ -97,11 +107,13 @@ public class Admin extends javax.swing.JFrame {
         Profesores.setBackground(new java.awt.Color(255, 255, 255));
         Profesores.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Profesores.setForeground(new java.awt.Color(0, 173, 0));
+        Profesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profesor.png"))); // NOI18N
         Profesores.setText("Profesores");
         Profesores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Profesores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Profesores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Profesores.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Profesores.setIconTextGap(30);
         Left_Panel.add(Profesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 250, 70));
 
         Cursos.setBackground(new java.awt.Color(255, 255, 255));
@@ -185,6 +197,14 @@ public class Admin extends javax.swing.JFrame {
         //c.show_table();
 // TODO add your handling code here:*/
     }//GEN-LAST:event_EstudiantesActionPerformed
+
+    private void EstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstudiantesMouseEntered
+        Estudiantes.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_EstudiantesMouseEntered
+
+    private void EstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstudiantesMouseExited
+        Estudiantes.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_EstudiantesMouseExited
 
     /**
      * @param args the command line arguments

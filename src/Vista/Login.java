@@ -3,6 +3,7 @@ package Vista;
 import Controlador.Controlador_Admin;
 import java.awt.Color;
 import Controlador.Controlador_Login;
+import java.awt.event.KeyEvent;
 
 
 public class Login extends javax.swing.JFrame {
@@ -324,11 +325,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_LoginFocusLost
 
     private void Password_userKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Password_userKeyPressed
-/*
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Admin admin = new Admin();
+            Controlador_Login c = new Controlador_Login(this, admin);
+            c.log();
         }
-        */
+        
     }//GEN-LAST:event_Password_userKeyPressed
 
     private void Txt_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Txt_usernameFocusGained

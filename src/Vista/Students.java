@@ -30,7 +30,7 @@ public class Students extends javax.swing.JPanel {
         Container = new javax.swing.JPanel();
         North_panel = new javax.swing.JPanel();
         btn_create = new javax.swing.JButton();
-        btn_table = new javax.swing.JButton();
+        btn_select = new javax.swing.JButton();
         btn_moficar = new javax.swing.JButton();
         Btn_Delete = new javax.swing.JButton();
         Form = new javax.swing.JPanel();
@@ -82,14 +82,14 @@ public class Students extends javax.swing.JPanel {
             }
         });
 
-        btn_table.setBackground(new java.awt.Color(0, 173, 0));
-        btn_table.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_table.setForeground(new java.awt.Color(255, 255, 255));
-        btn_table.setText("Ver Lista");
-        btn_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_table.addActionListener(new java.awt.event.ActionListener() {
+        btn_select.setBackground(new java.awt.Color(0, 173, 0));
+        btn_select.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_select.setForeground(new java.awt.Color(255, 255, 255));
+        btn_select.setText("Seleccionar");
+        btn_select.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_select.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tableActionPerformed(evt);
+                btn_selectActionPerformed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class Students extends javax.swing.JPanel {
                 .addGroup(North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Btn_Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_moficar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(btn_table, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_select, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -134,7 +134,7 @@ public class Students extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_create, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(btn_table, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_select, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btn_moficar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
@@ -350,10 +350,9 @@ public class Students extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Lbl_section, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Box_section, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Lbl_section, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Box_section, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -413,10 +412,10 @@ public class Students extends javax.swing.JPanel {
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 720));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_tableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tableActionPerformed
+    private void btn_selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selectActionPerformed
 
 
-    }//GEN-LAST:event_btn_tableActionPerformed
+    }//GEN-LAST:event_btn_selectActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
 
@@ -464,7 +463,7 @@ public class Students extends javax.swing.JPanel {
     public javax.swing.JRadioButton btn_M;
     public javax.swing.JButton btn_create;
     public javax.swing.JButton btn_moficar;
-    public javax.swing.JButton btn_table;
+    public javax.swing.JButton btn_select;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel sexo;
     private javax.swing.JPanel table_container;
