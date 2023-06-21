@@ -248,78 +248,87 @@ public class Controlador_Admin implements ActionListener {
             showtable();
         }
         if (e.getSource() == es.btn_select) {
-            int fila = es.Tabla.getSelectedRow();
-            if (fila == -1) {
-                JOptionPane.showMessageDialog(es, "Seleccione la fila");
-            } else {
-                int doc = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
-                String nom = es.Tabla.getValueAt(fila, 1).toString();
-                String ape = es.Tabla.getValueAt(fila, 2).toString();
-                String fecha = es.Tabla.getValueAt(fila, 3).toString();
-                String dir = es.Tabla.getValueAt(fila, 4).toString();
-                int tel = Integer.parseInt(es.Tabla.getValueAt(fila, 5).toString());
-                String ema = es.Tabla.getValueAt(fila, 6).toString();
-                int cur = Integer.parseInt(es.Tabla.getValueAt(fila, 7).toString());
-                String secc = es.Tabla.getValueAt(fila, 8).toString();
-                String idc = es.Tabla.getValueAt(fila, 9).toString();
-                String con = es.Tabla.getValueAt(fila, 10).toString();
-                String rol = es.Tabla.getValueAt(fila, 11).toString();
-                String sex = es.Tabla.getValueAt(fila, 12).toString();
-                es.Txt_DocumentStudent.setEditable(false);
+            PreparedStatement ps;
+            ResultSet rs;
 
-                es.Txt_DocumentStudent.setText("" + doc);
-                es.Txt_nameStudent.setText(nom);
-                es.Txt_LastNameStudent.setText(ape);
-                es.Txt_Day_Born.setText(fecha);
+            try {
 
-                if (sex.equals("M")) {
-                    es.btn_M.setSelected(true);
-                } else if (sex.equals("F")) {
-                    es.btn_F.setSelected(true);
+                int fila = es.Tabla.getSelectedRow();
+                int id = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
+
+                Connection con = mte.getConnection();
+
+                ps = con.prepareStatement("SELECT * FROM estudiantes WHERE id_Estudiante=? ");
+
+                ps.setInt(1, id);
+
+                rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    es.Txt_DocumentStudent.setText(String.valueOf(id));
+                    es.Txt_nameStudent.setText(rs.getString("Nombres"));
+                    es.Txt_LastNameStudent.setText(rs.getString("Apellidos"));
+                    es.Txt_Day_Born.setText(rs.getString("Fecha_Nacimiento"));
+
+                    if (rs.getString("Sexo").equals("M")) {
+                        es.btn_M.setSelected(true);
+                    } else if (rs.getString("Sexo").equals("S")) {
+                        es.btn_F.setSelected(true);
+                    }
+                    es.Box_grade.setSelectedItem(String.valueOf("Grado"));
+                    es.Box_section.setSelectedItem("Seccion");
+                    es.Txt_Direction.setText(rs.getString("Direccion"));
+                    es.Txt_telephone.setText(rs.getString("Telefono"));
+                    es.Txt_email.setText(rs.getString("Email"));
+                    es.Txt_password.setText(rs.getString("Contraseña"));
                 }
 
-                es.Txt_Direction.setText(dir);
-                es.Txt_telephone.setText("" + tel);
-                es.Txt_email.setText(ema);
-                es.Box_grade.setSelectedItem(cur);
-                es.Box_section.setSelectedItem(secc);
-                es.Txt_password.setText(con);
-
-                es.Txt_DocumentStudent.requestFocus();
+            } catch (SQLException y) {
+                JOptionPane.showMessageDialog(null, y);
             }
-
+            es.Txt_DocumentStudent.requestFocus();
         }
-        if (e.getSource() == es.btn_moficar) {
+
+    
+
+    if (e.getSource () 
+        == es.btn_moficar) {
             modificar();
-            showtable();
-        }
-        if (e.getSource() == es.Btn_Delete) {
-            eliminar();
-            showtable();
-
-        }
-        ///////////////////////////////////////////
-        if (e.getSource() == admin.Profesores) {
-            show_p();
-        }
-        if (e.getSource() == p.btn_crear) {
-            createProf();
-        }
-
-        if (e.getSource()
-                == admin.Cursos) {
-            JOptionPane.showMessageDialog(admin, "Cursos");
-        }
-
-        if (e.getSource()
-                == admin.Horarios) {
-            JOptionPane.showMessageDialog(admin, "Horarios");
-        }
-
-        if (e.getSource()
-                == admin.Exit) {
-            exit();
-        }
+        showtable();
     }
+
+    if (e.getSource () 
+        == es.Btn_Delete) {
+            eliminar();
+        showtable();
+
+    }
+    ///////////////////////////////////////////
+
+    if (e.getSource () 
+        == admin.Profesores) {
+            show_p();
+    }
+
+    if (e.getSource () 
+        == p.btn_crear) {
+            createProf();
+    }
+
+    if (e.getSource () 
+        == admin.Cursos) {
+            JOptionPane.showMessageDialog(admin, "Cursos");
+    }
+
+    if (e.getSource () 
+        == admin.Horarios) {
+            JOptionPane.showMessageDialog(admin, "Horarios");
+    }
+
+    if (e.getSource () 
+        == admin.Exit) {
+            exit();
+    }
+}
 
 }
