@@ -25,7 +25,7 @@ public class Metodos_Admin extends Conexion {
         try {
 
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO estudiantes (id_Estudiantes, Nombres, Apellidos, Fecha_Nacimiento, Direccion,Telefono, Email, Grado, Seccion ,id_Curso, Contraseña,Sexo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO estudiantes (id_Estudiante, Nombres, Apellidos, Fecha_Nacimiento, Direccion,Telefono, Email, Grado, Seccion ,id_Curso, Contraseña,Sexo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
             ps.setLong(1, mdl.getid_Estudiante());
             ps.setString(2, mdl.getNombres());
@@ -57,7 +57,7 @@ public class Metodos_Admin extends Conexion {
     //Método para actualizar registros
     public int modificar(Estudiantes_Modelo mdl) {
         int r = 1;
-        String sql = "UPDATE estudiantes SET Nombres=?, Apellidos=?, Fecha_Nacimiento=?, Direccion=?,Telefono=?,Email=?,Grado=?,Seccion=?,id_Curso=?,Contraseña=?,Sexo=? WHERE id_Estudiantes=?";
+        String sql = "UPDATE estudiantes SET Nombres=?, Apellidos=?, Fecha_Nacimiento=?, Direccion=?,Telefono=?,Email=?,Grado=?,Seccion=?,id_Curso=?,Contraseña=?,Sexo=? WHERE id_Estudiante=?";
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -103,37 +103,6 @@ public class Metodos_Admin extends Conexion {
         } else {
             return 0;
         }
-    }
-
-    public List listar() {
-
-        String sql = "select * from estudiantes";
-        List<Estudiantes_Modelo> lista = new ArrayList<>();
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                mdl.setid_Estudiante(rs.getLong(1));
-                mdl.setNombres(rs.getString(2));
-                mdl.setApellidos(rs.getString(3));
-                mdl.setFecha_Nacimiento(rs.getString(4));
-                mdl.setDireccion(rs.getString(5));
-                mdl.setTelefono(rs.getLong(6));
-                mdl.setEmail(rs.getString(7));
-                mdl.setGrado(rs.getByte(8));
-                mdl.setSeccion(rs.getString(9));
-                mdl.setId_Curso(rs.getString(10));
-                mdl.setContraseña(rs.getString(11));
-                mdl.setRol(rs.getString(12));
-                mdl.setSexo(rs.getString(13));
-                lista.add(mdl);
-            }
-        } catch (Exception e) {
-            System.out.println("No se pudo establecer conexión");
-        }
-        return lista;
     }
 
     //////////////////Profesores \\\\\\\\\\\\\\\\\\\\\\\\\\\

@@ -4,6 +4,14 @@
  */
 package Vista;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,12 +19,13 @@ package Vista;
  */
 public class Students extends javax.swing.JPanel {
 
- 
+
 
     public Students() {
         initComponents();
-
+      
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -367,7 +376,7 @@ public class Students extends javax.swing.JPanel {
 
             },
             new String [] {
-                "documento", "nombres", "apellidos", "fecha", "direccion", "telefono", "email", "curso", "seccion", "id_curso", "contraseñaa", "rol", "sexo"
+                "documento", "nombres", "apellidos", "fecha", "id_curso"
             }
         ));
         jScrollPane1.setViewportView(Tabla);
@@ -380,7 +389,7 @@ public class Students extends javax.swing.JPanel {
         );
         table_containerLayout.setVerticalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -405,11 +414,11 @@ public class Students extends javax.swing.JPanel {
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table_container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(table_container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 720));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 760));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selectActionPerformed
@@ -468,6 +477,7 @@ public class Students extends javax.swing.JPanel {
     private javax.swing.JLabel sexo;
     private javax.swing.JPanel table_container;
     // End of variables declaration//GEN-END:variables
+
 
 
 }

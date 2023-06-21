@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Conexion;
 import Modelo.Estudiantes_Modelo;
 import Modelo.Metodos_Admin;
 import Modelo.ProfModel;
@@ -10,10 +11,13 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Controlador_Admin implements ActionListener {
@@ -151,41 +155,37 @@ public class Controlador_Admin implements ActionListener {
 
     }
 
-    public void listar(JTable Tabla) {
-        modelo = (DefaultTableModel) Tabla.getModel();
-        /*modelo.addColumn("Documento");
-        modelo.addColumn("Nombres");
-        modelo.addColumn("Apellidos");
-        modelo.addColumn("Fecha Nacimiento");
-        modelo.addColumn("Direccion");
-        modelo.addColumn("Telefono");
-        modelo.addColumn("Email");
-        modelo.addColumn("Grado");
-        modelo.addColumn("Seccion");
-        modelo.addColumn("id_Curso");
-        modelo.addColumn("Contraseña");
-        modelo.addColumn("Rol");
-        modelo.addColumn("sexo");*/
-        List<Estudiantes_Modelo> lista = mte.listar();
-        Object[] object = new Object[13];
-        int i;
-        for (i = 0; i < lista.size(); i++) {
-            object[0] = lista.get(i).getid_Estudiante();
-            object[1] = lista.get(i).getNombres();
-            object[2] = lista.get(i).getApellidos();
-            object[3] = lista.get(i).getFecha_Nacimiento();
-            object[4] = lista.get(i).getDireccion();
-            object[5] = lista.get(i).getTelefono();
-            object[6] = lista.get(i).getEmail();
-            object[7] = lista.get(i).getGrado();
-            object[8] = lista.get(i).getSeccion();
-            object[9] = lista.get(i).getId_Curso();
-            object[10] = lista.get(i).getContraseña();
-            object[11] = lista.get(i).getRol();
-            object[12] = lista.get(i).getSexo();
-            modelo.addRow(object);
+    public void showtable() {
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) es.Tabla.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, id_Curso FROM estudiantes");
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                ModeloTabla.addRow(fila);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
         }
-        es.Tabla.setModel(modelo);
     }
 
     public void limpiartabla() {
@@ -237,17 +237,15 @@ public class Controlador_Admin implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == admin.Estudiantes) {
-            limpiartabla();
             show_e();
-            listar(es.Tabla);
+            showtable();
 
         }
 
         if (e.getSource() == es.btn_create) {
             create_Student();
             limpiarcajas();
-            limpiartabla();
-            listar(es.Tabla);
+            showtable();
         }
         if (e.getSource() == es.btn_select) {
             int fila = es.Tabla.getSelectedRow();
@@ -293,25 +291,20 @@ public class Controlador_Admin implements ActionListener {
         }
         if (e.getSource() == es.btn_moficar) {
             modificar();
-            limpiartabla();
-            listar(es.Tabla);
-            limpiarcajas();
+            showtable();
         }
         if (e.getSource() == es.Btn_Delete) {
             eliminar();
-            limpiartabla();
-            listar(es.Tabla);
-            limpiarcajas();
+            showtable();
+
         }
         ///////////////////////////////////////////
         if (e.getSource() == admin.Profesores) {
             show_p();
         }
-        if (e.getSource() == p.btn_crear){
+        if (e.getSource() == p.btn_crear) {
             createProf();
         }
-        
-        
 
         if (e.getSource()
                 == admin.Cursos) {

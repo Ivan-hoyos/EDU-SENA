@@ -22,7 +22,7 @@ public class Admin extends javax.swing.JFrame {
         initComponents();
 
         this.setLocationRelativeTo(null);
-        this.setExtendedState(6);
+       
     }
 
     void exit() {
@@ -82,7 +82,7 @@ public class Admin extends javax.swing.JFrame {
         Estudiantes.setBackground(new java.awt.Color(255, 255, 255));
         Estudiantes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Estudiantes.setForeground(new java.awt.Color(0, 173, 0));
-        Estudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estudiante.png"))); // NOI18N
+        Estudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/e.png"))); // NOI18N
         Estudiantes.setText("Estudiantes");
         Estudiantes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Estudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
