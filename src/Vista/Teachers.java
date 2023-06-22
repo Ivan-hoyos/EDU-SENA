@@ -4,19 +4,17 @@
  */
 package Vista;
 
-
 /**
  *
  * @author Aprendiz
  */
 public class Teachers extends javax.swing.JPanel {
 
- 
-
     public Teachers() {
         initComponents();
-
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +49,7 @@ public class Teachers extends javax.swing.JPanel {
         Txt_passwordp = new javax.swing.JTextField();
         table_container = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla = new javax.swing.JTable();
+        Tablap = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -270,17 +268,29 @@ public class Teachers extends javax.swing.JPanel {
         table_container.setBackground(new java.awt.Color(255, 255, 255));
         table_container.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        Tabla.setBackground(new java.awt.Color(255, 255, 255));
-        Tabla.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+        Tablap.setBackground(new java.awt.Color(255, 255, 255));
+        Tablap.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Tablap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-
+                "id", "nombre", "apellido", "direccion", "email", "telefono", "contrasela"
             }
-        ));
-        jScrollPane1.setViewportView(Tabla);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tablap);
+        if (Tablap.getColumnModel().getColumnCount() > 0) {
+            Tablap.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         javax.swing.GroupLayout table_containerLayout = new javax.swing.GroupLayout(table_container);
         table_container.setLayout(table_containerLayout);
@@ -353,7 +363,7 @@ public class Teachers extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Telephone;
     private javax.swing.JLabel Lbl_password;
     private javax.swing.JPanel North_panel;
-    public javax.swing.JTable Tabla;
+    public javax.swing.JTable Tablap;
     public javax.swing.JTextField Txt_Directionp;
     public javax.swing.JTextField Txt_Documentp;
     public javax.swing.JTextField Txt_LastNamep;
@@ -367,6 +377,5 @@ public class Teachers extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel table_container;
     // End of variables declaration//GEN-END:variables
-
 
 }

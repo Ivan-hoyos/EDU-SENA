@@ -64,35 +64,40 @@ public class Metodos_Admin extends Conexion {
             ps.setString(1, mdl.getNombres());
             ps.setString(2, mdl.getApellidos());
             ps.setString(3, mdl.getFecha_Nacimiento());
-            ps.setString(4, Long.toString(mdl.getTelefono()));
-            ps.setString(5, mdl.getEmail());
-            ps.setString(6, Integer.toString(mdl.getGrado()));
-            ps.setString(7, mdl.getSeccion());
-            ps.setString(8, mdl.getId_Curso());
-            ps.setString(9, mdl.getContraseña());
-            ps.setString(10, mdl.getSexo());
+            ps.setString(4, mdl.getDireccion());
+            ps.setString(5, Long.toString(mdl.getTelefono()));
+            ps.setString(6, mdl.getEmail());
+            ps.setString(7, Integer.toString(mdl.getGrado()));
+            ps.setString(8, mdl.getSeccion());
+            ps.setString(9, mdl.getId_Curso());
+            ps.setString(10, mdl.getContraseña());
+            ps.setString(11, mdl.getSexo());
+            ps.setString(12, Long.toString(mdl.getid_Estudiante()));
             ps.executeUpdate();
-            if (r == 1) {
-                return 1;
-            } else {
-                return 0;
-            }
+
         } catch (SQLException e) {
-            System.out.println("No se pudo establecer la conexión");
+            System.out.println("No se pudo modificar");
+            System.out.println(e);
+            return 0;
         }
-        return r;
+        return 1;
     }
 
     //Método para eliminar registro por documento
     public void eliminar(int doc) {
-        String sql = "DELETE FROM estudiantes WHERE id_Estudiantes = " + doc;
+        String sql = "DELETE FROM estudiantes WHERE id_Estudiante = " + doc;
+
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.executeUpdate();
+
         } catch (Exception e) {
-            System.out.println("No se pudo establecer la conexión");
+            System.out.println("No se pudo eliminar");
+            System.out.println(e);
+
         }
+
     }
 
     public int show_e() {//Metodo para mostrar el formulario Student
@@ -133,6 +138,47 @@ public class Metodos_Admin extends Conexion {
         }
 
         return r;
+
+    }
+
+    //Método para actualizar registros
+    public int modificarP(ProfModel pmdl) {
+        int r = 1;
+        String sql = "UPDATE profesores SET Nombres=?, Apellidos=?, Direccion=?, Telefono=?, Email=?, Contraseña=? WHERE id_Profesor=?";
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pmdl.getNombres());
+            ps.setString(2, pmdl.getApellidos());
+            ps.setString(3, pmdl.getDireccion());
+            ps.setString(4, Long.toString(pmdl.getTelefono()));
+            ps.setString(5, pmdl.getEmail());
+            ps.setString(6, pmdl.getContraseña());
+            ps.setString(7, Long.toString(pmdl.getId_Profesor()));
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("No se pudo modificar");
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
+
+    //Método para eliminar registro por documento
+    public void eliminarP(int doc) {
+        String sql = "DELETE FROM profesores WHERE id_Profesor = " + doc;
+
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("No se pudo eliminar");
+            System.out.println(e);
+
+        }
 
     }
 }

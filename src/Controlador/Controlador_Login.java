@@ -2,9 +2,11 @@ package Controlador;
 
 import Modelo.Estudiantes_Modelo;
 import Modelo.Metodos_login;
+import Modelo.ProfModel;
 import Vista.Admin;
 import Vista.Login;
 import Vista.Students;
+import Vista.Teachers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -19,8 +21,10 @@ import javax.swing.table.DefaultTableModel;
 public class Controlador_Login implements ActionListener {
     Admin admin = new Admin();
     Students es = new Students();
+    Teachers p = new Teachers();
     Metodos_login mte = new Metodos_login();
     Estudiantes_Modelo mode = new Estudiantes_Modelo();
+    ProfModel modep = new ProfModel();
     Login log = new Login();
     Controlador_Admin c = new Controlador_Admin(admin, es);
     private MouseListener l;
@@ -29,6 +33,7 @@ public class Controlador_Login implements ActionListener {
         this.log = log;
         this.mte = mte;
         this.mode = mode;
+        this.modep = modep;
         this.log.Btn_Login.addActionListener(this);
     }
 

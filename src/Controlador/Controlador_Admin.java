@@ -1,6 +1,7 @@
 package Controlador;
 
-import Modelo.Conexion;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import Modelo.Estudiantes_Modelo;
 import Modelo.Metodos_Admin;
 import Modelo.ProfModel;
@@ -8,6 +9,7 @@ import Vista.Admin;
 import Vista.Students;
 import Vista.Teachers;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -17,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,8 +39,6 @@ public class Controlador_Admin implements ActionListener {
         this.es = es;
         this.mte = mte;
         this.mode = mode;
-//        this.admin.Lbl_Students.addMouseListener((MouseListener) this.admin);
-        //this.admin.Lbl_Exit.addMouseListener((ActionListener) this);
         this.admin.Estudiantes.addActionListener(this);
         this.admin.Estudiantes.addMouseListener(l);
         this.admin.Profesores.addActionListener(this);
@@ -45,12 +46,31 @@ public class Controlador_Admin implements ActionListener {
         this.admin.Horarios.addActionListener(this);
         this.admin.Exit.addActionListener(this);
         this.es.btn_create.addActionListener(this);
+        this.es.btn_clean.addActionListener(this);
         this.es.btn_moficar.addActionListener(this);
         this.es.Btn_Delete.addActionListener(this);
+        this.p.btn_crear.addActionListener(this);
+        this.p.btn_moficar.addActionListener(this);
+        this.p.btn_select.addActionListener(this);
+        this.p.Btn_Delete.addActionListener(this);
+
+        es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionar();
+            }
+        });
+
+        p.Tablap.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de profesores
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionarP();
+            }
+        });
 
     }
 
-    public void create_Student() {
+    public void create_Student() {//Metodo para crear un estudiante nuevo
         mode.setid_Estudiante(Long.parseLong(es.Txt_DocumentStudent.getText()));
         mode.setNombres(es.Txt_nameStudent.getText());
         mode.setApellidos(es.Txt_LastNameStudent.getText());
@@ -76,10 +96,11 @@ public class Controlador_Admin implements ActionListener {
 
         } else {
             JOptionPane.showMessageDialog(es, "Error, intente de nuevo");
+
         }
     }
 
-    public void modificar() {
+    public void modificar() { //modificar un estudiante
         mode.setid_Estudiante(Long.parseLong(es.Txt_DocumentStudent.getText()));
         mode.setNombres(es.Txt_nameStudent.getText());
         mode.setApellidos(es.Txt_LastNameStudent.getText());
@@ -107,14 +128,15 @@ public class Controlador_Admin implements ActionListener {
         }
     }
 
-    public void eliminar() {
+    public void eliminar() {// Eliminar estudiante
         int fila = es.Tabla.getSelectedRow();
+
         if (fila == -1) {
             JOptionPane.showMessageDialog(es, "Seleccione un Registro");
         } else {
             int doc = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
             mte.eliminar(doc);
-            JOptionPane.showMessageDialog(es, "Registro eliminado");
+            System.out.println("Registro eliminado");
         }
     }
 
@@ -180,6 +202,11 @@ public class Controlador_Admin implements ActionListener {
                 for (int i = 0; i < columnas; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
+                int[] anchos = {1, 1, 1, 1, 1};
+
+                for (int i = 0; i < 5; i++) {
+                    es.Tabla.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+                }
                 ModeloTabla.addRow(fila);
             }
 
@@ -188,11 +215,54 @@ public class Controlador_Admin implements ActionListener {
         }
     }
 
-    public void limpiartabla() {
-        for (int i = 0; i < es.Tabla.getRowCount(); i++) {
-            modelo.removeRow(i);
-            i = i - 1;
+    public void seleccionar() {
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+
+            int fila = es.Tabla.getSelectedRow();
+            int id = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
+
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("SELECT * FROM estudiantes WHERE id_Estudiante=? ");
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                es.Txt_DocumentStudent.setText(String.valueOf(id));
+                es.Txt_nameStudent.setText(rs.getString("Nombres"));
+                es.Txt_LastNameStudent.setText(rs.getString("Apellidos"));
+                es.Txt_Day_Born.setText(rs.getString("Fecha_Nacimiento"));
+
+                if (rs.getString("Sexo").equals("M")) {
+                    es.btn_M.setSelected(true);
+                } else if (rs.getString("Sexo").equals("S")) {
+                    es.btn_F.setSelected(true);
+                }
+
+                String grado = rs.getString("Grado");
+                es.Box_grade.setSelectedItem(grado);
+                String seccion = rs.getString("Seccion");
+                es.Box_section.setSelectedItem(seccion);
+                es.Txt_Direction.setText(rs.getString("Direccion"));
+                es.Txt_telephone.setText(rs.getString("Telefono"));
+                es.Txt_email.setText(rs.getString("Email"));
+                es.Txt_password.setText(rs.getString("Contraseña"));
+                System.out.println(rs.getByte("Grado"));
+
+            }
+
+        } catch (SQLException y) {
+            JOptionPane.showMessageDialog(null, y);
         }
+        es.Txt_DocumentStudent.setEditable(false);
+        es.Txt_DocumentStudent.setForeground(Color.white);
+        es.Txt_DocumentStudent.setBackground(Color.GRAY);
+
     }
 
     public void limpiarcajas() {
@@ -209,10 +279,13 @@ public class Controlador_Admin implements ActionListener {
         es.Txt_Direction.setText(null);
         es.Txt_telephone.setText(null);
         es.Txt_email.setText(null);
-        es.Box_grade.setSelectedItem(null);
-        es.Box_section.setSelectedItem(null);
+        es.Box_grade.setSelectedItem("Seleccione");
+        es.Box_section.setSelectedItem("Seleccione");
         es.Txt_password.setText(null);
-        es.Txt_DocumentStudent.requestFocus();
+
+        es.Txt_DocumentStudent.setEditable(true);
+        es.Txt_DocumentStudent.setForeground(Color.black);
+        es.Txt_DocumentStudent.setBackground(Color.white);
     }
 
     ////////////////////////////////////////////////////////////////////////////Profesores
@@ -233,12 +306,134 @@ public class Controlador_Admin implements ActionListener {
         }
     }
 
+    public void modificarP() { //modificar un profesor
+        pmode.setId_Profesor(Long.parseLong(p.Txt_Documentp.getText()));
+        pmode.setNombres(p.Txt_namep.getText());
+        pmode.setApellidos(p.Txt_LastNamep.getText());
+        pmode.setDireccion(p.Txt_Directionp.getText());
+        pmode.setTelefono(Long.parseLong(p.Txt_telephonep.getText()));
+        pmode.setEmail(p.Txt_telephonep.getText());
+        pmode.setContraseña(p.Txt_passwordp.getText());
+
+        int r = mte.modificarP(pmode);
+        if (r == 1) {
+            JOptionPane.showMessageDialog(p, "Registro actualizado!!");
+        } else {
+            JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
+        }
+    }
+
+    public void eliminarP() {// Eliminar profesor
+        int fila = p.Tablap.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(p, "Seleccione un Registro");
+        } else {
+            int doc = Integer.parseInt(p.Tablap.getValueAt(fila, 0).toString());
+            mte.eliminarP(doc);
+            System.out.println("Registro eliminado");
+        }
+    }
+
+    public void showtableP() {
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) p.Tablap.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("Select id_Profesor, Nombres, Apellidos, Direccion, Telefono, Email, FROM profesores");
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                int[] anchos = {1, 1, 1, 1, 1};
+
+                for (int i = 0; i < 5; i++) {
+                    p.Tablap.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+                }
+                ModeloTabla.addRow(fila);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
+    public void seleccionarP() {
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+
+            int fila = p.Tablap.getSelectedRow();
+            int id = Integer.parseInt(p.Tablap.getValueAt(fila, 0).toString());
+
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("SELECT * FROM profesores WHERE id_Profesor=? ");
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                p.Txt_Documentp.setText(String.valueOf(id));
+                p.Txt_namep.setText(rs.getString("Nombres"));
+                p.Txt_LastNamep.setText(rs.getString("Apellidos"));
+                p.Txt_Directionp.setText(rs.getString("Direccion"));
+                p.Txt_telephonep.setText(rs.getString("Telefono"));
+                p.Txt_emailp.setText(rs.getString("Email"));
+                p.Txt_passwordp.setText(rs.getString("Contraseña"));
+
+            }
+
+        } catch (SQLException y) {
+            JOptionPane.showMessageDialog(null, y);
+        }
+        p.Txt_Documentp.setEditable(false);
+        p.Txt_Documentp.setForeground(Color.white);
+        p.Txt_Documentp.setBackground(Color.GRAY);
+
+    }
+
+    public void limpiarcajasP() {
+        p.Txt_Documentp.setText(null);
+        p.Txt_namep.setText(null);
+        p.Txt_LastNamep.setText(null);
+
+        p.Txt_Directionp.setText(null);
+        p.Txt_telephonep.setText(null);
+        p.Txt_emailp.setText(null);
+        p.Txt_passwordp.setText(null);
+
+        p.Txt_Documentp.setEditable(true);
+        p.Txt_Documentp.setForeground(Color.black);
+        p.Txt_Documentp.setBackground(Color.white);
+    }
+
     @Override
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == admin.Estudiantes) {
             show_e();
             showtable();
+            es.Txt_DocumentStudent.setEditable(true);
+            es.Txt_DocumentStudent.setForeground(Color.black);
+            es.Txt_DocumentStudent.setBackground(Color.white);
 
         }
 
@@ -247,88 +442,87 @@ public class Controlador_Admin implements ActionListener {
             limpiarcajas();
             showtable();
         }
-        if (e.getSource() == es.btn_select) {
-            PreparedStatement ps;
-            ResultSet rs;
-
-            try {
-
-                int fila = es.Tabla.getSelectedRow();
-                int id = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
-
-                Connection con = mte.getConnection();
-
-                ps = con.prepareStatement("SELECT * FROM estudiantes WHERE id_Estudiante=? ");
-
-                ps.setInt(1, id);
-
-                rs = ps.executeQuery();
-
-                while (rs.next()) {
-                    es.Txt_DocumentStudent.setText(String.valueOf(id));
-                    es.Txt_nameStudent.setText(rs.getString("Nombres"));
-                    es.Txt_LastNameStudent.setText(rs.getString("Apellidos"));
-                    es.Txt_Day_Born.setText(rs.getString("Fecha_Nacimiento"));
-
-                    if (rs.getString("Sexo").equals("M")) {
-                        es.btn_M.setSelected(true);
-                    } else if (rs.getString("Sexo").equals("S")) {
-                        es.btn_F.setSelected(true);
-                    }
-                    es.Box_grade.setSelectedItem(String.valueOf("Grado"));
-                    es.Box_section.setSelectedItem("Seccion");
-                    es.Txt_Direction.setText(rs.getString("Direccion"));
-                    es.Txt_telephone.setText(rs.getString("Telefono"));
-                    es.Txt_email.setText(rs.getString("Email"));
-                    es.Txt_password.setText(rs.getString("Contraseña"));
-                }
-
-            } catch (SQLException y) {
-                JOptionPane.showMessageDialog(null, y);
-            }
-            es.Txt_DocumentStudent.requestFocus();
+        if (e.getSource() == es.btn_clean) {
+            limpiarcajas();
+            es.Txt_DocumentStudent.setFocusable(true);
+            showtable();
         }
 
-    
-
-    if (e.getSource () 
-        == es.btn_moficar) {
+        if (e.getSource()
+                == es.btn_moficar) {
             modificar();
-        showtable();
-    }
+            showtable();
 
-    if (e.getSource () 
-        == es.Btn_Delete) {
-            eliminar();
-        showtable();
+        }
 
-    }
-    ///////////////////////////////////////////
+        if (e.getSource()
+                == es.Btn_Delete) {
+            Object[] options = {"Sí", "No"};
+            // Cargar un ícono personalizado desde un archivo de imagen
+            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/boton-eliminar.png"));
 
-    if (e.getSource () 
-        == admin.Profesores) {
+            int choice = JOptionPane.showOptionDialog(
+                    null, // Componente padre, null para diálogo independiente
+                    "¿Deseas continuar?", // Pregunta
+                    "Confirmar Eliminacion", // Título del diálogo
+                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                    icon, // Icono personalizado, null para el icono predeterminado
+                    options, // Opciones de respuesta
+                    options[0] // Opción predeterminada
+            );
+
+            // Verifica la respuesta del usuario
+            switch (choice) {
+                case JOptionPane.YES_OPTION:
+
+                    eliminar();
+                    limpiarcajas();
+                    showtable();
+                    JOptionPane.showMessageDialog(admin, "Estudiante Eliminado");
+                    break;
+                case JOptionPane.NO_OPTION:
+                    System.out.println("El usuario seleccionó 'No'");
+                    break;
+                default:
+                    System.out.println("El usuario cerró el diálogo");
+                    break;
+            }
+
+        }
+        ///////////////////////////////////////////
+
+        if (e.getSource()
+                == admin.Profesores) {
             show_p();
-    }
+            showtableP();
+            p.Txt_Documentp.setEditable(true);
+            p.Txt_Documentp.setForeground(Color.black);
+            p.Txt_Documentp.setBackground(Color.white);
+        }
 
-    if (e.getSource () 
-        == p.btn_crear) {
+        if (e.getSource()
+                == p.btn_crear) {
             createProf();
-    }
+            limpiarcajasP();
+            showtableP();
+        }
 
-    if (e.getSource () 
-        == admin.Cursos) {
+        if (e.getSource()
+                == admin.Cursos) {
             JOptionPane.showMessageDialog(admin, "Cursos");
-    }
+        }
 
-    if (e.getSource () 
-        == admin.Horarios) {
+        if (e.getSource()
+                == admin.Horarios) {
             JOptionPane.showMessageDialog(admin, "Horarios");
-    }
+        }
 
-    if (e.getSource () 
-        == admin.Exit) {
+        if (e.getSource()
+                == admin.Exit) {
             exit();
+        }
     }
-}
 
 }
