@@ -35,13 +35,14 @@ public class Login extends javax.swing.JFrame {
         Lbl_User1 = new javax.swing.JLabel();
         Txt_username = new javax.swing.JTextField();
         Password_user = new javax.swing.JPasswordField();
-        Lbl_Password = new javax.swing.JLabel();
+        lbl_rol = new javax.swing.JLabel();
         Btn_Login = new javax.swing.JButton();
+        Lbl_Password1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(1360, 760));
         setResizable(false);
         getContentPane().setLayout(new java.awt.BorderLayout(2, 0));
 
@@ -82,7 +83,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         Input_panel.setBackground(new java.awt.Color(255, 255, 255));
-        Input_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        Input_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 173, 0))); // NOI18N
         Input_panel.setPreferredSize(new java.awt.Dimension(480, 590));
 
         Lbl_Login.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -149,10 +150,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        Lbl_Password.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Lbl_Password.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_Password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_Password.setText("Contraseña");
+        lbl_rol.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbl_rol.setForeground(new java.awt.Color(0, 173, 0));
+        lbl_rol.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_rol.setText("Rol");
 
         Btn_Login.setBackground(new java.awt.Color(0, 173, 0));
         Btn_Login.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -172,34 +173,43 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        Lbl_Password1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Lbl_Password1.setForeground(new java.awt.Color(0, 173, 0));
+        Lbl_Password1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Lbl_Password1.setText("Contraseña");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Estudiante", "Profesor", "Administrador" }));
+
         javax.swing.GroupLayout Input_panelLayout = new javax.swing.GroupLayout(Input_panel);
         Input_panel.setLayout(Input_panelLayout);
         Input_panelLayout.setHorizontalGroup(
             Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Input_panelLayout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Input_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Lbl_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Password_user, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lbl_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addGap(70, 70, 70)
                         .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Input_panelLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(Lbl_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Input_panelLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(Lbl_icon_login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Lbl_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Password_user, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lbl_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Lbl_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Lbl_icon_login, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Input_panelLayout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addComponent(lbl_rol)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(64, 64, 64))
         );
         Input_panelLayout.setVerticalGroup(
             Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Input_panelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addContainerGap()
                 .addComponent(Lbl_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Lbl_icon_login, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,11 +217,15 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Lbl_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Lbl_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(Lbl_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Password_user, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -401,11 +415,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Icon_Sena;
     private javax.swing.JPanel Input_panel;
     private javax.swing.JLabel Lbl_Login;
-    private javax.swing.JLabel Lbl_Password;
+    private javax.swing.JLabel Lbl_Password1;
     private javax.swing.JLabel Lbl_User1;
     private javax.swing.JLabel Lbl_icon_login;
     private javax.swing.JPanel Left_Panel;
     public javax.swing.JPasswordField Password_user;
     public javax.swing.JTextField Txt_username;
+    public javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel lbl_rol;
     // End of variables declaration//GEN-END:variables
 }

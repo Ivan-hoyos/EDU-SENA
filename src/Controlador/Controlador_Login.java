@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ADSI
  */
 public class Controlador_Login implements ActionListener {
+
     Admin admin = new Admin();
     Students es = new Students();
     Teachers p = new Teachers();
@@ -41,24 +42,66 @@ public class Controlador_Login implements ActionListener {
         String pass = new String(log.Password_user.getPassword());
         mode.setid_Estudiante(Long.parseLong(log.Txt_username.getText()));
         mode.setContraseña(pass);
-        int r = mte.log(mode);
-        if (r == 1) {
-            System.out.println(mode.getid_Estudiante());
-            System.out.println(mode.getContraseña());
 
-           
-            
+        int r = mte.log(mode);
+
+        if (r == 1) {
+            System.out.println("Inicio De sesion Correcto");
             c.admin.setVisible(true);
+            log.dispose();
+        } else if (r == 2) {
+            System.out.println("Contraseña incorrecta");
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+        } else if (r == 3) {
+            System.out.println("El usuario no existe");
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
         } else {
+
             JOptionPane.showMessageDialog(log, "Error, intente de nuevo");
         }
-        log.dispose();
+
+    }
+
+    public void logP() {
+        String pass = new String(log.Password_user.getPassword());
+        modep.setId_Profesor(Long.parseLong(log.Txt_username.getText()));
+        modep.setContraseña(pass);
+        int r = mte.logP(modep);
+
+        if (r == 1) {
+            System.out.println("Inicio De sesion Correcto");
+            c.admin.setVisible(true);
+            log.dispose();
+        } else if (r == 2) {
+            System.out.println("Contraseña incorrecta");
+            System.out.println(modep.getContraseña());
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+        } else if (r == 3) {
+            System.out.println("El usuario no existe");
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        } else {
+
+            JOptionPane.showMessageDialog(log, "Error, intente de nuevo");
+        }
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == log.Btn_Login) {
-            log();
+            String rol = log.jComboBox1.getSelectedItem().toString();
+            if (rol.equals("Estudiante")) {
+                log();
+                System.out.println("");
+            }
+            else if (rol.equals("Profesor")) {
+                logP();
+            }
+            else if (log.jComboBox1.getSelectedItem().toString().equals("Administrador")) {
+                System.out.println("zd");
+            }
+
+           
         }
 
     }

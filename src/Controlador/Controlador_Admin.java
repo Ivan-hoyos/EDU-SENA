@@ -494,6 +494,8 @@ public class Controlador_Admin implements ActionListener {
                 p.Txt_telephonep.setText(rs.getString("Telefono"));
                 p.Txt_emailp.setText(rs.getString("Email"));
                 p.Txt_passwordp.setText(rs.getString("Contraseña"));
+                String profesion = rs.getString("Profesion");
+                p.Materia.setSelectedItem(profesion);
 
             }
 
@@ -602,8 +604,8 @@ public class Controlador_Admin implements ActionListener {
                 == admin.Exit) {
             exit();
         }
-        
-        if (e.getSource() == cu.jButton3){
+
+        if (e.getSource() == cu.jButton3) {
             fc.setVisible(true);
         }
     }

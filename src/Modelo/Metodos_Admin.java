@@ -156,9 +156,9 @@ public class Metodos_Admin extends Conexion {
             ps.setString(4, Long.toString(pmdl.getTelefono()));
             ps.setString(5, pmdl.getEmail());
             ps.setString(6, pmdl.getContraseña());
-            ps.setString(7, Long.toString(pmdl.getId_Profesor()));
-            ps.setString(8, Integer.toString(pmdl.getidMateria()));
-            ps.setString(9, pmdl.getProfesion());
+            ps.setString(7, Integer.toString(pmdl.getidMateria()));
+            ps.setString(8, pmdl.getProfesion());
+            ps.setString(9, Long.toString(pmdl.getId_Profesor()));
             ps.executeUpdate();
 
         } catch (SQLException e) {

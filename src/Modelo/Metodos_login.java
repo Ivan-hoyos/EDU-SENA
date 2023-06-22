@@ -44,24 +44,74 @@ public class Metodos_login extends Conexion {
 
                         if (rol.equals("student")) {
                             ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/tarjetaes.png"));
-                            JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nEstudiante: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION,icon);
+                            JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nEstudiante: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION, icon);
 
                         }
-
+                        return 1;
                     } else {
                         //Contraseña incorrecta
-                        JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                        // JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
 
                     }
-
+                    return 2;
                 } else {
                     //El usuario no existe
 
-                    JOptionPane.showMessageDialog(null, "El usuario no existe");
+                    //JOptionPane.showMessageDialog(null, "El usuario no existe");
                     System.out.println(mode.getContraseña());
 
                 }
-                return 1;
+                return 3;
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.toString());
+            }
+
+        } else {
+            return 0;
+        }
+        return r;
+    }
+
+    public int logP(ProfModel log) {
+        int r = 1;
+
+        // mode.setContraseña(password);
+        String sql = "select id_Profesor, Nombres, Apellidos,  Contraseña, Rol from profesores where id_Profesor='" + log.getId_Profesor() + "'";
+        if (r == 1) {
+            try {
+
+                ps = con.prepareStatement(sql);
+                ResultSet rs_Profesor = ps.executeQuery();
+
+                if (rs_Profesor.next()) {
+                    //Si existe el usuario
+                    String us = rs_Profesor.getString("id_Profesor");
+                    String pas = rs_Profesor.getString("Contraseña");
+                    String rol = rs_Profesor.getString("Rol");
+                    String nombre = rs_Profesor.getString("Nombres");
+                    String apellido = rs_Profesor.getString("Apellidos");
+
+                    if (log.getContraseña().equals(pas)) {
+                        //Jframe alumno, docente o admin
+
+                        if (rol.equals("teacher")) {
+                            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/tarjetaes.png"));
+                            JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nProfesor: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION, icon);
+
+                        }
+                        return 1;
+                    } else {
+                        //Contraseña incorrecta
+
+                    }
+                    return 2;
+                } else {
+                    //El usuario no existe
+
+                }
+                return 3;
+
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e.toString());
             }
