@@ -88,7 +88,7 @@ public class Admin extends javax.swing.JFrame {
         Estudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Estudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Estudiantes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Estudiantes.setIconTextGap(30);
+        Estudiantes.setIconTextGap(27);
         Estudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 EstudiantesMouseEntered(evt);
@@ -119,31 +119,37 @@ public class Admin extends javax.swing.JFrame {
         Cursos.setBackground(new java.awt.Color(255, 255, 255));
         Cursos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Cursos.setForeground(new java.awt.Color(0, 173, 0));
+        Cursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cursos.png"))); // NOI18N
         Cursos.setText("Cursos");
         Cursos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Cursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Cursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Cursos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Cursos.setIconTextGap(58);
         Left_Panel.add(Cursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 70));
 
         Horarios.setBackground(new java.awt.Color(255, 255, 255));
         Horarios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Horarios.setForeground(new java.awt.Color(0, 173, 0));
+        Horarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/horarios.png"))); // NOI18N
         Horarios.setText("Horarios");
         Horarios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Horarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Horarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Horarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Horarios.setIconTextGap(45);
         Left_Panel.add(Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 250, 70));
 
         Exit.setBackground(new java.awt.Color(255, 255, 255));
         Exit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Exit.setForeground(new java.awt.Color(0, 173, 0));
+        Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png"))); // NOI18N
         Exit.setText("Salir");
         Exit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Exit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        Exit.setIconTextGap(73);
         Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 250, 70));
 
         Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 768));

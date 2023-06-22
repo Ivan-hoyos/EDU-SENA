@@ -28,7 +28,7 @@ public class Teachers extends javax.swing.JPanel {
         Container = new javax.swing.JPanel();
         North_panel = new javax.swing.JPanel();
         btn_crear = new javax.swing.JButton();
-        btn_select = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
         btn_moficar = new javax.swing.JButton();
         Btn_Delete = new javax.swing.JButton();
         Form = new javax.swing.JPanel();
@@ -70,14 +70,14 @@ public class Teachers extends javax.swing.JPanel {
             }
         });
 
-        btn_select.setBackground(new java.awt.Color(0, 173, 0));
-        btn_select.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_select.setForeground(new java.awt.Color(255, 255, 255));
-        btn_select.setText("Seleccionar");
-        btn_select.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_select.addActionListener(new java.awt.event.ActionListener() {
+        btn_limpiar.setBackground(new java.awt.Color(0, 173, 0));
+        btn_limpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_limpiar.setText("Limpiar Campos");
+        btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_selectActionPerformed(evt);
+                btn_limpiarActionPerformed(evt);
             }
         });
 
@@ -112,7 +112,7 @@ public class Teachers extends javax.swing.JPanel {
                 .addGroup(North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Btn_Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_moficar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(btn_select, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -122,7 +122,7 @@ public class Teachers extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(btn_select, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btn_moficar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
@@ -272,15 +272,15 @@ public class Teachers extends javax.swing.JPanel {
         Tablap.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         Tablap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "nombre", "apellido", "direccion", "email", "telefono", "contrasela"
+                "Documento", "Nombres", "Apellidos", "Direccion", "Telefono", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -331,10 +331,10 @@ public class Teachers extends javax.swing.JPanel {
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 720));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selectActionPerformed
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
 
 
-    }//GEN-LAST:event_btn_selectActionPerformed
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearActionPerformed
 
@@ -372,8 +372,8 @@ public class Teachers extends javax.swing.JPanel {
     public javax.swing.JTextField Txt_passwordp;
     public javax.swing.JTextField Txt_telephonep;
     public javax.swing.JButton btn_crear;
+    public javax.swing.JButton btn_limpiar;
     public javax.swing.JButton btn_moficar;
-    public javax.swing.JButton btn_select;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel table_container;
     // End of variables declaration//GEN-END:variables

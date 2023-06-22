@@ -8,6 +8,7 @@ import Modelo.ProfModel;
 import Vista.Admin;
 import Vista.Students;
 import Vista.Teachers;
+import Vista.cursos;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,7 @@ public class Controlador_Admin implements ActionListener {
     Admin admin = new Admin();
     Students es = new Students();
     Teachers p = new Teachers();
+    cursos cu = new cursos();
     DefaultTableModel modelo = new DefaultTableModel();
     private MouseListener l;
 
@@ -51,7 +53,7 @@ public class Controlador_Admin implements ActionListener {
         this.es.Btn_Delete.addActionListener(this);
         this.p.btn_crear.addActionListener(this);
         this.p.btn_moficar.addActionListener(this);
-        this.p.btn_select.addActionListener(this);
+        this.p.btn_limpiar.addActionListener(this);
         this.p.Btn_Delete.addActionListener(this);
 
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
@@ -92,7 +94,8 @@ public class Controlador_Admin implements ActionListener {
         mode.setId_Curso(id_Curso);
         int r = mte.create_Student(mode);
         if (r == 1) {
-            JOptionPane.showMessageDialog(null, "Registro guardado");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Registro guardado", "Guardado", JOptionPane.CLOSED_OPTION, icon);
 
         } else {
             JOptionPane.showMessageDialog(es, "Error, intente de nuevo");
@@ -122,7 +125,8 @@ public class Controlador_Admin implements ActionListener {
         mode.setId_Curso(id_Curso);
         int r = mte.modificar(mode);
         if (r == 1) {
-            JOptionPane.showMessageDialog(es, "Registro actualizado!!");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(es, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
         } else {
             JOptionPane.showMessageDialog(es, "Error, intente de nuevo");
         }
@@ -132,12 +136,46 @@ public class Controlador_Admin implements ActionListener {
         int fila = es.Tabla.getSelectedRow();
 
         if (fila == -1) {
-            JOptionPane.showMessageDialog(es, "Seleccione un Registro");
+            JOptionPane.showMessageDialog(null, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            int doc = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
-            mte.eliminar(doc);
-            System.out.println("Registro eliminado");
+            Object[] options = {"Sí", "No"};
+            // Cargar un ícono personalizado desde un archivo de imagen
+            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/boton-eliminar.png"));
+
+            int choice = JOptionPane.showOptionDialog(
+                    null, // Componente padre, null para diálogo independiente
+                    "¿Deseas continuar?", // Pregunta
+                    "Confirmar Eliminacion", // Título del diálogo
+                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                    icon, // Icono personalizado, null para el icono predeterminado
+                    options, // Opciones de respuesta
+                    options[0] // Opción predeterminada
+            );
+
+            // Verifica la respuesta del usuario
+            switch (choice) {
+                case JOptionPane.YES_OPTION:
+
+                    int doc = Integer.parseInt(es.Tabla.getValueAt(fila, 0).toString());
+                    mte.eliminar(doc);
+                    limpiarcajas();
+                    showtable();
+                    JOptionPane.showMessageDialog(admin, "Estudiante Eliminado", "Eliminado", JOptionPane.OK_OPTION, icon);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    System.out.println("El usuario seleccionó 'No'");
+                    break;
+                default:
+                    System.out.println("El usuario cerró el diálogo");
+                    break;
+            }
+
         }
+
+        System.out.println("Registro eliminado");
+
     }
 
     public void exit() {//Metodo para cerrar el programa
@@ -175,6 +213,17 @@ public class Controlador_Admin implements ActionListener {
         admin.Panel_right.revalidate();
         admin.Panel_right.repaint();
 
+    }
+
+    public void show_cursos() {//Metodo para mostrar el formulario cursos
+       
+            cu.setSize(1100, 760);
+            admin.Panel_right.removeAll();
+            admin.Panel_right.add(cu, BorderLayout.CENTER);
+            admin.Panel_right.setComponentZOrder(cu, 0);
+            admin.Panel_right.revalidate();
+            admin.Panel_right.repaint();
+    
     }
 
     public void showtable() {
@@ -299,7 +348,9 @@ public class Controlador_Admin implements ActionListener {
         pmode.setContraseña(p.Txt_passwordp.getText());
         int r = mte.createProf(pmode);
         if (r == 1) {
-            JOptionPane.showMessageDialog(null, "Registro guardado");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Registro guardado", "Guardado", JOptionPane.OK_OPTION, icon);
 
         } else {
             JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
@@ -312,12 +363,14 @@ public class Controlador_Admin implements ActionListener {
         pmode.setApellidos(p.Txt_LastNamep.getText());
         pmode.setDireccion(p.Txt_Directionp.getText());
         pmode.setTelefono(Long.parseLong(p.Txt_telephonep.getText()));
-        pmode.setEmail(p.Txt_telephonep.getText());
+        pmode.setEmail(p.Txt_emailp.getText());
         pmode.setContraseña(p.Txt_passwordp.getText());
 
         int r = mte.modificarP(pmode);
         if (r == 1) {
-            JOptionPane.showMessageDialog(p, "Registro actualizado!!");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(p, "Registro actualizado!!", "Guardado", JOptionPane.CLOSED_OPTION, icon);
         } else {
             JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
         }
@@ -327,10 +380,43 @@ public class Controlador_Admin implements ActionListener {
         int fila = p.Tablap.getSelectedRow();
 
         if (fila == -1) {
-            JOptionPane.showMessageDialog(p, "Seleccione un Registro");
+            JOptionPane.showMessageDialog(p, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            int doc = Integer.parseInt(p.Tablap.getValueAt(fila, 0).toString());
-            mte.eliminarP(doc);
+            Object[] options = {"Sí", "No"};
+            // Cargar un ícono personalizado desde un archivo de imagen
+            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class
+                    .getResource("/Images/boton-eliminar.png"));
+
+            int choice = JOptionPane.showOptionDialog(
+                    null, // Componente padre, null para diálogo independiente
+                    "¿Deseas continuar?", // Pregunta
+                    "Confirmar Eliminacion", // Título del diálogo
+                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                    icon, // Icono personalizado, null para el icono predeterminado
+                    options, // Opciones de respuesta
+                    options[0] // Opción predeterminada
+            );
+
+            // Verifica la respuesta del usuario
+            switch (choice) {
+                case JOptionPane.YES_OPTION:
+
+                    int doc = Integer.parseInt(p.Tablap.getValueAt(fila, 0).toString());
+                    mte.eliminarP(doc);
+                    limpiarcajasP();
+                    showtableP();
+                    JOptionPane.showMessageDialog(admin, "Profesor Eliminado");
+                    break;
+                case JOptionPane.NO_OPTION:
+                    System.out.println("El usuario seleccionó 'No'");
+                    break;
+                default:
+                    System.out.println("El usuario cerró el diálogo");
+                    break;
+            }
+
             System.out.println("Registro eliminado");
         }
     }
@@ -348,7 +434,7 @@ public class Controlador_Admin implements ActionListener {
         try {
             Connection con = mte.getConnection();
 
-            ps = con.prepareStatement("Select id_Profesor, Nombres, Apellidos, Direccion, Telefono, Email, FROM profesores");
+            ps = con.prepareStatement("Select id_Profesor, Nombres, Apellidos, Direccion, Telefono, Email FROM profesores");
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
@@ -422,7 +508,7 @@ public class Controlador_Admin implements ActionListener {
 
         p.Txt_Documentp.setEditable(true);
         p.Txt_Documentp.setForeground(Color.black);
-        p.Txt_Documentp.setBackground(Color.white);
+        p.Txt_Documentp.setBackground(new Color(235, 235, 235));
     }
 
     @Override
@@ -433,7 +519,7 @@ public class Controlador_Admin implements ActionListener {
             showtable();
             es.Txt_DocumentStudent.setEditable(true);
             es.Txt_DocumentStudent.setForeground(Color.black);
-            es.Txt_DocumentStudent.setBackground(Color.white);
+            es.Txt_DocumentStudent.setBackground(new Color(235, 235, 235));
 
         }
 
@@ -445,6 +531,7 @@ public class Controlador_Admin implements ActionListener {
         if (e.getSource() == es.btn_clean) {
             limpiarcajas();
             es.Txt_DocumentStudent.setFocusable(true);
+            es.Txt_DocumentStudent.setBackground(new Color(235, 235, 235));
             showtable();
         }
 
@@ -455,63 +542,43 @@ public class Controlador_Admin implements ActionListener {
 
         }
 
-        if (e.getSource()
-                == es.Btn_Delete) {
-            Object[] options = {"Sí", "No"};
-            // Cargar un ícono personalizado desde un archivo de imagen
-            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
-            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/boton-eliminar.png"));
-
-            int choice = JOptionPane.showOptionDialog(
-                    null, // Componente padre, null para diálogo independiente
-                    "¿Deseas continuar?", // Pregunta
-                    "Confirmar Eliminacion", // Título del diálogo
-                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
-                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
-                    icon, // Icono personalizado, null para el icono predeterminado
-                    options, // Opciones de respuesta
-                    options[0] // Opción predeterminada
-            );
-
-            // Verifica la respuesta del usuario
-            switch (choice) {
-                case JOptionPane.YES_OPTION:
-
-                    eliminar();
-                    limpiarcajas();
-                    showtable();
-                    JOptionPane.showMessageDialog(admin, "Estudiante Eliminado");
-                    break;
-                case JOptionPane.NO_OPTION:
-                    System.out.println("El usuario seleccionó 'No'");
-                    break;
-                default:
-                    System.out.println("El usuario cerró el diálogo");
-                    break;
-            }
-
+        if (e.getSource() == es.Btn_Delete) {
+            eliminar();
         }
         ///////////////////////////////////////////
 
-        if (e.getSource()
-                == admin.Profesores) {
+        if (e.getSource() == admin.Profesores) {
             show_p();
             showtableP();
             p.Txt_Documentp.setEditable(true);
             p.Txt_Documentp.setForeground(Color.black);
-            p.Txt_Documentp.setBackground(Color.white);
+            p.Txt_Documentp.setBackground(new Color(235, 235, 235));
         }
 
-        if (e.getSource()
-                == p.btn_crear) {
+        if (e.getSource() == p.btn_crear) {
             createProf();
             limpiarcajasP();
             showtableP();
         }
 
+        if (e.getSource() == p.btn_moficar) {
+            modificarP();
+            showtableP();
+
+        }
+
+        if (e.getSource() == p.Btn_Delete) {
+            eliminarP();
+        }
+        if (e.getSource() == p.btn_limpiar) {
+            limpiarcajasP();
+            p.Txt_Documentp.setFocusable(true);
+            showtableP();
+        }
+
         if (e.getSource()
                 == admin.Cursos) {
-            JOptionPane.showMessageDialog(admin, "Cursos");
+            show_cursos();
         }
 
         if (e.getSource()

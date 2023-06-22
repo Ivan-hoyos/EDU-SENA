@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Vista.Login;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Metodos_login extends Conexion {
@@ -42,9 +43,8 @@ public class Metodos_login extends Conexion {
                         //Jframe alumno, docente o admin
 
                         if (rol.equals("student")) {
-                            JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nEstudiante: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION);
-                            
-                           
+                            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/tarjetaes.png"));
+                            JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nEstudiante: " + nombre + " " + apellido + "", "Login", JOptionPane.CLOSED_OPTION,icon);
 
                         }
 
