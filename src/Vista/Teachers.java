@@ -47,6 +47,8 @@ public class Teachers extends javax.swing.JPanel {
         Txt_emailp = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
         Txt_passwordp = new javax.swing.JTextField();
+        Materia = new javax.swing.JComboBox<>();
+        Lbl_Email1 = new javax.swing.JLabel();
         table_container = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablap = new javax.swing.JTable();
@@ -194,6 +196,13 @@ public class Teachers extends javax.swing.JPanel {
         Txt_passwordp.setBackground(new java.awt.Color(235, 235, 235));
         Txt_passwordp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        Materia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemáticas", "Ciencias Naturales", "Lenguaje y Literatura", "Historia", "Geografía", "Educación Física", "Artes", "Música", "Inglés", "Tecnología" }));
+
+        Lbl_Email1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Lbl_Email1.setForeground(new java.awt.Color(0, 173, 0));
+        Lbl_Email1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Lbl_Email1.setText("Profesión");
+
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
         FormLayout.setHorizontalGroup(
@@ -215,11 +224,14 @@ public class Teachers extends javax.swing.JPanel {
                                         .addGap(229, 229, 229)
                                         .addComponent(Lbl_LastName))
                                     .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_Email)
+                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Lbl_Email)
+                                            .addComponent(Lbl_Email1))
                                         .addGap(52, 52, 52)
                                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(Txt_namep, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                            .addComponent(Txt_emailp))
+                                            .addComponent(Txt_emailp)
+                                            .addComponent(Materia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(Lbl_Telephone))))
                             .addGroup(FormLayout.createSequentialGroup()
@@ -261,7 +273,9 @@ public class Teachers extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_passwordp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Txt_passwordp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lbl_Email1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -276,7 +290,7 @@ public class Teachers extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Documento", "Nombres", "Apellidos", "Direccion", "Telefono", "Email"
+                "Documento", "Nombres", "Apellidos", "Profesión", "Telefono", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -300,7 +314,9 @@ public class Teachers extends javax.swing.JPanel {
         );
         table_containerLayout.setVerticalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+            .addGroup(table_containerLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -325,10 +341,11 @@ public class Teachers extends javax.swing.JPanel {
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table_container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(table_container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 720));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 790));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
@@ -357,11 +374,13 @@ public class Teachers extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Direction;
     private javax.swing.JLabel Lbl_Document;
     private javax.swing.JLabel Lbl_Email;
+    private javax.swing.JLabel Lbl_Email1;
     private javax.swing.JLabel Lbl_LastName;
     private javax.swing.JLabel Lbl_Name1;
     private javax.swing.JLabel Lbl_Student;
     private javax.swing.JLabel Lbl_Telephone;
     private javax.swing.JLabel Lbl_password;
+    public javax.swing.JComboBox<String> Materia;
     private javax.swing.JPanel North_panel;
     public javax.swing.JTable Tablap;
     public javax.swing.JTextField Txt_Directionp;

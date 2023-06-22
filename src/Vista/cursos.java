@@ -64,7 +64,7 @@ public class cursos extends javax.swing.JPanel {
         jButton2.setText("jButton1");
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 173, 0));
         jButton3.setText("6A");
 
@@ -142,7 +142,7 @@ public class cursos extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Student;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

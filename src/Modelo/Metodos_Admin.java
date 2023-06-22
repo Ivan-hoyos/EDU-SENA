@@ -117,7 +117,7 @@ public class Metodos_Admin extends Conexion {
         try {
 
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO profesores (id_Profesor, Nombres, Apellidos, Direccion,Telefono, Email, Contraseña) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO profesores (id_Profesor, Nombres, Apellidos, Direccion,Telefono, Email, Contraseña, id_Materia, Profesion) VALUES (?,?,?,?,?,?,?,?,?)");
 
             ps.setLong(1, pmdl.getId_Profesor());
             ps.setString(2, pmdl.getNombres());
@@ -126,6 +126,8 @@ public class Metodos_Admin extends Conexion {
             ps.setLong(5, pmdl.getTelefono());
             ps.setString(6, pmdl.getEmail());
             ps.setString(7, pmdl.getContraseña());
+            ps.setInt(8, pmdl.getidMateria());
+            ps.setString(9, pmdl.getProfesion());
             ps.executeUpdate();
             if (r == 1) {
 
@@ -144,7 +146,7 @@ public class Metodos_Admin extends Conexion {
     //Método para actualizar registros
     public int modificarP(ProfModel pmdl) {
         int r = 1;
-        String sql = "UPDATE profesores SET Nombres=?, Apellidos=?, Direccion=?, Telefono=?, Email=?, Contraseña=? WHERE id_Profesor=?";
+        String sql = "UPDATE profesores SET Nombres=?, Apellidos=?, Direccion=?, Telefono=?, Email=?, Contraseña=?, id_Materia=?, Profesion=? WHERE id_Profesor=?";
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -155,6 +157,8 @@ public class Metodos_Admin extends Conexion {
             ps.setString(5, pmdl.getEmail());
             ps.setString(6, pmdl.getContraseña());
             ps.setString(7, Long.toString(pmdl.getId_Profesor()));
+            ps.setString(8, Integer.toString(pmdl.getidMateria()));
+            ps.setString(9, pmdl.getProfesion());
             ps.executeUpdate();
 
         } catch (SQLException e) {

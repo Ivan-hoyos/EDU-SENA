@@ -6,6 +6,7 @@ import Modelo.Estudiantes_Modelo;
 import Modelo.Metodos_Admin;
 import Modelo.ProfModel;
 import Vista.Admin;
+import Vista.Frm_Curso;
 import Vista.Students;
 import Vista.Teachers;
 import Vista.cursos;
@@ -33,6 +34,7 @@ public class Controlador_Admin implements ActionListener {
     Students es = new Students();
     Teachers p = new Teachers();
     cursos cu = new cursos();
+    Frm_Curso fc = new Frm_Curso();
     DefaultTableModel modelo = new DefaultTableModel();
     private MouseListener l;
 
@@ -55,6 +57,7 @@ public class Controlador_Admin implements ActionListener {
         this.p.btn_moficar.addActionListener(this);
         this.p.btn_limpiar.addActionListener(this);
         this.p.Btn_Delete.addActionListener(this);
+        this.cu.jButton3.addActionListener(this);
 
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -216,14 +219,14 @@ public class Controlador_Admin implements ActionListener {
     }
 
     public void show_cursos() {//Metodo para mostrar el formulario cursos
-       
-            cu.setSize(1100, 760);
-            admin.Panel_right.removeAll();
-            admin.Panel_right.add(cu, BorderLayout.CENTER);
-            admin.Panel_right.setComponentZOrder(cu, 0);
-            admin.Panel_right.revalidate();
-            admin.Panel_right.repaint();
-    
+
+        cu.setSize(1100, 760);
+        admin.Panel_right.removeAll();
+        admin.Panel_right.add(cu, BorderLayout.CENTER);
+        admin.Panel_right.setComponentZOrder(cu, 0);
+        admin.Panel_right.revalidate();
+        admin.Panel_right.repaint();
+
     }
 
     public void showtable() {
@@ -346,6 +349,10 @@ public class Controlador_Admin implements ActionListener {
         pmode.setTelefono(Long.parseLong(p.Txt_telephonep.getText()));
         pmode.setEmail(p.Txt_emailp.getText());
         pmode.setContraseña(p.Txt_passwordp.getText());
+        pmode.setProfesion(p.Materia.getSelectedItem().toString());
+        int idMateria = p.Materia.getSelectedIndex();
+        pmode.setidMateria(idMateria);
+        System.out.println(pmode.getidMateria());
         int r = mte.createProf(pmode);
         if (r == 1) {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class
@@ -365,6 +372,9 @@ public class Controlador_Admin implements ActionListener {
         pmode.setTelefono(Long.parseLong(p.Txt_telephonep.getText()));
         pmode.setEmail(p.Txt_emailp.getText());
         pmode.setContraseña(p.Txt_passwordp.getText());
+        pmode.setProfesion(p.Materia.getSelectedItem().toString());
+        int idMateria = p.Materia.getSelectedIndex();
+        pmode.setidMateria(idMateria);
 
         int r = mte.modificarP(pmode);
         if (r == 1) {
@@ -434,7 +444,7 @@ public class Controlador_Admin implements ActionListener {
         try {
             Connection con = mte.getConnection();
 
-            ps = con.prepareStatement("Select id_Profesor, Nombres, Apellidos, Direccion, Telefono, Email FROM profesores");
+            ps = con.prepareStatement("Select id_Profesor, Nombres, Apellidos, Profesion, Telefono, Email FROM profesores");
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
@@ -505,6 +515,7 @@ public class Controlador_Admin implements ActionListener {
         p.Txt_telephonep.setText(null);
         p.Txt_emailp.setText(null);
         p.Txt_passwordp.setText(null);
+        p.Materia.setSelectedItem(null);
 
         p.Txt_Documentp.setEditable(true);
         p.Txt_Documentp.setForeground(Color.black);
@@ -553,6 +564,7 @@ public class Controlador_Admin implements ActionListener {
             p.Txt_Documentp.setEditable(true);
             p.Txt_Documentp.setForeground(Color.black);
             p.Txt_Documentp.setBackground(new Color(235, 235, 235));
+            p.Materia.setSelectedItem(null);
         }
 
         if (e.getSource() == p.btn_crear) {
@@ -589,6 +601,10 @@ public class Controlador_Admin implements ActionListener {
         if (e.getSource()
                 == admin.Exit) {
             exit();
+        }
+        
+        if (e.getSource() == cu.jButton3){
+            fc.setVisible(true);
         }
     }
 

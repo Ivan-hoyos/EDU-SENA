@@ -26,7 +26,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1100" height="720"/>
+          <AbsoluteConstraints x="0" y="0" width="1100" height="790"/>
         </Constraint>
       </Constraints>
 
@@ -56,7 +56,8 @@
                       <Component id="North_panel" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="table_container" max="32767" attributes="0"/>
+                  <Component id="table_container" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -233,12 +234,16 @@
                                               <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
                                               <Component id="Lbl_LastName" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="Lbl_Email" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="Lbl_Email" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Lbl_Email1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="Txt_namep" pref="162" max="32767" attributes="0"/>
                                                   <Component id="Txt_emailp" max="32767" attributes="0"/>
+                                                  <Component id="Materia" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="Lbl_Telephone" min="-2" max="-2" attributes="0"/>
@@ -297,6 +302,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Lbl_password" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="Txt_passwordp" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="Materia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Lbl_Email1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -491,6 +498,40 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JComboBox" name="Materia">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="10">
+                    <StringItem index="0" value="Matem&#xe1;ticas"/>
+                    <StringItem index="1" value="Ciencias Naturales"/>
+                    <StringItem index="2" value="Lenguaje y Literatura"/>
+                    <StringItem index="3" value="Historia"/>
+                    <StringItem index="4" value="Geograf&#xed;a"/>
+                    <StringItem index="5" value="Educaci&#xf3;n F&#xed;sica"/>
+                    <StringItem index="6" value="Artes"/>
+                    <StringItem index="7" value="M&#xfa;sica"/>
+                    <StringItem index="8" value="Ingl&#xe9;s"/>
+                    <StringItem index="9" value="Tecnolog&#xed;a"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="Lbl_Email1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ad" red="0" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Profesi&#xf3;n"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="table_container">
@@ -513,7 +554,10 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="360" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" pref="396" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -540,7 +584,7 @@
                         <Column editable="false" title="Documento" type="java.lang.Object"/>
                         <Column editable="true" title="Nombres" type="java.lang.Object"/>
                         <Column editable="true" title="Apellidos" type="java.lang.Object"/>
-                        <Column editable="true" title="Direccion" type="java.lang.Object"/>
+                        <Column editable="true" title="Profesi&#xf3;n" type="java.lang.Object"/>
                         <Column editable="true" title="Telefono" type="java.lang.Object"/>
                         <Column editable="true" title="Email" type="java.lang.Object"/>
                       </Table>
