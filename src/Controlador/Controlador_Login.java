@@ -47,7 +47,7 @@ public class Controlador_Login implements ActionListener {
 
         if (r == 1) {
             System.out.println("Inicio De sesion Correcto");
-            c.admin.setVisible(true);
+            c.fc.setVisible(true);
             log.dispose();
         } else if (r == 2) {
             System.out.println("Contraseña incorrecta");
@@ -89,19 +89,22 @@ public class Controlador_Login implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == log.Btn_Login) {
-            String rol = log.jComboBox1.getSelectedItem().toString();
+            String rol = log.Roles.getSelectedItem().toString();
             if (rol.equals("Estudiante")) {
                 log();
                 System.out.println("");
             }
-            else if (rol.equals("Profesor")) {
+            if (rol.equals("Profesor")) {
                 logP();
             }
-            else if (log.jComboBox1.getSelectedItem().toString().equals("Administrador")) {
+            if (log.Roles.getSelectedItem().toString().equals("Administrador")) {
                 System.out.println("zd");
             }
 
-           
+            if (log.Roles.getSelectedItem().toString().equals("Seleccionar")) {
+                JOptionPane.showMessageDialog(null, "Seleccione un Rol","Error",JOptionPane.ERROR_MESSAGE);
+            }
+
         }
 
     }

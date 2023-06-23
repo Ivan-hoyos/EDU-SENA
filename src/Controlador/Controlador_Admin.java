@@ -6,7 +6,8 @@ import Modelo.Estudiantes_Modelo;
 import Modelo.Metodos_Admin;
 import Modelo.ProfModel;
 import Vista.Admin;
-import Vista.Frm_Curso;
+import Vista.Estudiante_log;
+import Vista.Tutor;
 import Vista.Students;
 import Vista.Teachers;
 import Vista.cursos;
@@ -34,7 +35,8 @@ public class Controlador_Admin implements ActionListener {
     Students es = new Students();
     Teachers p = new Teachers();
     cursos cu = new cursos();
-    Frm_Curso fc = new Frm_Curso();
+    Estudiante_log fc = new Estudiante_log();
+    Tutor efrm = new Tutor();
     DefaultTableModel modelo = new DefaultTableModel();
     private MouseListener l;
 
@@ -57,7 +59,11 @@ public class Controlador_Admin implements ActionListener {
         this.p.btn_moficar.addActionListener(this);
         this.p.btn_limpiar.addActionListener(this);
         this.p.Btn_Delete.addActionListener(this);
-        this.cu.jButton3.addActionListener(this);
+        this.cu.btn_buscar.addActionListener(this);
+        this.cu.btn_asignar.addActionListener(this);
+        this.efrm.btn_asignar.addActionListener(this);
+        this.efrm.btn_cancelar.addActionListener(this);
+        // this.cu.jButton3.addActionListener(this);
 
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -73,6 +79,13 @@ public class Controlador_Admin implements ActionListener {
             }
         });
 
+        /*cu.Box_Cursos.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la caja de cursos
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionarCur();
+            }
+        });
+         */
     }
 
     public void create_Student() {//Metodo para crear un estudiante nuevo
@@ -524,6 +537,53 @@ public class Controlador_Admin implements ActionListener {
         p.Txt_Documentp.setBackground(new Color(235, 235, 235));
     }
 
+    public void seleccionarCur() {
+        DefaultTableModel ModeloTabla = (DefaultTableModel) cu.tabla_e.getModel();
+        ModeloTabla.setRowCount(0);
+        PreparedStatement ps;
+        PreparedStatement ps_p;
+        ResultSet rs;
+        String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+
+        try {
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos, Fecha_Nacimiento FROM estudiantes WHERE id_Curso=?");
+            ps_p = con.prepareStatement("Select Nombres, Apellidos FROM profesores WHERE id_Curso=?");
+            ps_p.setString(1, idCurso);
+            ps.setString(1, idCurso);
+
+            rs = ps.executeQuery();
+            ResultSet rs_P = ps_p.executeQuery();
+            int columnas = cu.tabla_e.getColumnCount();
+
+            while (rs_P.next()) {
+                String n = rs_P.getString("Nombres");
+                String a = rs_P.getString("Apellidos");
+
+                String nombre = n + " " + a;
+                cu.jTextField1.setText(nombre);
+                cu.jTextField1.setEditable(false);
+            }
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+
+                ModeloTabla.addRow(fila);
+
+            }
+
+        } catch (SQLException y) {
+            JOptionPane.showMessageDialog(null, y);
+        }
+
+    }
+
     @Override
 
     public void actionPerformed(ActionEvent e) {
@@ -604,10 +664,23 @@ public class Controlador_Admin implements ActionListener {
                 == admin.Exit) {
             exit();
         }
-
-        if (e.getSource() == cu.jButton3) {
-            fc.setVisible(true);
+        if (e.getSource() == cu.btn_buscar) {
+            seleccionarCur();
         }
+
+        if (e.getSource() == cu.btn_asignar) {
+            efrm.setVisible(true);
+        }
+
+        if (e.getSource() == efrm.btn_asignar) {
+            JOptionPane.showMessageDialog(null, "Tutor Asignado");
+            efrm.dispose();
+        }
+        if (e.getSource() == efrm.btn_cancelar) {
+            JOptionPane.showMessageDialog(null, "Cancelado");
+            efrm.dispose();
+        }
+
     }
 
 }
