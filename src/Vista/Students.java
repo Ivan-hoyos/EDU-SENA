@@ -335,7 +335,7 @@ public class Students extends javax.swing.JPanel {
 
             },
             new String [] {
-                "N. Documento", "Nombres", "Apellidos", "Fecha Nacimiento", "Curso"
+                "N. Documento", "Nombres", "Apellidos", "Fecha Nacimiento", "Telefono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
