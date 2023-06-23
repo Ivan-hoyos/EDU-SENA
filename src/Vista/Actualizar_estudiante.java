@@ -41,6 +41,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         btn_confirmar = new javax.swing.JButton();
         btn_moficar = new javax.swing.JButton();
         Btn_cancelar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         Form = new javax.swing.JPanel();
         Lbl_Student = new javax.swing.JLabel();
         Lbl_Document = new javax.swing.JLabel();
@@ -63,7 +64,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         Txt_email = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
         Txt_password = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,6 +128,17 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addGap(51, 51, 51)
                 .addComponent(Btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
@@ -324,17 +335,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addGap(57, 57, 57))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
         Container.setLayout(ContainerLayout);
         ContainerLayout.setHorizontalGroup(
@@ -362,7 +362,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addContainerGap(230, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 760));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1100, 760));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
