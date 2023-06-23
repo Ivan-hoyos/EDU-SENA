@@ -41,7 +41,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         btn_confirmar = new javax.swing.JButton();
         btn_moficar = new javax.swing.JButton();
         Btn_cancelar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         Form = new javax.swing.JPanel();
         Lbl_Student = new javax.swing.JLabel();
         Lbl_Document = new javax.swing.JLabel();
@@ -128,17 +127,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addGap(51, 51, 51)
                 .addComponent(Btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
@@ -345,10 +333,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(North_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(132, 132, 132))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(373, 373, 373))
         );
         ContainerLayout.setVerticalGroup(
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,9 +341,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(115, 115, 115)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(445, Short.MAX_VALUE))
         );
 
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1100, 760));
@@ -410,7 +392,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
     public javax.swing.JRadioButton btn_M;
     public javax.swing.JButton btn_confirmar;
     public javax.swing.JButton btn_moficar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel sexo;
     // End of variables declaration//GEN-END:variables
 
