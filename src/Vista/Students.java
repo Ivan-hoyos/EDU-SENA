@@ -62,10 +62,6 @@ public class Students extends javax.swing.JPanel {
         Txt_telephone = new javax.swing.JTextField();
         Lbl_Email = new javax.swing.JLabel();
         Txt_email = new javax.swing.JTextField();
-        Lbl_Grade = new javax.swing.JLabel();
-        Box_grade = new javax.swing.JComboBox<>();
-        Lbl_section = new javax.swing.JLabel();
-        Box_section = new javax.swing.JComboBox<>();
         Lbl_password = new javax.swing.JLabel();
         Txt_password = new javax.swing.JTextField();
         table_container = new javax.swing.JPanel();
@@ -84,7 +80,7 @@ public class Students extends javax.swing.JPanel {
         btn_create.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_create.setForeground(new java.awt.Color(255, 255, 255));
         btn_create.setText("Crear");
-        btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_createActionPerformed(evt);
@@ -95,7 +91,7 @@ public class Students extends javax.swing.JPanel {
         btn_clean.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_clean.setForeground(new java.awt.Color(255, 255, 255));
         btn_clean.setText("Limpiar Campos");
-        btn_clean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_clean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cleanActionPerformed(evt);
@@ -106,7 +102,7 @@ public class Students extends javax.swing.JPanel {
         btn_moficar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_moficar.setForeground(new java.awt.Color(255, 255, 255));
         btn_moficar.setText("Modificar");
-        btn_moficar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_moficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_moficar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_moficarActionPerformed(evt);
@@ -117,7 +113,7 @@ public class Students extends javax.swing.JPanel {
         Btn_Delete.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Btn_Delete.setForeground(new java.awt.Color(255, 255, 255));
         Btn_Delete.setText("Eliminar");
-        Btn_Delete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Btn_Delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_DeleteActionPerformed(evt);
@@ -228,20 +224,6 @@ public class Students extends javax.swing.JPanel {
         Txt_email.setBackground(new java.awt.Color(235, 235, 235));
         Txt_email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        Lbl_Grade.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Lbl_Grade.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_Grade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_Grade.setText("Grado");
-
-        Box_grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"}));
-
-        Lbl_section.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Lbl_section.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_section.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_section.setText("Sección");
-
-        Box_section.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "A", "B", "C", "D"}));
-
         Lbl_password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lbl_password.setForeground(new java.awt.Color(0, 173, 0));
         Lbl_password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -257,64 +239,47 @@ public class Students extends javax.swing.JPanel {
             .addGroup(FormLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Lbl_Format)
+                    .addComponent(Lbl_Telephone)
                     .addGroup(FormLayout.createSequentialGroup()
-                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbl_Student)
+                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(FormLayout.createSequentialGroup()
-                                .addComponent(Lbl_Document)
-                                .addGap(67, 67, 67)
-                                .addComponent(Txt_DocumentStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sexo)
-                                    .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_Name1)
-                                        .addGap(223, 223, 223)
-                                        .addComponent(Lbl_LastName)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Txt_LastNameStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 6, Short.MAX_VALUE))
-                    .addGroup(FormLayout.createSequentialGroup()
-                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbl_Format)
-                            .addComponent(Lbl_Telephone)
-                            .addGroup(FormLayout.createSequentialGroup()
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_Born)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_section)
-                                        .addGap(122, 122, 122)
-                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Txt_telephone, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                            .addComponent(Box_section, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGap(43, 43, 43)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Lbl_password)
-                                    .addComponent(Lbl_Email))
+                                .addComponent(Lbl_Born)
                                 .addGap(18, 18, 18)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(Txt_nameStudent, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(FormLayout.createSequentialGroup()
-                                            .addComponent(btn_M)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btn_F)))
-                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(Txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                        .addComponent(Txt_password)))
-                                .addGap(24, 24, 24)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_Direction)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Box_grade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Txt_Direction, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
-                                    .addComponent(Lbl_Grade))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addComponent(Lbl_Email)
+                        .addGap(64, 64, 64)
+                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Txt_nameStudent, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(FormLayout.createSequentialGroup()
+                                    .addComponent(btn_M)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btn_F)))
+                            .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addComponent(Lbl_Direction)
+                        .addGap(18, 18, 18)
+                        .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lbl_Student)
+                    .addGroup(FormLayout.createSequentialGroup()
+                        .addComponent(Lbl_Document)
+                        .addGap(67, 67, 67)
+                        .addComponent(Txt_DocumentStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sexo)
+                            .addGroup(FormLayout.createSequentialGroup()
+                                .addComponent(Lbl_Name1)
+                                .addGap(223, 223, 223)
+                                .addComponent(Lbl_LastName)
+                                .addGap(18, 18, 18)
+                                .addComponent(Txt_LastNameStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(Lbl_password))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FormLayout.setVerticalGroup(
             FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,18 +314,12 @@ public class Students extends javax.swing.JPanel {
                                 .addComponent(Lbl_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FormLayout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(Lbl_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Box_grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(Lbl_Telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Lbl_section, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Box_section, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -376,7 +335,7 @@ public class Students extends javax.swing.JPanel {
 
             },
             new String [] {
-                "N. Documento", "Nombres", "Apellidos", "Fecha Nacimiento", "Curso"
+                "N. Documento", "Nombres", "Apellidos", "Fecha Nacimiento", "Telefono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -454,8 +413,6 @@ public class Students extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> Box_grade;
-    public javax.swing.JComboBox<String> Box_section;
     public javax.swing.JButton Btn_Delete;
     private javax.swing.JPanel Container;
     private javax.swing.JPanel Form;
@@ -464,13 +421,11 @@ public class Students extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Document;
     private javax.swing.JLabel Lbl_Email;
     private javax.swing.JLabel Lbl_Format;
-    private javax.swing.JLabel Lbl_Grade;
     private javax.swing.JLabel Lbl_LastName;
     private javax.swing.JLabel Lbl_Name1;
     private javax.swing.JLabel Lbl_Student;
     private javax.swing.JLabel Lbl_Telephone;
     private javax.swing.JLabel Lbl_password;
-    private javax.swing.JLabel Lbl_section;
     private javax.swing.JPanel North_panel;
     public javax.swing.JTable Tabla;
     public javax.swing.JTextField Txt_Day_Born;

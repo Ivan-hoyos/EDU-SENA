@@ -100,8 +100,8 @@ public class Controlador_Admin implements ActionListener {
             sexo = "F";
         }
         mode.setSexo(sexo);
-        mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
-        mode.setSeccion(es.Box_section.getSelectedItem().toString());
+        //mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
+        //mode.setSeccion(es.Box_section.getSelectedItem().toString());
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
@@ -131,8 +131,8 @@ public class Controlador_Admin implements ActionListener {
             sexo = "F";
         }
         mode.setSexo(sexo);
-        mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
-        mode.setSeccion(es.Box_section.getSelectedItem().toString());
+        //mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
+        //mode.setSeccion(es.Box_section.getSelectedItem().toString());
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
@@ -262,7 +262,7 @@ public class Controlador_Admin implements ActionListener {
         try {
             Connection con = mte.getConnection();
 
-            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, id_Curso FROM estudiantes");
+            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, Telefono FROM estudiantes");
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
@@ -312,14 +312,16 @@ public class Controlador_Admin implements ActionListener {
 
                 if (rs.getString("Sexo").equals("M")) {
                     es.btn_M.setSelected(true);
-                } else if (rs.getString("Sexo").equals("S")) {
+                    es.btn_F.setSelected(false);
+                } else if (rs.getString("Sexo").equals("F")) {
                     es.btn_F.setSelected(true);
+                     es.btn_M.setSelected(false);
                 }
 
-                String grado = rs.getString("Grado");
-                es.Box_grade.setSelectedItem(grado);
-                String seccion = rs.getString("Seccion");
-                es.Box_section.setSelectedItem(seccion);
+                //String grado = rs.getString("Grado");
+                //es.Box_grade.setSelectedItem(grado);
+                //String seccion = rs.getString("Seccion");
+                //es.Box_section.setSelectedItem(seccion);
                 es.Txt_Direction.setText(rs.getString("Direccion"));
                 es.Txt_telephone.setText(rs.getString("Telefono"));
                 es.Txt_email.setText(rs.getString("Email"));
@@ -351,8 +353,8 @@ public class Controlador_Admin implements ActionListener {
         es.Txt_Direction.setText(null);
         es.Txt_telephone.setText(null);
         es.Txt_email.setText(null);
-        es.Box_grade.setSelectedItem("Seleccione");
-        es.Box_section.setSelectedItem("Seleccione");
+        //es.Box_grade.setSelectedItem("Seleccione");
+        //es.Box_section.setSelectedItem("Seleccione");
         es.Txt_password.setText(null);
 
         es.Txt_DocumentStudent.setEditable(true);
@@ -407,6 +409,28 @@ public class Controlador_Admin implements ActionListener {
     }
 
     public void asignarP() { //modificar id curso de un profesor
+        int fila = efrm.Tablap.getSelectedRow();
+        Long id = Long.parseLong(efrm.Tablap.getValueAt(fila, 0).toString());
+        pmode.setId_Profesor(id);
+
+        String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+        pmode.setidCurso(idCurso);
+        System.out.println(idCurso);
+        System.out.println(pmode.getidCurso());
+        int r = mte.asignarcurso(pmode);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(p, "Tutor Aignado al curso "+idCurso+"", "Guardado", JOptionPane.CLOSED_OPTION, icon);
+            efrm.dispose();
+            cu.Box_Cursos.setSelectedIndex(0);
+            cu.jTextField1.setText(null);
+        } else {
+            JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
+        }
+    }
+    
+      public void Matricular() { //modificar id curso de un estudiante
         int fila = efrm.Tablap.getSelectedRow();
         Long id = Long.parseLong(efrm.Tablap.getValueAt(fila, 0).toString());
         pmode.setId_Profesor(id);

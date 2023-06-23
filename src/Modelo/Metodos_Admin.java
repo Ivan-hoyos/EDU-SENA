@@ -25,7 +25,7 @@ public class Metodos_Admin extends Conexion {
         try {
 
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO estudiantes (id_Estudiante, Nombres, Apellidos, Fecha_Nacimiento, Direccion,Telefono, Email, Grado, Seccion ,id_Curso, Contraseña,Sexo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO estudiantes (id_Estudiante, Nombres, Apellidos, Fecha_Nacimiento, Direccion,Telefono, Email, Contraseña,Sexo) VALUES (?,?,?,?,?,?,?,?,?)");
 
             ps.setLong(1, mdl.getid_Estudiante());
             ps.setString(2, mdl.getNombres());
@@ -34,11 +34,8 @@ public class Metodos_Admin extends Conexion {
             ps.setString(5, mdl.getDireccion());
             ps.setLong(6, mdl.getTelefono());
             ps.setString(7, mdl.getEmail());
-            ps.setInt(8, mdl.getGrado());
-            ps.setString(9, mdl.getSeccion());
-            ps.setString(10, mdl.getId_Curso());
-            ps.setString(11, mdl.getContraseña());
-            ps.setString(12, mdl.getSexo());
+            ps.setString(8, mdl.getContraseña());
+            ps.setString(9, mdl.getSexo());
             ps.executeUpdate();
             if (r == 1) {
 
@@ -57,7 +54,7 @@ public class Metodos_Admin extends Conexion {
     //Método para actualizar registros
     public int modificar(Estudiantes_Modelo mdl) {
         int r = 1;
-        String sql = "UPDATE estudiantes SET Nombres=?, Apellidos=?, Fecha_Nacimiento=?, Direccion=?,Telefono=?,Email=?,Grado=?,Seccion=?,id_Curso=?,Contraseña=?,Sexo=? WHERE id_Estudiante=?";
+        String sql = "UPDATE estudiantes SET Nombres=?, Apellidos=?, Fecha_Nacimiento=?, Direccion=?,Telefono=?,Email=?,Contraseña=?,Sexo=? WHERE id_Estudiante=?";
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -67,12 +64,9 @@ public class Metodos_Admin extends Conexion {
             ps.setString(4, mdl.getDireccion());
             ps.setString(5, Long.toString(mdl.getTelefono()));
             ps.setString(6, mdl.getEmail());
-            ps.setString(7, Integer.toString(mdl.getGrado()));
-            ps.setString(8, mdl.getSeccion());
-            ps.setString(9, mdl.getId_Curso());
-            ps.setString(10, mdl.getContraseña());
-            ps.setString(11, mdl.getSexo());
-            ps.setString(12, Long.toString(mdl.getid_Estudiante()));
+            ps.setString(7, mdl.getContraseña());
+            ps.setString(8, mdl.getSexo());
+            ps.setString(9, Long.toString(mdl.getid_Estudiante()));
             ps.executeUpdate();
 
         } catch (SQLException e) {
