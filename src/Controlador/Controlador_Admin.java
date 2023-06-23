@@ -100,8 +100,8 @@ public class Controlador_Admin implements ActionListener {
             sexo = "F";
         }
         mode.setSexo(sexo);
-        mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
-        mode.setSeccion(es.Box_section.getSelectedItem().toString());
+        //mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
+        //mode.setSeccion(es.Box_section.getSelectedItem().toString());
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
@@ -131,8 +131,8 @@ public class Controlador_Admin implements ActionListener {
             sexo = "F";
         }
         mode.setSexo(sexo);
-        mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
-        mode.setSeccion(es.Box_section.getSelectedItem().toString());
+        //mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
+        //mode.setSeccion(es.Box_section.getSelectedItem().toString());
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
@@ -317,9 +317,9 @@ public class Controlador_Admin implements ActionListener {
                 }
 
                 String grado = rs.getString("Grado");
-                es.Box_grade.setSelectedItem(grado);
+                //es.Box_grade.setSelectedItem(grado);
                 String seccion = rs.getString("Seccion");
-                es.Box_section.setSelectedItem(seccion);
+                //es.Box_section.setSelectedItem(seccion);
                 es.Txt_Direction.setText(rs.getString("Direccion"));
                 es.Txt_telephone.setText(rs.getString("Telefono"));
                 es.Txt_email.setText(rs.getString("Email"));
@@ -351,8 +351,8 @@ public class Controlador_Admin implements ActionListener {
         es.Txt_Direction.setText(null);
         es.Txt_telephone.setText(null);
         es.Txt_email.setText(null);
-        es.Box_grade.setSelectedItem("Seleccione");
-        es.Box_section.setSelectedItem("Seleccione");
+        //es.Box_grade.setSelectedItem("Seleccione");
+        //es.Box_section.setSelectedItem("Seleccione");
         es.Txt_password.setText(null);
 
         es.Txt_DocumentStudent.setEditable(true);

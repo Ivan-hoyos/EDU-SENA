@@ -50,7 +50,7 @@ public class Login extends javax.swing.JFrame {
         Background_black.setPreferredSize(new java.awt.Dimension(1360, 760));
 
         Left_Panel.setBackground(new java.awt.Color(255, 255, 255));
-        Left_Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        Left_Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         Icon_Sena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sena_Colombia_logo.svg.png"))); // NOI18N
 
@@ -83,7 +83,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         Input_panel.setBackground(new java.awt.Color(255, 255, 255));
-        Input_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        Input_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 173, 0))); // NOI18N
         Input_panel.setPreferredSize(new java.awt.Dimension(480, 590));
 
         Lbl_Login.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -161,7 +161,7 @@ public class Login extends javax.swing.JFrame {
         Btn_Login.setText("Ingresar");
         Btn_Login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Btn_Login.setBorderPainted(false);
-        Btn_Login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Btn_Login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Login.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 Btn_LoginFocusLost(evt);
@@ -225,7 +225,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(Input_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Roles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(Btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
