@@ -38,10 +38,9 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
 
         Container = new javax.swing.JPanel();
         North_panel = new javax.swing.JPanel();
-        btn_create = new javax.swing.JButton();
-        btn_clean = new javax.swing.JButton();
+        btn_confirmar = new javax.swing.JButton();
         btn_moficar = new javax.swing.JButton();
-        Btn_Delete = new javax.swing.JButton();
+        Btn_cancelar = new javax.swing.JButton();
         Form = new javax.swing.JPanel();
         Lbl_Student = new javax.swing.JLabel();
         Lbl_Document = new javax.swing.JLabel();
@@ -62,10 +61,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         Txt_telephone = new javax.swing.JTextField();
         Lbl_Email = new javax.swing.JLabel();
         Txt_email = new javax.swing.JTextField();
-        Lbl_Grade = new javax.swing.JLabel();
-        Box_grade = new javax.swing.JComboBox<>();
-        Lbl_section = new javax.swing.JLabel();
-        Box_section = new javax.swing.JComboBox<>();
         Lbl_password = new javax.swing.JLabel();
         Txt_password = new javax.swing.JTextField();
         table_container = new javax.swing.JPanel();
@@ -78,25 +73,14 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         North_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         North_panel.setOpaque(false);
 
-        btn_create.setBackground(new java.awt.Color(0, 173, 0));
-        btn_create.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_create.setForeground(new java.awt.Color(255, 255, 255));
-        btn_create.setText("Crear");
-        btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_create.addActionListener(new java.awt.event.ActionListener() {
+        btn_confirmar.setBackground(new java.awt.Color(0, 173, 0));
+        btn_confirmar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_confirmar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_confirmar.setText("Confirmar");
+        btn_confirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_createActionPerformed(evt);
-            }
-        });
-
-        btn_clean.setBackground(new java.awt.Color(0, 173, 0));
-        btn_clean.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_clean.setForeground(new java.awt.Color(255, 255, 255));
-        btn_clean.setText("Limpiar Campos");
-        btn_clean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_clean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cleanActionPerformed(evt);
+                btn_confirmarActionPerformed(evt);
             }
         });
 
@@ -111,14 +95,14 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
             }
         });
 
-        Btn_Delete.setBackground(new java.awt.Color(0, 173, 0));
-        Btn_Delete.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Btn_Delete.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_Delete.setText("Eliminar");
-        Btn_Delete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
+        Btn_cancelar.setBackground(new java.awt.Color(0, 173, 0));
+        Btn_cancelar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_cancelar.setText("Cancelar");
+        Btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_DeleteActionPerformed(evt);
+                Btn_cancelarActionPerformed(evt);
             }
         });
 
@@ -129,23 +113,20 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
             .addGroup(North_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Btn_Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Btn_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_moficar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(btn_clean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_confirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         North_panelLayout.setVerticalGroup(
             North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, North_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_create, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btn_clean, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addComponent(btn_moficar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(Btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(Btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -155,7 +136,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         Lbl_Student.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Lbl_Student.setForeground(new java.awt.Color(0, 173, 0));
         Lbl_Student.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lbl_Student.setText("Nuevo Estudiante");
+        Lbl_Student.setText("DATOS PERSONALES");
 
         Lbl_Document.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lbl_Document.setForeground(new java.awt.Color(0, 173, 0));
@@ -226,20 +207,6 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         Txt_email.setBackground(new java.awt.Color(235, 235, 235));
         Txt_email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        Lbl_Grade.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Lbl_Grade.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_Grade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_Grade.setText("Grado");
-
-        Box_grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"}));
-
-        Lbl_section.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Lbl_section.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_section.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_section.setText("Sección");
-
-        Box_section.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "A", "B", "C", "D"}));
-
         Lbl_password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lbl_password.setForeground(new java.awt.Color(0, 173, 0));
         Lbl_password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -247,6 +214,11 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
 
         Txt_password.setBackground(new java.awt.Color(235, 235, 235));
         Txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Txt_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_passwordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
@@ -275,43 +247,38 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Lbl_Format)
-                            .addComponent(Lbl_Telephone)
                             .addGroup(FormLayout.createSequentialGroup()
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_Born)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_section)
-                                        .addGap(122, 122, 122)
+                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(FormLayout.createSequentialGroup()
+                                                .addComponent(Lbl_Born)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(43, 43, 43)
+                                        .addComponent(Lbl_Email)
+                                        .addGap(64, 64, 64)
                                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Txt_telephone, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                            .addComponent(Box_section, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGap(43, 43, 43)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Lbl_password)
-                                    .addComponent(Lbl_Email))
-                                .addGap(18, 18, 18)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(Txt_nameStudent, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(FormLayout.createSequentialGroup()
-                                            .addComponent(btn_M)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btn_F)))
-                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(Txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                        .addComponent(Txt_password)))
-                                .addGap(24, 24, 24)
+                                            .addGroup(FormLayout.createSequentialGroup()
+                                                .addComponent(btn_M)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btn_F))
+                                            .addComponent(Txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                            .addComponent(Txt_nameStudent)))
+                                    .addComponent(Lbl_Telephone))
                                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(FormLayout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
                                         .addComponent(Lbl_Direction)
                                         .addGap(18, 18, 18)
-                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Box_grade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Txt_Direction, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
-                                    .addComponent(Lbl_Grade))))
+                                        .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(FormLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Lbl_password)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         FormLayout.setVerticalGroup(
@@ -348,20 +315,13 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FormLayout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(Lbl_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Box_grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(Lbl_Telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Lbl_section, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Box_section, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(57, 57, 57))
         );
 
         table_container.setBackground(new java.awt.Color(255, 255, 255));
@@ -371,7 +331,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         table_container.setLayout(table_containerLayout);
         table_containerLayout.setHorizontalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1055, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         table_containerLayout.setVerticalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,29 +367,26 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 760));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cleanActionPerformed
+    private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
+     JOptionPane.showMessageDialog(this, "Cambios guardados");
+    }//GEN-LAST:event_btn_confirmarActionPerformed
 
+    private void Btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelarActionPerformed
 
-    }//GEN-LAST:event_btn_cleanActionPerformed
-
-    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
-
-    }//GEN-LAST:event_btn_createActionPerformed
-
-    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_DeleteActionPerformed
+    }//GEN-LAST:event_Btn_cancelarActionPerformed
 
     private void btn_moficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moficarActionPerformed
         // Modificar
 
     }//GEN-LAST:event_btn_moficarActionPerformed
 
+    private void Txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Txt_passwordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> Box_grade;
-    public javax.swing.JComboBox<String> Box_section;
-    public javax.swing.JButton Btn_Delete;
+    public javax.swing.JButton Btn_cancelar;
     private javax.swing.JPanel Container;
     private javax.swing.JPanel Form;
     private javax.swing.JLabel Lbl_Born;
@@ -437,13 +394,11 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Document;
     private javax.swing.JLabel Lbl_Email;
     private javax.swing.JLabel Lbl_Format;
-    private javax.swing.JLabel Lbl_Grade;
     private javax.swing.JLabel Lbl_LastName;
     private javax.swing.JLabel Lbl_Name1;
     private javax.swing.JLabel Lbl_Student;
     private javax.swing.JLabel Lbl_Telephone;
     private javax.swing.JLabel Lbl_password;
-    private javax.swing.JLabel Lbl_section;
     private javax.swing.JPanel North_panel;
     public javax.swing.JTextField Txt_Day_Born;
     public javax.swing.JTextField Txt_Direction;
@@ -455,8 +410,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
     public javax.swing.JTextField Txt_telephone;
     public javax.swing.JRadioButton btn_F;
     public javax.swing.JRadioButton btn_M;
-    public javax.swing.JButton btn_clean;
-    public javax.swing.JButton btn_create;
+    public javax.swing.JButton btn_confirmar;
     public javax.swing.JButton btn_moficar;
     private javax.swing.JLabel sexo;
     private javax.swing.JPanel table_container;
