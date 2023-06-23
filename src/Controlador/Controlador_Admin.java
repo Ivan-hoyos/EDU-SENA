@@ -7,6 +7,8 @@ import Modelo.Metodos_Admin;
 import Modelo.ProfModel;
 import Vista.Admin;
 import Vista.Estudiante_log;
+import Vista.Matriculas;
+import Vista.Retirar;
 import Vista.Tutor;
 import Vista.Students;
 import Vista.Teachers;
@@ -37,6 +39,8 @@ public class Controlador_Admin implements ActionListener {
     cursos cu = new cursos();
     Estudiante_log fc = new Estudiante_log();
     Tutor efrm = new Tutor();
+    Matriculas m = new Matriculas();
+    Retirar R = new Retirar();
     DefaultTableModel modelo = new DefaultTableModel();
     private MouseListener l;
 
@@ -63,6 +67,12 @@ public class Controlador_Admin implements ActionListener {
         this.cu.btn_asignar.addActionListener(this);
         this.efrm.btn_asignar.addActionListener(this);
         this.efrm.btn_cancelar.addActionListener(this);
+        this.cu.btn_matricular.addActionListener(this);
+        this.cu.btn_retirar.addActionListener(this);
+        this.m.btn_matricular.addActionListener(this);
+        this.m.btn_cancelar.addActionListener(this);
+        this.R.btn_Retirar.addActionListener(this);
+        this.R.btn_cancelar.addActionListener(this);
         // this.cu.jButton3.addActionListener(this);
 
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
@@ -249,6 +259,20 @@ public class Controlador_Admin implements ActionListener {
 
     }
 
+    public void showRetirar() {//Metodo para mostrar el formulario cursos
+
+        R.setVisible(true);
+        R.setLocationRelativeTo(cu);
+
+    }
+
+    public void showMatricular() {//Metodo para mostrar el formulario cursos
+
+        m.setVisible(true);
+        m.setLocationRelativeTo(cu);
+
+    }
+
     public void showtable() {
 
         DefaultTableModel ModeloTabla = (DefaultTableModel) es.Tabla.getModel();
@@ -287,6 +311,83 @@ public class Controlador_Admin implements ActionListener {
         }
     }
 
+    public void tabla_estudiantes_matricula() {
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) m.Tabla.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, id_Curso FROM estudiantes");
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                int[] anchos = {1, 1, 1, 1, 1};
+
+                for (int i = 0; i < 5; i++) {
+                    m.Tabla.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+                }
+                ModeloTabla.addRow(fila);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
+    public void tabla_estudiantes_retirar() {
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) R.Tabla.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+        String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+        try {
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, Telefono FROM estudiantes WHERE id_Curso=?");
+            ps.setString(1, idCurso);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                int[] anchos = {1, 1, 1, 1, 1};
+
+                for (int i = 0; i < 5; i++) {
+                    R.Tabla.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+                }
+                ModeloTabla.addRow(fila);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
     public void seleccionar() {
         PreparedStatement ps;
         ResultSet rs;
@@ -315,7 +416,7 @@ public class Controlador_Admin implements ActionListener {
                     es.btn_F.setSelected(false);
                 } else if (rs.getString("Sexo").equals("F")) {
                     es.btn_F.setSelected(true);
-                     es.btn_M.setSelected(false);
+                    es.btn_M.setSelected(false);
                 }
 
                 //String grado = rs.getString("Grado");
@@ -326,7 +427,6 @@ public class Controlador_Admin implements ActionListener {
                 es.Txt_telephone.setText(rs.getString("Telefono"));
                 es.Txt_email.setText(rs.getString("Email"));
                 es.Txt_password.setText(rs.getString("Contraseña"));
-                System.out.println(rs.getByte("Grado"));
 
             }
 
@@ -421,7 +521,7 @@ public class Controlador_Admin implements ActionListener {
         if (r == 1) {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class
                     .getResource("/Images/comprobado.png"));
-            JOptionPane.showMessageDialog(p, "Tutor Aignado al curso "+idCurso+"", "Guardado", JOptionPane.CLOSED_OPTION, icon);
+            JOptionPane.showMessageDialog(p, "Tutor Aignado al curso " + idCurso + "", "Guardado", JOptionPane.CLOSED_OPTION, icon);
             efrm.dispose();
             cu.Box_Cursos.setSelectedIndex(0);
             cu.jTextField1.setText(null);
@@ -429,27 +529,50 @@ public class Controlador_Admin implements ActionListener {
             JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
         }
     }
-    
-      public void Matricular() { //modificar id curso de un estudiante
-        int fila = efrm.Tablap.getSelectedRow();
-        Long id = Long.parseLong(efrm.Tablap.getValueAt(fila, 0).toString());
-        pmode.setId_Profesor(id);
+
+    public void Matricular() { //modificar id curso de un estudiante
+        int fila = m.Tabla.getSelectedRow();
+        Long id = Long.parseLong(m.Tabla.getValueAt(fila, 0).toString());
+        mode.setid_Estudiante(id);
 
         String idCurso = cu.Box_Cursos.getSelectedItem().toString();
-        pmode.setidCurso(idCurso);
-        System.out.println(idCurso);
-        System.out.println(pmode.getidCurso());
-        int r = mte.asignarcurso(pmode);
+        mode.setId_Curso(idCurso);
+
+        int r = mte.matricular(mode);
         if (r == 1) {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class
                     .getResource("/Images/comprobado.png"));
-            JOptionPane.showMessageDialog(p, "Tutor Aignado al curso "+idCurso+"", "Guardado", JOptionPane.CLOSED_OPTION, icon);
-            efrm.dispose();
-            cu.Box_Cursos.setSelectedIndex(0);
-            cu.jTextField1.setText(null);
+            JOptionPane.showMessageDialog(m, "Estudiante matriculado al curso " + idCurso + "", "Guardado", JOptionPane.CLOSED_OPTION, icon);
+            m.dispose();
+            //cu.Box_Cursos.setSelectedIndex(0);
+            //cu.jTextField1.setText(null);
+            seleccionarCur();
         } else {
-            JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
+            JOptionPane.showMessageDialog(m, "Error, intente de nuevo");
         }
+    }
+
+    public void Retirar_Matricula() { //modificar id curso de un estudiante
+        int fila = cu.tabla_e.getSelectedRow();
+        Long id = Long.parseLong(cu.tabla_e.getValueAt(fila, 0).toString());
+
+        mode.setid_Estudiante(id);
+        String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+        mode.setId_Curso(null);
+
+        int r = mte.matricular(mode);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(R, "Estudiante retirado del curso " + idCurso + "", "Retirado", JOptionPane.CLOSED_OPTION, icon);
+            R.dispose();
+            //cu.Box_Cursos.setSelectedIndex(0);
+            //cu.jTextField1.setText(null);
+            seleccionarCur();
+        } else {
+            JOptionPane.showMessageDialog(R, "Error, intente de nuevo");
+        }
+
     }
 
     public void eliminarP() {// Eliminar profesor
@@ -597,7 +720,7 @@ public class Controlador_Admin implements ActionListener {
         PreparedStatement ps_p;
         ResultSet rs;
         String idCurso = cu.Box_Cursos.getSelectedItem().toString();
-
+        cu.jTextField1.setText(null);
         try {
             Connection con = mte.getConnection();
 
@@ -617,6 +740,7 @@ public class Controlador_Admin implements ActionListener {
                 String nombre = n + " " + a;
                 cu.jTextField1.setText(nombre);
                 cu.jTextField1.setEditable(false);
+
             }
 
             while (rs.next()) {
@@ -630,6 +754,7 @@ public class Controlador_Admin implements ActionListener {
                 ModeloTabla.addRow(fila);
 
             }
+            cu.jTextField1.setEditable(false);
 
         } catch (SQLException y) {
             JOptionPane.showMessageDialog(null, y);
@@ -701,6 +826,7 @@ public class Controlador_Admin implements ActionListener {
         if (e.getSource()
                 == es.btn_moficar) {
             modificar();
+            limpiarcajas();
             showtable();
 
         }
@@ -727,6 +853,7 @@ public class Controlador_Admin implements ActionListener {
 
         if (e.getSource() == p.btn_moficar) {
             modificarP();
+            limpiarcajasP();
             showtableP();
 
         }
@@ -743,6 +870,10 @@ public class Controlador_Admin implements ActionListener {
         if (e.getSource()
                 == admin.Cursos) {
             show_cursos();
+            cu.Box_Cursos.setSelectedIndex(0);
+            cu.jTextField1.setText(null);
+            seleccionarCur();
+
         }
 
         if (e.getSource()
@@ -756,6 +887,30 @@ public class Controlador_Admin implements ActionListener {
         }
         if (e.getSource() == cu.btn_buscar) {
             seleccionarCur();
+        }
+
+        if (e.getSource() == cu.btn_matricular) {
+            String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+
+            if (idCurso.equals("Seleccione")) {
+                JOptionPane.showMessageDialog(admin, "Seleccione un curso");
+            } else {
+                showMatricular();
+
+            }
+
+        }
+
+        if (e.getSource() == m.btn_matricular) {
+            Matricular();
+            tabla_estudiantes_matricula();
+
+        }
+        if (e.getSource() == m.btn_cancelar) {
+            JOptionPane.showMessageDialog(null, "Cancelado");
+            tabla_estudiantes_matricula();
+            m.dispose();
+
         }
 
         if (e.getSource() == cu.btn_asignar) {
@@ -774,12 +929,36 @@ public class Controlador_Admin implements ActionListener {
 
         if (e.getSource() == efrm.btn_asignar) {
             asignarP();
+
         }
         if (e.getSource() == efrm.btn_cancelar) {
             JOptionPane.showMessageDialog(null, "Cancelado");
             efrm.dispose();
         }
 
-    }
+        if (e.getSource() == cu.btn_retirar) {
+            String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+            int fila = cu.tabla_e.getSelectedRow();
+            if (idCurso.equals("Seleccione")) {
+                JOptionPane.showMessageDialog(admin, "Seleccione un curso");
+            } else {
+                if (fila == -1) {
+                    JOptionPane.showMessageDialog(null, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);
+                }else
+                    Retirar_Matricula();
+                }
 
-}
+            }
+            if (e.getSource() == R.btn_Retirar) {
+                Retirar_Matricula();
+
+            }
+            if (e.getSource() == R.btn_cancelar) {
+                JOptionPane.showMessageDialog(null, "Cancelado");
+                tabla_estudiantes_matricula();
+                R.dispose();
+            }
+
+        }
+
+    }
