@@ -242,6 +242,13 @@ public class Controlador_Admin implements ActionListener {
 
     }
 
+    public void showtutor() {//Metodo para mostrar el formulario cursos
+
+        efrm.setVisible(true);
+        efrm.setLocationRelativeTo(cu);
+
+    }
+
     public void showtable() {
 
         DefaultTableModel ModeloTabla = (DefaultTableModel) es.Tabla.getModel();
@@ -394,6 +401,28 @@ public class Controlador_Admin implements ActionListener {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class
                     .getResource("/Images/comprobado.png"));
             JOptionPane.showMessageDialog(p, "Registro actualizado!!", "Guardado", JOptionPane.CLOSED_OPTION, icon);
+        } else {
+            JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
+        }
+    }
+
+    public void asignarP() { //modificar id curso de un profesor
+        int fila = efrm.Tablap.getSelectedRow();
+        Long id = Long.parseLong(efrm.Tablap.getValueAt(fila, 0).toString());
+        pmode.setId_Profesor(id);
+
+        String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+        pmode.setidCurso(idCurso);
+        System.out.println(idCurso);
+        System.out.println(pmode.getidCurso());
+        int r = mte.asignarcurso(pmode);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(p, "Tutor Aignado al curso "+idCurso+"", "Guardado", JOptionPane.CLOSED_OPTION, icon);
+            efrm.dispose();
+            cu.Box_Cursos.setSelectedIndex(0);
+            cu.jTextField1.setText(null);
         } else {
             JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
         }
@@ -584,6 +613,43 @@ public class Controlador_Admin implements ActionListener {
 
     }
 
+    public void tabla_tutor() {
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) efrm.Tablap.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            Connection con = mte.getConnection();
+
+            ps = con.prepareStatement("Select id_Profesor, Nombres, Apellidos, Profesion, Telefono, Email FROM profesores");
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                int[] anchos = {1, 1, 1, 1, 1};
+
+                for (int i = 0; i < 5; i++) {
+                    efrm.Tablap.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+                }
+                ModeloTabla.addRow(fila);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
     @Override
 
     public void actionPerformed(ActionEvent e) {
@@ -669,12 +735,21 @@ public class Controlador_Admin implements ActionListener {
         }
 
         if (e.getSource() == cu.btn_asignar) {
-            efrm.setVisible(true);
+            String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+
+            if (idCurso.equals("Seleccione")) {
+                JOptionPane.showMessageDialog(admin, "Seleccione un curso");
+            } else {
+                showtutor();
+                //efrm.setVisible(true);
+
+                tabla_tutor();
+            }
+
         }
 
         if (e.getSource() == efrm.btn_asignar) {
-            JOptionPane.showMessageDialog(null, "Tutor Asignado");
-            efrm.dispose();
+            asignarP();
         }
         if (e.getSource() == efrm.btn_cancelar) {
             JOptionPane.showMessageDialog(null, "Cancelado");

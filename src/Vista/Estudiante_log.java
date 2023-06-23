@@ -95,19 +95,19 @@ public class Estudiante_log extends javax.swing.JFrame {
         Actividades.setBackground(new java.awt.Color(255, 255, 255));
         Actividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Actividades.setForeground(new java.awt.Color(0, 173, 0));
-        Actividades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profesor.png"))); // NOI18N
+        Actividades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/actividad.png"))); // NOI18N
         Actividades.setText("Actividades");
         Actividades.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Actividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Actividades.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Actividades.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Actividades.setIconTextGap(30);
+        Actividades.setIconTextGap(10);
         Left_Panel.add(Actividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 250, 70));
 
         Notas.setBackground(new java.awt.Color(255, 255, 255));
         Notas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Notas.setForeground(new java.awt.Color(0, 173, 0));
-        Notas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cursos.png"))); // NOI18N
+        Notas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/notas.png"))); // NOI18N
         Notas.setText("Notas");
         Notas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
         Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

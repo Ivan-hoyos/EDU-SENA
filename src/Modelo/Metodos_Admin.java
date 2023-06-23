@@ -99,6 +99,24 @@ public class Metodos_Admin extends Conexion {
         }
 
     }
+    
+    public int matricular(Estudiantes_Modelo mdl) {
+        int r = 1;
+        String sql = "UPDATE estudiantes SET id_Curso=? WHERE id_Estudiante=?";
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, mdl.getId_Curso());
+            ps.setString(2, Long.toString(mdl.getid_Estudiante()));
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("No se pudo modificar");
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
 
     public int show_e() {//Metodo para mostrar el formulario Student
         int r = 1;
@@ -159,6 +177,25 @@ public class Metodos_Admin extends Conexion {
             ps.setString(7, Integer.toString(pmdl.getidMateria()));
             ps.setString(8, pmdl.getProfesion());
             ps.setString(9, Long.toString(pmdl.getId_Profesor()));
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("No se pudo modificar");
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
+    
+     //Método para asignar un curso
+    public int asignarcurso(ProfModel pmdl) {
+        int r = 1;
+        String sql = "UPDATE profesores SET id_Curso=? WHERE id_Profesor=?";
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pmdl.getidCurso());
+            ps.setString(2, Long.toString(pmdl.getId_Profesor()));
             ps.executeUpdate();
 
         } catch (SQLException e) {
