@@ -524,7 +524,7 @@ public class Controlador_Admin implements ActionListener {
             JOptionPane.showMessageDialog(p, "Tutor Aignado al curso " + idCurso + "", "Guardado", JOptionPane.CLOSED_OPTION, icon);
             efrm.dispose();
             cu.Box_Cursos.setSelectedIndex(0);
-            cu.jTextField1.setText(null);
+            cu.nombre_p.setText(null);
         } else {
             JOptionPane.showMessageDialog(p, "Error, intente de nuevo");
         }
@@ -720,7 +720,7 @@ public class Controlador_Admin implements ActionListener {
         PreparedStatement ps_p;
         ResultSet rs;
         String idCurso = cu.Box_Cursos.getSelectedItem().toString();
-        cu.jTextField1.setText(null);
+        cu.nombre_p.setText(null);
         try {
             Connection con = mte.getConnection();
 
@@ -738,8 +738,8 @@ public class Controlador_Admin implements ActionListener {
                 String a = rs_P.getString("Apellidos");
 
                 String nombre = n + " " + a;
-                cu.jTextField1.setText(nombre);
-                cu.jTextField1.setEditable(false);
+                cu.nombre_p.setText(nombre);
+                cu.nombre_p.setEditable(false);
 
             }
 
@@ -754,7 +754,7 @@ public class Controlador_Admin implements ActionListener {
                 ModeloTabla.addRow(fila);
 
             }
-            cu.jTextField1.setEditable(false);
+            cu.nombre_p.setEditable(false);
 
         } catch (SQLException y) {
             JOptionPane.showMessageDialog(null, y);
@@ -871,7 +871,7 @@ public class Controlador_Admin implements ActionListener {
                 == admin.Cursos) {
             show_cursos();
             cu.Box_Cursos.setSelectedIndex(0);
-            cu.jTextField1.setText(null);
+            cu.nombre_p.setText(null);
             seleccionarCur();
 
         }

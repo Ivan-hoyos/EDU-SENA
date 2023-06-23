@@ -38,13 +38,13 @@ public class cursos extends javax.swing.JPanel {
 
         Container = new javax.swing.JPanel();
         Form = new javax.swing.JPanel();
-        Lbl_Student = new javax.swing.JLabel();
+        Lbl_Cursos = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_SelecionCurso = new javax.swing.JLabel();
         Box_Cursos = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_profesor = new javax.swing.JLabel();
         btn_asignar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        nombre_p = new javax.swing.JTextField();
         btn_matricular = new javax.swing.JButton();
         btn_retirar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
@@ -57,8 +57,6 @@ public class cursos extends javax.swing.JPanel {
         Lbl_Student1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -67,25 +65,25 @@ public class cursos extends javax.swing.JPanel {
         Form.setBackground(new java.awt.Color(255, 255, 255));
         Form.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        Lbl_Student.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Lbl_Student.setForeground(new java.awt.Color(0, 173, 0));
-        Lbl_Student.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lbl_Student.setText("Cursos");
+        Lbl_Cursos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Lbl_Cursos.setForeground(new java.awt.Color(0, 173, 0));
+        Lbl_Cursos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lbl_Cursos.setText("Cursos");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccionar Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 173, 0))); // NOI18N
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 173, 0));
-        jLabel1.setText("Curso");
+        lbl_SelecionCurso.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_SelecionCurso.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_SelecionCurso.setForeground(new java.awt.Color(0, 173, 0));
+        lbl_SelecionCurso.setText("Curso");
 
         Box_Cursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "6A", "6B", "6C", "7A", "7B", "7C", "8A", "8B", "8C", "9A", "9B", "9C", "10A", "10B", "10C", "11A", "11B", "11C" }));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 173, 0));
-        jLabel4.setText("Profesor");
+        lbl_profesor.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_profesor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_profesor.setForeground(new java.awt.Color(0, 173, 0));
+        lbl_profesor.setText("Profesor");
 
         btn_asignar.setBackground(new java.awt.Color(0, 173, 0));
         btn_asignar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -113,13 +111,13 @@ public class cursos extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lbl_SelecionCurso)
                 .addGap(18, 18, 18)
                 .addComponent(Box_Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jLabel4)
+                .addComponent(lbl_profesor)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombre_p, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_buscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
@@ -137,10 +135,10 @@ public class cursos extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                            .addComponent(lbl_SelecionCurso)
                             .addComponent(Box_Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_profesor)
+                            .addComponent(nombre_p, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_buscar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,7 +187,7 @@ public class cursos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FormLayout.createSequentialGroup()
-                        .addComponent(Lbl_Student)
+                        .addComponent(Lbl_Cursos)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(FormLayout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,7 +197,7 @@ public class cursos extends javax.swing.JPanel {
             FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FormLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(Lbl_Student, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Lbl_Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,12 +302,6 @@ public class cursos extends javax.swing.JPanel {
         jPanel2.add(Container1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 760));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton2.setText("Asignar Tutor");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton4.setText("Asignar Tutor");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -319,23 +311,21 @@ public class cursos extends javax.swing.JPanel {
     private javax.swing.JPanel Container1;
     private javax.swing.JPanel Form;
     private javax.swing.JPanel Form1;
-    private javax.swing.JLabel Lbl_Student;
+    private javax.swing.JLabel Lbl_Cursos;
     private javax.swing.JLabel Lbl_Student1;
     public javax.swing.JButton btn_asignar;
     public javax.swing.JButton btn_buscar;
     public javax.swing.JButton btn_matricular;
     public javax.swing.JButton btn_retirar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbl_SelecionCurso;
+    private javax.swing.JLabel lbl_profesor;
+    public javax.swing.JTextField nombre_p;
     public javax.swing.JTable tabla_e;
     // End of variables declaration//GEN-END:variables
 
