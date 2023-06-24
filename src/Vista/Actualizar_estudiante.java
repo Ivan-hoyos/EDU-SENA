@@ -39,7 +39,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         Container = new javax.swing.JPanel();
         North_panel = new javax.swing.JPanel();
         btn_confirmar = new javax.swing.JButton();
-        btn_moficar = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
         Btn_cancelar = new javax.swing.JButton();
         Form = new javax.swing.JPanel();
         Lbl_Student = new javax.swing.JLabel();
@@ -83,14 +83,14 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
             }
         });
 
-        btn_moficar.setBackground(new java.awt.Color(0, 173, 0));
-        btn_moficar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_moficar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_moficar.setText("Modificar");
-        btn_moficar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_moficar.addActionListener(new java.awt.event.ActionListener() {
+        btn_modificar.setBackground(new java.awt.Color(0, 173, 0));
+        btn_modificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_modificar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_modificar.setText("Modificar");
+        btn_modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_moficarActionPerformed(evt);
+                btn_modificarActionPerformed(evt);
             }
         });
 
@@ -113,7 +113,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Btn_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_moficar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                     .addComponent(btn_confirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -123,7 +123,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(btn_moficar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(Btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -341,24 +341,24 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1100, 760));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 760));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
-     JOptionPane.showMessageDialog(this, "Cambios guardados");
+
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void Btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelarActionPerformed
 
     }//GEN-LAST:event_Btn_cancelarActionPerformed
 
-    private void btn_moficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moficarActionPerformed
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         // Modificar
 
-    }//GEN-LAST:event_btn_moficarActionPerformed
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void Txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_passwordActionPerformed
         // TODO add your handling code here:
@@ -391,7 +391,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
     public javax.swing.JRadioButton btn_F;
     public javax.swing.JRadioButton btn_M;
     public javax.swing.JButton btn_confirmar;
-    public javax.swing.JButton btn_moficar;
+    public javax.swing.JButton btn_modificar;
     private javax.swing.JLabel sexo;
     // End of variables declaration//GEN-END:variables
 

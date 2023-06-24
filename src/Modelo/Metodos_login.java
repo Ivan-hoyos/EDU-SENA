@@ -24,7 +24,7 @@ public class Metodos_login extends Conexion {
         int r = 1;
 
         // mode.setContraseña(password);
-        String sql = "select id_Estudiante, Nombres, Apellidos,  Contraseña, Rol from estudiantes where id_Estudiante='" + log.getid_Estudiante() + "'";
+        String sql = "select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, Sexo, Direccion, Telefono, Email,  Contraseña, Rol from estudiantes where id_Estudiante='" + log.getid_Estudiante() + "'";
         if (r == 1) {
             try {
 
@@ -33,11 +33,19 @@ public class Metodos_login extends Conexion {
 
                 if (rs_Student.next()) {
                     //Si existe el usuario
-                    String us = rs_Student.getString("id_Estudiante");
+                    Long user = Long.parseLong(rs_Student.getString("id_Estudiante"));
                     String pass = rs_Student.getString("Contraseña");
+                    String fecha = rs_Student.getString("Fecha_Nacimiento");
+                    String Sexo = rs_Student.getString("Sexo");
+                    String dir = rs_Student.getString("Direccion");
+                    Long tel = Long.parseLong(rs_Student.getString("Telefono"));
+                    String email = rs_Student.getString("Email");
                     String rol = rs_Student.getString("Rol");
                     String nombre = rs_Student.getString("Nombres");
                     String apellido = rs_Student.getString("Apellidos");
+
+                    SesionEstudiante sessionManager = SesionEstudiante.getInstance();
+                    sessionManager.setCredentials(user, pass, nombre, apellido, fecha, Sexo, dir, tel, email);
 
                     if (log.getContraseña().equals(pass)) {
                         //Jframe alumno, docente o admin

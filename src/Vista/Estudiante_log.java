@@ -76,7 +76,7 @@ public class Estudiante_log extends javax.swing.JFrame {
         perfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         perfil.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         perfil.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        perfil.setIconTextGap(27);
+        perfil.setIconTextGap(60);
         perfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 perfilMouseEntered(evt);
@@ -113,7 +113,7 @@ public class Estudiante_log extends javax.swing.JFrame {
         Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Notas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Notas.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Notas.setIconTextGap(58);
+        Notas.setIconTextGap(50);
         Left_Panel.add(Notas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 250, 70));
 
         Horarios.setBackground(new java.awt.Color(255, 255, 255));
@@ -125,7 +125,7 @@ public class Estudiante_log extends javax.swing.JFrame {
         Horarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Horarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Horarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Horarios.setIconTextGap(45);
+        Horarios.setIconTextGap(34);
         Left_Panel.add(Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 70));
 
         Exit.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,7 +137,7 @@ public class Estudiante_log extends javax.swing.JFrame {
         Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Exit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Exit.setIconTextGap(73);
+        Exit.setIconTextGap(65);
         Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 250, 70));
 
         Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 768));

@@ -4,15 +4,14 @@ import Modelo.Estudiantes_Modelo;
 import Modelo.Metodos_login;
 import Modelo.ProfModel;
 import Vista.Admin;
+import Vista.Estudiante_log;
 import Vista.Login;
 import Vista.Students;
 import Vista.Teachers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class Controlador_Login implements ActionListener {
 
     Admin admin = new Admin();
+    Estudiante_log principal = new Estudiante_log(); //Menu principal 
     Students es = new Students();
     Teachers p = new Teachers();
     Metodos_login mte = new Metodos_login();
@@ -28,9 +28,10 @@ public class Controlador_Login implements ActionListener {
     ProfModel modep = new ProfModel();
     Login log = new Login();
     Controlador_Admin c = new Controlador_Admin(admin, es);
+    ControladorEstudiante estu = new ControladorEstudiante(principal);
     private MouseListener l;
 
-    public Controlador_Login(Login log, Admin admin) {
+    public Controlador_Login(Login log, Admin admin, Estudiante_log principal) {
         this.log = log;
         this.mte = mte;
         this.mode = mode;
@@ -40,6 +41,7 @@ public class Controlador_Login implements ActionListener {
 
     public void log() {
         String pass = new String(log.Password_user.getPassword());
+        String user = log.Txt_username.getText();
         mode.setid_Estudiante(Long.parseLong(log.Txt_username.getText()));
         mode.setContraseña(pass);
 
@@ -47,7 +49,9 @@ public class Controlador_Login implements ActionListener {
 
         if (r == 1) {
             System.out.println("Inicio De sesion Correcto");
-            c.fc.setVisible(true);
+           
+
+            estu.principal.setVisible(true);
             log.dispose();
         } else if (r == 2) {
             System.out.println("Contraseña incorrecta");
@@ -102,7 +106,7 @@ public class Controlador_Login implements ActionListener {
             }
 
             if (log.Roles.getSelectedItem().toString().equals("Seleccionar")) {
-                JOptionPane.showMessageDialog(null, "Seleccione un Rol","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Seleccione un Rol", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }

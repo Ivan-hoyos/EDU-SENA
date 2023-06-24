@@ -342,7 +342,8 @@ public class Login extends javax.swing.JFrame {
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             Admin admin = new Admin();
-            Controlador_Login c = new Controlador_Login(this, admin);
+            Estudiante_log principal = new Estudiante_log();
+            Controlador_Login c = new Controlador_Login(this, admin, principal);
             c.log();
         }
         
@@ -396,7 +397,8 @@ public class Login extends javax.swing.JFrame {
         
         Login usuarios = new Login();
         Admin admin = new Admin();
-        Controlador_Login c = new Controlador_Login(usuarios, admin);
+        Estudiante_log principal = new Estudiante_log();
+        Controlador_Login c = new Controlador_Login(usuarios, admin, principal);
         usuarios.setVisible(true);
         
         /*java.awt.EventQueue.invokeLater(new Runnable() {

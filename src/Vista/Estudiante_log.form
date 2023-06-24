@@ -140,7 +140,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="2"/>
-                <Property name="iconTextGap" type="int" value="27"/>
+                <Property name="iconTextGap" type="int" value="60"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="perfilMouseEntered"/>
@@ -221,7 +221,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="2"/>
-                <Property name="iconTextGap" type="int" value="58"/>
+                <Property name="iconTextGap" type="int" value="50"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -259,7 +259,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="2"/>
-                <Property name="iconTextGap" type="int" value="45"/>
+                <Property name="iconTextGap" type="int" value="34"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -297,7 +297,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="2"/>
-                <Property name="iconTextGap" type="int" value="73"/>
+                <Property name="iconTextGap" type="int" value="65"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

@@ -26,7 +26,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="0" width="1100" height="760"/>
+          <AbsoluteConstraints x="0" y="0" width="1110" height="760"/>
         </Constraint>
       </Constraints>
 
@@ -50,7 +50,7 @@
                       <Component id="Form" max="32767" attributes="0"/>
                       <Component id="North_panel" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="445" max="32767" attributes="0"/>
+                  <EmptySpace pref="427" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -76,7 +76,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Btn_cancelar" max="32767" attributes="0"/>
-                          <Component id="btn_moficar" alignment="0" pref="172" max="32767" attributes="0"/>
+                          <Component id="btn_modificar" alignment="0" pref="172" max="32767" attributes="0"/>
                           <Component id="btn_confirmar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
                       <EmptySpace pref="36" max="32767" attributes="0"/>
                       <Component id="btn_confirmar" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="btn_moficar" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="btn_modificar" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="Btn_cancelar" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_moficar">
+            <Component class="javax.swing.JButton" name="btn_modificar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="ad" red="0" type="rgb"/>
@@ -138,7 +138,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_moficarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificarActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
