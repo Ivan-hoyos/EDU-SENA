@@ -49,6 +49,8 @@ public class ControladorEstudiante implements ActionListener {
             perfil.btn_F.setSelected(false);
             perfil.btn_M.setSelected(false);
         }
+        
+        metodos.horario();
 
     }
 
