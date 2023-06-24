@@ -83,6 +83,7 @@ public class MetodosEstudiante extends Conexion {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("e");
         }
     }
 
