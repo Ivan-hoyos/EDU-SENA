@@ -207,8 +207,8 @@ public class Controlador_Admin implements ActionListener {
     public void exit() {//Metodo para cerrar el programa
         int r = 1;
         if (r == 1) {
-
-            JOptionPane.showMessageDialog(null, "Hasta luego :D");
+            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/exit.png"));
+            JOptionPane.showMessageDialog(null, "Hasta luego :D", "FIN DE SESION", JOptionPane.OK_OPTION, icon);
             System.exit(0);
 
         } else {
@@ -473,8 +473,8 @@ public class Controlador_Admin implements ActionListener {
         pmode.setContraseña(p.Txt_passwordp.getText());
         pmode.setProfesion(p.Materia.getSelectedItem().toString());
         int idMateria = p.Materia.getSelectedIndex();
-        pmode.setidMateria(idMateria);
-        System.out.println(pmode.getidMateria());
+        //pmode.setidMateria(idMateria);
+        //System.out.println(pmode.getidMateria());
         int r = mte.createProf(pmode);
         if (r == 1) {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class
@@ -495,8 +495,8 @@ public class Controlador_Admin implements ActionListener {
         pmode.setEmail(p.Txt_emailp.getText());
         pmode.setContraseña(p.Txt_passwordp.getText());
         pmode.setProfesion(p.Materia.getSelectedItem().toString());
-        int idMateria = p.Materia.getSelectedIndex();
-        pmode.setidMateria(idMateria);
+        //int idMateria = p.Materia.getSelectedIndex();
+        //pmode.setidMateria(idMateria);
 
         int r = mte.modificarP(pmode);
         if (r == 1) {
@@ -944,21 +944,22 @@ public class Controlador_Admin implements ActionListener {
             } else {
                 if (fila == -1) {
                     JOptionPane.showMessageDialog(null, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);
-                }else
+                } else {
                     Retirar_Matricula();
                 }
-
-            }
-            if (e.getSource() == R.btn_Retirar) {
-                Retirar_Matricula();
-
-            }
-            if (e.getSource() == R.btn_cancelar) {
-                JOptionPane.showMessageDialog(null, "Cancelado");
-                tabla_estudiantes_matricula();
-                R.dispose();
             }
 
         }
+        if (e.getSource() == R.btn_Retirar) {
+            Retirar_Matricula();
+
+        }
+        if (e.getSource() == R.btn_cancelar) {
+            JOptionPane.showMessageDialog(null, "Cancelado");
+            tabla_estudiantes_matricula();
+            R.dispose();
+        }
 
     }
+
+}

@@ -17,6 +17,7 @@ public class Metodos_login extends Conexion {
     PreparedStatement ps;
     Login login = new Login();
     Estudiantes_Modelo mode = new Estudiantes_Modelo();
+
     private final Admin admin = new Admin();
 
     //Método para agregar registros
@@ -85,7 +86,7 @@ public class Metodos_login extends Conexion {
         int r = 1;
 
         // mode.setContraseña(password);
-        String sql = "select id_Profesor, Nombres, Apellidos,  Contraseña, Rol from profesores where id_Profesor='" + log.getId_Profesor() + "'";
+        String sql = "select id_Profesor, Nombres, Apellidos, FechaNacimiento, Sexo, Direccion, Telefono, Email,  Profesion, Contraseña, Rol from profesores where id_Profesor='" + log.getId_Profesor() + "'";
         if (r == 1) {
             try {
 
@@ -94,13 +95,22 @@ public class Metodos_login extends Conexion {
 
                 if (rs_Profesor.next()) {
                     //Si existe el usuario
-                    String us = rs_Profesor.getString("id_Profesor");
-                    String pas = rs_Profesor.getString("Contraseña");
+                    Long user = Long.valueOf(rs_Profesor.getString("id_Profesor"));
+                    String pass = rs_Profesor.getString("Contraseña");
+                    String fecha = rs_Profesor.getString("FechaNacimiento");
+                    String Sexo = rs_Profesor.getString("Sexo");
+                    String dir = rs_Profesor.getString("Direccion");
+                    Long tel = Long.valueOf(rs_Profesor.getString("Telefono"));
+                    String email = rs_Profesor.getString("Email");
                     String rol = rs_Profesor.getString("Rol");
                     String nombre = rs_Profesor.getString("Nombres");
                     String apellido = rs_Profesor.getString("Apellidos");
+                    String profesion = rs_Profesor.getString("Profesion");
 
-                    if (log.getContraseña().equals(pas)) {
+                    SesionProf sessionManager = SesionProf.getInstance();
+                    sessionManager.setCredentials(user, pass, nombre, apellido, fecha, Sexo, dir, profesion,tel, email);
+
+                    if (log.getContraseña().equals(pass)) {
                         //Jframe alumno, docente o admin
 
                         if (rol.equals("teacher")) {
@@ -117,6 +127,58 @@ public class Metodos_login extends Conexion {
                 } else {
                     //El usuario no existe
 
+                }
+                return 3;
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.toString());
+            }
+
+        } else {
+            return 0;
+        }
+        return r;
+    }
+
+    public int logA(AdminModel log) {
+        int r = 1;
+
+        // mode.setContraseña(password);
+        String sql = "select id_Admin, Rol, Contraseña from admin where id_Admin='" + log.getIdAdmin() + "'";
+        if (r == 1) {
+            try {
+
+                ps = con.prepareStatement(sql);
+                ResultSet rs_Student = ps.executeQuery();
+
+                if (rs_Student.next()) {
+                    //Si existe el usuario
+                    Long user = Long.parseLong(rs_Student.getString("id_Admin"));
+                    String pass = rs_Student.getString("Contraseña");
+                    String rol = rs_Student.getString("Rol");
+
+                    SesionAdmin sessionManager = SesionAdmin.getInstance();
+                    sessionManager.setCredentials(user, pass, rol);
+
+                    if (log.getContraseña().equals(pass)) {
+                        //Jframe alumno, docente o admin
+
+                        if (rol.equals("admin")) {
+                            ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/tarjetaes.png"));
+                            JOptionPane.showMessageDialog(null, "Bienvenido al sistema \nAdministrador: " + user, "Login", JOptionPane.CLOSED_OPTION, icon);
+
+                        }
+                        return 1;
+                    } else {
+                        //Contraseña incorrecta
+                        // JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+
+                    }
+                    return 2;
+                } else {
+                    //El usuario no existe
+
+                    //JOptionPane.showMessageDialog(null, "El usuario no existe");
                 }
                 return 3;
 

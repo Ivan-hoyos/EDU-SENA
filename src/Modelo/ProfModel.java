@@ -5,31 +5,35 @@ public class ProfModel {
     private long id_Profesor;
     private String Nombres;
     private String Apellidos;
+    private String fechaNacimiento;
     private String Direccion;
     private long Telefono;
     private String Email;
     private String Contraseña;
     private String Rol;
-    private int idMateria;
     private String Profesion;
-    private String idCurso;
+    private String Sexo;
+    String idCurso;
 
     public ProfModel() {
 
     }
 
-    public ProfModel(long id_Profesor, String Nombres, String Apellidos, String Direccion, long Telefono, String Email, String Contraseña, String Rol, int idMateria, String Profesion, String idCurso) {
+    public ProfModel(long id_Profesor, String Nombres, String Apellidos, String fechaNacimiento, String Direccion, long Telefono, String Email, String Contraseña, String Rol, String Profesion, String Sexo,
+            String idCurso) {
         this.id_Profesor = id_Profesor;
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
+        this.fechaNacimiento = fechaNacimiento;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
         this.Email = Email;
         this.Contraseña = Contraseña;
         this.Rol = Rol;
-        this.idMateria = idMateria;
         this.Profesion = Profesion;
+        this.Sexo = Sexo;
         this.idCurso = idCurso;
+
     }
 
     public long getId_Profesor() {
@@ -96,14 +100,6 @@ public class ProfModel {
         this.Rol = Rol;
     }
 
-    public int getidMateria() {
-        return idMateria;
-    }
-
-    public void setidMateria(int idMateria) {
-        this.idMateria = idMateria;
-    }
-
     public String getProfesion() {
         return Profesion;
     }
@@ -112,11 +108,27 @@ public class ProfModel {
         this.Profesion = Profesion;
     }
 
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getSexo() {
+        return Sexo;
+    }
+
+    public void setSexo(String Sexo) {
+        this.Sexo = Sexo;
+    }
+
     public String getidCurso() {
         return idCurso;
     }
-
-    public void setidCurso(String idCurso) {
+    
+    public void setidCurso(String idCurso){
         this.idCurso = idCurso;
     }
 

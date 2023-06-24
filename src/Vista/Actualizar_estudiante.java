@@ -120,7 +120,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
         North_panelLayout.setVerticalGroup(
             North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, North_panelLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(475, Short.MAX_VALUE)
                 .addComponent(btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +320,7 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(Lbl_Telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -338,10 +338,10 @@ public class Actualizar_estudiante extends javax.swing.JPanel {
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 760));
