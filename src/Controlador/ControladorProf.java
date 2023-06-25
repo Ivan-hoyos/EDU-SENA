@@ -1,14 +1,10 @@
 package Controlador;
 
-import Modelo.Estudiantes_Modelo;
 import Modelo.MetodosEstudiante;
 import Modelo.MetodosProf;
 import Modelo.ProfModel;
-import Modelo.SesionEstudiante;
 import Modelo.SesionProf;
 import Vista.ActualizarProf;
-import Vista.Actualizar_estudiante;
-import Vista.Estudiante_log;
 import Vista.ProfLog;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -39,7 +35,12 @@ public class ControladorProf implements ActionListener {
         perfil.Txt_DocumentP.setText(Long.toString(sessionManager.getUsername()));
         perfil.Txt_nameP.setText(sessionManager.getNombres());
         perfil.Txt_LastNameP.setText(sessionManager.getApellidos());
-        perfil.Txt_Day_Born.setText(sessionManager.getFecha_Nacimiento());
+        String fecha = sessionManager.getFecha_Nacimiento();
+        if (fecha == null) {
+            perfil.Txt_Day_Born.setText(null);
+        } else {
+            perfil.Txt_Day_Born.setText(fecha);
+        }
         perfil.Txt_Direction.setText(sessionManager.getDireccion());
         perfil.Txt_telephone.setText(Long.toString(sessionManager.getTelefono()));
         perfil.Txt_email.setText(sessionManager.getEmail());
@@ -107,6 +108,7 @@ public class ControladorProf implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == principal.perfil) { //Mostrar perfil del estudiante
+
             perfil.setSize(1100, 760);
             principal.Panel_right.removeAll();
             principal.Panel_right.add(perfil, BorderLayout.CENTER);
@@ -114,6 +116,10 @@ public class ControladorProf implements ActionListener {
             principal.Panel_right.revalidate();
             principal.Panel_right.repaint();
             infoP();
+            perfil.btn_modificar.setEnabled(false);
+            perfil.Btn_cancelar.setEnabled(false);
+            perfil.btn_editar.setEnabled(true);
+
         }
 
         if (e.getSource() == perfil.btn_modificar) {
@@ -129,10 +135,15 @@ public class ControladorProf implements ActionListener {
             perfil.Txt_email.setEnabled(false);
             perfil.Txt_password.setEnabled(false);
             perfil.Materia.setEnabled(false);
+            perfil.btn_editar.setEnabled(true);
 
         }
 
         if (e.getSource() == perfil.btn_editar) {
+            perfil.btn_editar.setEnabled(false);
+            perfil.btn_modificar.setEnabled(true);
+            perfil.Btn_cancelar.setEnabled(true);
+
             perfil.btn_F.setEnabled(true);
             perfil.btn_M.setEnabled(true);
             //perfil.Txt_DocumentP.setEnabled(true);
@@ -148,6 +159,10 @@ public class ControladorProf implements ActionListener {
 
         if (e.getSource() == perfil.Btn_cancelar) {
             infoP();
+            perfil.btn_editar.setEnabled(true);
+            perfil.btn_modificar.setEnabled(false);
+            perfil.Btn_cancelar.setEnabled(false);
+
         }
 
         if (e.getSource() == principal.Exit) { //Cerrar la aplicación

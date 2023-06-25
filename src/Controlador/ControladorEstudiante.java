@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.Estudiantes_Modelo;
 import Modelo.MetodosEstudiante;
 import Modelo.SesionEstudiante;
-import Vista.Actualizar_estudiante;
+import Vista.ActualizarEs;
 import Vista.Estudiante_log;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class ControladorEstudiante implements ActionListener {
 
     Estudiante_log principal = new Estudiante_log(); //Menu principal 
-    Actualizar_estudiante perfil = new Actualizar_estudiante(); // Configuración de Perfil
+    ActualizarEs perfil = new ActualizarEs(); // Configuración de Perfil
     Estudiantes_Modelo mode = new Estudiantes_Modelo(); //Modelo estudiante
     MetodosEstudiante metodos = new MetodosEstudiante();
     SesionEstudiante sessionManager = SesionEstudiante.getInstance();
@@ -26,12 +26,14 @@ public class ControladorEstudiante implements ActionListener {
         this.principal.perfil.addActionListener(this);
         this.principal.Exit.addActionListener(this);
         this.perfil.btn_modificar.addActionListener(this);
+        this.perfil.btn_editar.addActionListener(this);
+        this.perfil.Btn_cancelar.addActionListener(this);
     }
 
     public void infoEs() {//Información de la sesion
-        perfil.Txt_DocumentStudent.setText(Long.toString(sessionManager.getUsername()));
-        perfil.Txt_nameStudent.setText(sessionManager.getNombres());
-        perfil.Txt_LastNameStudent.setText(sessionManager.getApellidos());
+        perfil.Txt_Document.setText(Long.toString(sessionManager.getUsername()));
+        perfil.Txt_name.setText(sessionManager.getNombres());
+        perfil.Txt_LastName.setText(sessionManager.getApellidos());
         perfil.Txt_Day_Born.setText(sessionManager.getFecha_Nacimiento());
         perfil.Txt_Direction.setText(sessionManager.getDireccion());
         perfil.Txt_telephone.setText(Long.toString(sessionManager.getTelefono()));
@@ -49,16 +51,25 @@ public class ControladorEstudiante implements ActionListener {
             perfil.btn_F.setSelected(false);
             perfil.btn_M.setSelected(false);
         }
-        
-        metodos.horario();
+
+        perfil.btn_F.setEnabled(false);
+        perfil.btn_M.setEnabled(false);
+        perfil.Txt_Document.setEnabled(false);
+        perfil.Txt_name.setEnabled(false);
+        perfil.Txt_LastName.setEnabled(false);
+        perfil.Txt_Day_Born.setEnabled(false);
+        perfil.Txt_Direction.setEnabled(false);
+        perfil.Txt_telephone.setEnabled(false);
+        perfil.Txt_email.setEnabled(false);
+        perfil.Txt_password.setEnabled(false);
 
     }
 
     public void modificarI() {//Modificar información del estudiante
 
-        mode.setid_Estudiante(Long.parseLong(perfil.Txt_DocumentStudent.getText()));
-        mode.setNombres(perfil.Txt_nameStudent.getText());
-        mode.setApellidos(perfil.Txt_LastNameStudent.getText());
+        mode.setid_Estudiante(Long.parseLong(perfil.Txt_Document.getText()));
+        mode.setNombres(perfil.Txt_name.getText());
+        mode.setApellidos(perfil.Txt_LastName.getText());
         mode.setFecha_Nacimiento(perfil.Txt_Day_Born.getText());
         String sexo = "";
         if (perfil.btn_M.isSelected() == true) {
@@ -97,10 +108,43 @@ public class ControladorEstudiante implements ActionListener {
             principal.Panel_right.revalidate();
             principal.Panel_right.repaint();
             infoEs();
+            perfil.btn_modificar.setEnabled(false);
+            perfil.Btn_cancelar.setEnabled(false);
         }
 
         if (e.getSource() == perfil.btn_modificar) {
             modificarI();
+            perfil.btn_F.setEnabled(false);
+            perfil.btn_M.setEnabled(false);
+            perfil.Txt_Document.setEnabled(false);
+            perfil.Txt_name.setEnabled(false);
+            perfil.Txt_LastName.setEnabled(false);
+            perfil.Txt_Day_Born.setEnabled(false);
+            perfil.Txt_Direction.setEnabled(false);
+            perfil.Txt_telephone.setEnabled(false);
+            perfil.Txt_email.setEnabled(false);
+            perfil.Txt_password.setEnabled(false);
+            perfil.btn_editar.setEnabled(true);
+        }
+
+        if (e.getSource() == perfil.btn_editar) {
+            perfil.btn_editar.setEnabled(false);
+            perfil.btn_modificar.setEnabled(true);
+            perfil.Btn_cancelar.setEnabled(true);
+            perfil.btn_F.setEnabled(true);
+            perfil.btn_M.setEnabled(true);
+            perfil.Txt_Day_Born.setEnabled(true);
+            perfil.Txt_Direction.setEnabled(true);
+            perfil.Txt_telephone.setEnabled(true);
+            perfil.Txt_email.setEnabled(true);
+            perfil.Txt_password.setEnabled(true);
+        }
+
+        if (e.getSource() == perfil.Btn_cancelar) {
+            infoEs();
+            perfil.btn_editar.setEnabled(true);
+            perfil.btn_modificar.setEnabled(false);
+            perfil.Btn_cancelar.setEnabled(false);
         }
 
         if (e.getSource() == principal.Exit) { //Cerrar la aplicación
