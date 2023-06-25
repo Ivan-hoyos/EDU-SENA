@@ -4,7 +4,9 @@ import Modelo.MetodosEstudiante;
 import Modelo.MetodosProf;
 import Modelo.ProfModel;
 import Modelo.SesionProf;
+import Vista.ActividadesProf;
 import Vista.ActualizarProf;
+import Vista.CrearActividad;
 import Vista.ProfLog;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -16,6 +18,8 @@ public class ControladorProf implements ActionListener {
 
     ProfLog principal = new ProfLog(); //Menu principal 
     ActualizarProf perfil = new ActualizarProf(); // Configuración de Perfil
+    ActividadesProf act = new ActividadesProf(); // Form de actividades
+    CrearActividad cre = new CrearActividad(); // Form para crear actividades
     ProfModel modeP = new ProfModel(); //Modelo profesor
     MetodosProf metodosP = new MetodosProf();
     SesionProf sessionManager = SesionProf.getInstance();
@@ -29,6 +33,11 @@ public class ControladorProf implements ActionListener {
         this.perfil.btn_modificar.addActionListener(this);
         this.perfil.btn_editar.addActionListener(this);
         this.perfil.Btn_cancelar.addActionListener(this);
+        this.perfil.btn_F.addActionListener(this);
+        this.perfil.btn_M.addActionListener(this);
+        this.act.btn_crear.addActionListener(this);
+        this.act.btn_editar.addActionListener(this);
+        this.act.btn_eliminar.addActionListener(this);
     }
 
     public void infoP() {//Información de la sesion
@@ -107,6 +116,32 @@ public class ControladorProf implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource() == principal.Actividades) {
+            act.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            act.south.removeAll();
+            principal.Panel_right.add(act, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(act, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+        }
+
+        if (e.getSource() == act.btn_crear) {
+            cre.setSize(1056, 521);
+            act.south.removeAll();
+            act.south.add(cre, BorderLayout.CENTER);
+            act.south.setComponentZOrder(cre, 0);
+            act.south.revalidate();
+            act.south.repaint();
+        }
+
+        if (e.getSource() == perfil.btn_F) {
+            perfil.btn_M.setSelected(false);
+        }
+        if (e.getSource() == perfil.btn_M) {
+            perfil.btn_F.setSelected(false);
+        }
+
         if (e.getSource() == principal.perfil) { //Mostrar perfil del estudiante
 
             perfil.setSize(1100, 760);
@@ -123,20 +158,27 @@ public class ControladorProf implements ActionListener {
         }
 
         if (e.getSource() == perfil.btn_modificar) {
-            modificarI();
-            perfil.btn_F.setEnabled(false);
-            perfil.btn_M.setEnabled(false);
-            perfil.Txt_DocumentP.setEnabled(false);
-            perfil.Txt_nameP.setEnabled(false);
-            perfil.Txt_LastNameP.setEnabled(false);
-            perfil.Txt_Day_Born.setEnabled(false);
-            perfil.Txt_Direction.setEnabled(false);
-            perfil.Txt_telephone.setEnabled(false);
-            perfil.Txt_email.setEnabled(false);
-            perfil.Txt_password.setEnabled(false);
-            perfil.Materia.setEnabled(false);
-            perfil.btn_editar.setEnabled(true);
 
+            String pass = JOptionPane.showInputDialog(null, "Ingresar Contraseña", "Confirmar Contraseña", JOptionPane.OK_OPTION);
+
+            if (pass.equals(sessionManager.getPassword())) {
+                modificarI();
+                perfil.btn_F.setEnabled(false);
+                perfil.btn_M.setEnabled(false);
+                perfil.Txt_DocumentP.setEnabled(false);
+                perfil.Txt_nameP.setEnabled(false);
+                perfil.Txt_LastNameP.setEnabled(false);
+                perfil.Txt_Day_Born.setEnabled(false);
+                perfil.Txt_Direction.setEnabled(false);
+                perfil.Txt_telephone.setEnabled(false);
+                perfil.Txt_email.setEnabled(false);
+                perfil.Txt_password.setEnabled(false);
+                perfil.Materia.setEnabled(false);
+                perfil.btn_editar.setEnabled(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
         if (e.getSource() == perfil.btn_editar) {

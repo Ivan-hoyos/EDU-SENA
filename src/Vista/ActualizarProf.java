@@ -269,8 +269,9 @@ public class ActualizarProf extends javax.swing.JPanel {
                                                 .addComponent(Txt_telephone, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(Txt_email)
                                                 .addComponent(Txt_password))))
-                                    .addComponent(Lbl_LastName))))
-                        .addGap(0, 402, Short.MAX_VALUE))
+                                    .addComponent(Lbl_LastName))
+                                .addGap(123, 123, 123)))
+                        .addGap(0, 243, Short.MAX_VALUE))
                     .addComponent(btn_editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );

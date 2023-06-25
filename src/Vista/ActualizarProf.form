@@ -195,7 +195,7 @@
                                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="Materia" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                                       <Component id="Txt_nameP" alignment="0" pref="231" max="32767" attributes="0"/>
                                                       <Component id="Txt_DocumentP" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="Txt_LastNameP" max="32767" attributes="0"/>
@@ -207,9 +207,10 @@
                                           </Group>
                                           <Component id="Lbl_LastName" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="402" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="243" max="32767" attributes="0"/>
                           </Group>
                           <Component id="btn_editar" alignment="1" max="32767" attributes="0"/>
                       </Group>

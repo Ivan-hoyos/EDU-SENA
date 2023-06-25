@@ -73,7 +73,8 @@ public class Controlador_Admin implements ActionListener {
         this.m.btn_cancelar.addActionListener(this);
         this.R.btn_Retirar.addActionListener(this);
         this.R.btn_cancelar.addActionListener(this);
-        // this.cu.jButton3.addActionListener(this);
+        this.es.btn_F.addActionListener(this);
+        this.es.btn_M.addActionListener(this);
 
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -89,13 +90,6 @@ public class Controlador_Admin implements ActionListener {
             }
         });
 
-        /*cu.Box_Cursos.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la caja de cursos
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                seleccionarCur();
-            }
-        });
-         */
     }
 
     public void create_Student() {//Metodo para crear un estudiante nuevo
@@ -110,8 +104,6 @@ public class Controlador_Admin implements ActionListener {
             sexo = "F";
         }
         mode.setSexo(sexo);
-        //mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
-        //mode.setSeccion(es.Box_section.getSelectedItem().toString());
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
@@ -141,8 +133,6 @@ public class Controlador_Admin implements ActionListener {
             sexo = "F";
         }
         mode.setSexo(sexo);
-        //mode.setGrado(Byte.parseByte(es.Box_grade.getSelectedItem().toString()));
-        //mode.setSeccion(es.Box_section.getSelectedItem().toString());
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
@@ -802,6 +792,13 @@ public class Controlador_Admin implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == es.btn_F) {
+            es.btn_M.setSelected(false);
+        }
+        if (e.getSource() == es.btn_M) {
+            es.btn_F.setSelected(false);
+        }
         if (e.getSource() == admin.Estudiantes) {
             show_e();
             showtable();

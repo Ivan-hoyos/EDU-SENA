@@ -28,6 +28,8 @@ public class ControladorEstudiante implements ActionListener {
         this.perfil.btn_modificar.addActionListener(this);
         this.perfil.btn_editar.addActionListener(this);
         this.perfil.Btn_cancelar.addActionListener(this);
+        this.perfil.btn_F.addActionListener(this);
+        this.perfil.btn_M.addActionListener(this);
     }
 
     public void infoEs() {//Información de la sesion
@@ -65,6 +67,46 @@ public class ControladorEstudiante implements ActionListener {
 
     }
 
+    public void infonueva() {//Información del estudiante
+        int r = metodos.infoactualizada(mode);
+        if (r == 1) {
+
+            perfil.Txt_Document.setText(Long.toString(sessionManager.getUsername()));
+            perfil.Txt_name.setText(sessionManager.getNombres());
+            perfil.Txt_LastName.setText(sessionManager.getApellidos());
+            perfil.Txt_Day_Born.setText(mode.getFecha_Nacimiento());
+            perfil.Txt_Direction.setText(mode.getDireccion());
+            perfil.Txt_telephone.setText(Long.toString(mode.getTelefono()));
+            perfil.Txt_email.setText(mode.getEmail());
+            perfil.Txt_password.setText(mode.getContraseña());
+            String sexo = mode.getSexo();
+
+            if (sexo.equals("M")) {
+                perfil.btn_M.setSelected(true);
+                perfil.btn_F.setSelected(false);
+            } else if (sexo.equals("F")) {
+                perfil.btn_F.setSelected(true);
+                perfil.btn_M.setSelected(false);
+            } else {
+                perfil.btn_F.setSelected(false);
+                perfil.btn_M.setSelected(false);
+            }
+
+            perfil.btn_F.setEnabled(false);
+            perfil.btn_M.setEnabled(false);
+            perfil.Txt_Document.setEnabled(false);
+            perfil.Txt_name.setEnabled(false);
+            perfil.Txt_LastName.setEnabled(false);
+            perfil.Txt_Day_Born.setEnabled(false);
+            perfil.Txt_Direction.setEnabled(false);
+            perfil.Txt_telephone.setEnabled(false);
+            perfil.Txt_email.setEnabled(false);
+            perfil.Txt_password.setEnabled(false);
+        } else {
+            System.out.println("XD");
+        }
+    }
+
     public void modificarI() {//Modificar información del estudiante
 
         mode.setid_Estudiante(Long.parseLong(perfil.Txt_Document.getText()));
@@ -100,6 +142,13 @@ public class ControladorEstudiante implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource() == perfil.btn_F) {
+            perfil.btn_M.setSelected(false);
+        }
+        if (e.getSource() == perfil.btn_M) {
+            perfil.btn_F.setSelected(false);
+        }
+
         if (e.getSource() == principal.perfil) { //Mostrar perfil del estudiante
             perfil.setSize(1100, 760);
             principal.Panel_right.removeAll();
@@ -108,23 +157,64 @@ public class ControladorEstudiante implements ActionListener {
             principal.Panel_right.revalidate();
             principal.Panel_right.repaint();
             infoEs();
+            infonueva();
             perfil.btn_modificar.setEnabled(false);
             perfil.Btn_cancelar.setEnabled(false);
         }
 
         if (e.getSource() == perfil.btn_modificar) {
-            modificarI();
-            perfil.btn_F.setEnabled(false);
-            perfil.btn_M.setEnabled(false);
-            perfil.Txt_Document.setEnabled(false);
-            perfil.Txt_name.setEnabled(false);
-            perfil.Txt_LastName.setEnabled(false);
-            perfil.Txt_Day_Born.setEnabled(false);
-            perfil.Txt_Direction.setEnabled(false);
-            perfil.Txt_telephone.setEnabled(false);
-            perfil.Txt_email.setEnabled(false);
-            perfil.Txt_password.setEnabled(false);
-            perfil.btn_editar.setEnabled(true);
+            String npass = perfil.Txt_password.getText();
+            System.out.println("Nueva: " + npass);
+            if (!npass.equals(sessionManager.getPassword())) {
+                String pass = JOptionPane.showInputDialog(null, "Ingresar Contraseña Anterior", "Confirmar Contraseña", JOptionPane.OK_OPTION);
+
+                if (pass.equals(sessionManager.getPassword())) {
+                    String passn = JOptionPane.showInputDialog(null, "Ingresar Contraseña Nueva", "Confirmar Contraseña", JOptionPane.OK_OPTION);
+
+                    if (passn.equals(npass)) {
+                        modificarI();
+                        infonueva();
+                        perfil.btn_F.setEnabled(false);
+                        perfil.btn_M.setEnabled(false);
+                        perfil.Txt_Document.setEnabled(false);
+                        perfil.Txt_name.setEnabled(false);
+                        perfil.Txt_LastName.setEnabled(false);
+                        perfil.Txt_Day_Born.setEnabled(false);
+                        perfil.Txt_Direction.setEnabled(false);
+                        perfil.Txt_telephone.setEnabled(false);
+                        perfil.Txt_email.setEnabled(false);
+                        perfil.Txt_password.setEnabled(false);
+                        perfil.btn_editar.setEnabled(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "LAS CONTRASEÑAS NO SON COMPATIBLES", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else {
+                String pass = JOptionPane.showInputDialog(null, "Ingresar Contraseña", "Confirmar Contraseña", JOptionPane.OK_OPTION);
+
+                if (pass.equals(sessionManager.getPassword())) {
+                    modificarI();
+                    infonueva();
+                    perfil.btn_F.setEnabled(false);
+                    perfil.btn_M.setEnabled(false);
+                    perfil.Txt_Document.setEnabled(false);
+                    perfil.Txt_name.setEnabled(false);
+                    perfil.Txt_LastName.setEnabled(false);
+                    perfil.Txt_Day_Born.setEnabled(false);
+                    perfil.Txt_Direction.setEnabled(false);
+                    perfil.Txt_telephone.setEnabled(false);
+                    perfil.Txt_email.setEnabled(false);
+                    perfil.Txt_password.setEnabled(false);
+                    perfil.btn_editar.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+
         }
 
         if (e.getSource() == perfil.btn_editar) {
@@ -142,6 +232,7 @@ public class ControladorEstudiante implements ActionListener {
 
         if (e.getSource() == perfil.Btn_cancelar) {
             infoEs();
+            infonueva();
             perfil.btn_editar.setEnabled(true);
             perfil.btn_modificar.setEnabled(false);
             perfil.Btn_cancelar.setEnabled(false);

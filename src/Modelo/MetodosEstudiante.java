@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class MetodosEstudiante extends Conexion {
 
     Login log = new Login();
+    SesionEstudiante sessionManager = SesionEstudiante.getInstance();
 
     //Método para actualizar registros
     public int modificar(Estudiantes_Modelo mdl) {
@@ -49,12 +50,49 @@ public class MetodosEstudiante extends Conexion {
         return 1;
     }
 
+    public int infoactualizada(Estudiantes_Modelo mdl) {
+        int r = 1;
+        String sql = "select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, Sexo, Direccion, Telefono, Email,  Contraseña, Rol from estudiantes where id_Estudiante='" + sessionManager.getUsername() + "'";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs_Student = ps.executeQuery();
+            if (rs_Student.next()) {
+                //Si existe el usuario
+                Long user = Long.parseLong(rs_Student.getString("id_Estudiante"));
+                String pass = rs_Student.getString("Contraseña");
+                String fecha = rs_Student.getString("Fecha_Nacimiento");
+                String Sexo = rs_Student.getString("Sexo");
+                String dir = rs_Student.getString("Direccion");
+                Long tel = Long.parseLong(rs_Student.getString("Telefono"));
+                String email = rs_Student.getString("Email");
+                String rol = rs_Student.getString("Rol");
+                String nombre = rs_Student.getString("Nombres");
+                String apellido = rs_Student.getString("Apellidos");
+
+                mdl.setFecha_Nacimiento(fecha);
+                mdl.setSexo(Sexo);
+                mdl.setDireccion(dir);
+                mdl.setTelefono(tel);
+                mdl.setEmail(email);
+                mdl.setContraseña(pass);
+                r = 1;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            r = 0;
+        }
+        return r;
+
+    }
+
     public void horario() {
         try {
             Connection con = getConnection();
-            String consulta = "SELECT H.Dia, H.HoraInicio, H.HoraFin, C.id_Cursos, A.Nombre AS idMateria,  P.id_Profesor, " +
-            "P.Nombres AS NombreProfesor FROM Horarios H JOIN Cursos C ON H.idCurso = C.id_Cursos JOIN Profesores P "+
-                    "ON H.idProfesor = P.id_Profesor JOIN asignaturas A ON H.idMateria = A.id_Asignatura ORDER BY H.Dia, H.HoraInicio;";
+            String consulta = "SELECT H.Dia, H.HoraInicio, H.HoraFin, C.id_Cursos, A.Nombre AS idMateria,  P.id_Profesor, "
+                    + "P.Nombres AS NombreProfesor FROM Horarios H JOIN Cursos C ON H.idCurso = C.id_Cursos JOIN Profesores P "
+                    + "ON H.idProfesor = P.id_Profesor JOIN asignaturas A ON H.idMateria = A.id_Asignatura ORDER BY H.Dia, H.HoraInicio;";
 
             Statement statement = con.createStatement();
             ResultSet resultSet = statement.executeQuery(consulta);
