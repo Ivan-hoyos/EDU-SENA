@@ -3,7 +3,7 @@ package Modelo;
 public class SesionEstudiante {
 
     private static SesionEstudiante instance;
-    private long username;
+    private int username;
     private String password;
     private String nombres;
     private String apellidos;
@@ -12,6 +12,7 @@ public class SesionEstudiante {
     private String Direccion;
     long Telefono;
     private String Email;
+    private String IdCurso;
 
     private SesionEstudiante() {
         // Constructor privado para evitar instanciación externa
@@ -24,8 +25,8 @@ public class SesionEstudiante {
         return instance;
     }
 
-    public void setCredentials(long username, String password, String nombres, String apellidos, String Fecha_Nacimiento, String Sexo, String Direccion,
-            long Telefono, String Email) {
+    public void setCredentials(int username, String password, String nombres, String apellidos, String Fecha_Nacimiento, String Sexo, String Direccion,
+            long Telefono, String Email, String IdCurso) {
         this.username = username;
         this.password = password;
         this.nombres = nombres;
@@ -35,10 +36,10 @@ public class SesionEstudiante {
         this.Direccion = Direccion;
         this.Telefono = Telefono;
         this.Email = Email;
-
+        this.IdCurso = IdCurso;
     }
 
-    public long getUsername() {
+    public int getUsername() {
         return username;
     }
 
@@ -72,6 +73,10 @@ public class SesionEstudiante {
 
     public String getEmail() {
         return Email;
+    }
+
+    public String getIdCurso() {
+        return IdCurso;
     }
 
 }

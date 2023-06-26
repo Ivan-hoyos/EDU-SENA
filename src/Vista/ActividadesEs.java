@@ -35,11 +35,9 @@ public class ActividadesEs extends javax.swing.JPanel {
         Form = new javax.swing.JPanel();
         Lbl_Cursos = new javax.swing.JLabel();
         North = new javax.swing.JPanel();
-        btn_crear = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
+        btn_ver = new javax.swing.JButton();
+        btn_responder = new javax.swing.JButton();
         south = new FondoPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla = new javax.swing.JTable();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,15 +55,15 @@ public class ActividadesEs extends javax.swing.JPanel {
         North.setBackground(new java.awt.Color(255, 255, 255));
         North.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 173, 0))); // NOI18N
 
-        btn_crear.setBackground(new java.awt.Color(0, 173, 0));
-        btn_crear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_crear.setForeground(new java.awt.Color(255, 255, 255));
-        btn_crear.setText("Ver Actividad");
+        btn_ver.setBackground(new java.awt.Color(0, 173, 0));
+        btn_ver.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_ver.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ver.setText("Ver Actividad");
 
-        btn_editar.setBackground(new java.awt.Color(0, 173, 0));
-        btn_editar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Responder");
+        btn_responder.setBackground(new java.awt.Color(0, 173, 0));
+        btn_responder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_responder.setForeground(new java.awt.Color(255, 255, 255));
+        btn_responder.setText("Responder");
 
         javax.swing.GroupLayout NorthLayout = new javax.swing.GroupLayout(North);
         North.setLayout(NorthLayout);
@@ -74,54 +72,30 @@ public class ActividadesEs extends javax.swing.JPanel {
             .addGroup(NorthLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(NorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_responder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_ver, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         NorthLayout.setVerticalGroup(
             NorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NorthLayout.createSequentialGroup()
-                .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_ver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_responder, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         south.setBackground(new java.awt.Color(204, 204, 204));
         south.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(Tabla);
-
         javax.swing.GroupLayout southLayout = new javax.swing.GroupLayout(south);
         south.setLayout(southLayout);
         southLayout.setHorizontalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGap(0, 1036, Short.MAX_VALUE)
         );
         southLayout.setVerticalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(southLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 518, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
@@ -144,7 +118,7 @@ public class ActividadesEs extends javax.swing.JPanel {
             FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FormLayout.createSequentialGroup()
                 .addComponent(Lbl_Cursos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
                 .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,10 +151,8 @@ public class ActividadesEs extends javax.swing.JPanel {
     private javax.swing.JPanel Form;
     private javax.swing.JLabel Lbl_Cursos;
     private javax.swing.JPanel North;
-    private javax.swing.JTable Tabla;
-    public javax.swing.JButton btn_crear;
-    public javax.swing.JButton btn_editar;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JButton btn_responder;
+    public javax.swing.JButton btn_ver;
     public javax.swing.JPanel south;
     // End of variables declaration//GEN-END:variables
     

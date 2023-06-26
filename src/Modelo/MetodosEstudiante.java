@@ -22,6 +22,7 @@ public class MetodosEstudiante extends Conexion {
 
     Login log = new Login();
     SesionEstudiante sessionManager = SesionEstudiante.getInstance();
+    Estudiantes_Modelo model = new Estudiantes_Modelo();
 
     //Método para actualizar registros
     public int modificar(Estudiantes_Modelo mdl) {
@@ -123,6 +124,26 @@ public class MetodosEstudiante extends Conexion {
             e.printStackTrace();
             System.out.println("e");
         }
+    }
+
+    public int responder(ActModel mdl) {
+        int r = 1;
+        String sql = "INSERT INTO respuestas(IdActividad, IdEstudiante, NombreEstudiante, IdCurso, Respuesta, FechaEnvio) VALUES (?,?,?,?,?,?)";
+        Connection con = getConnection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mdl.getIdActividad());
+            ps.setInt(2, sessionManager.getUsername());
+            ps.setString(3, sessionManager.getNombres());
+            ps.setString(4, sessionManager.getIdCurso());
+            ps.setString(5, mdl.getRespuesta());
+            ps.setTimestamp(6, mdl.getFechaCreacion());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
     }
 
 }

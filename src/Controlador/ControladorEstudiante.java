@@ -1,21 +1,41 @@
 package Controlador;
 
+import Modelo.ActModel;
 import Modelo.Estudiantes_Modelo;
 import Modelo.MetodosEstudiante;
 import Modelo.SesionEstudiante;
+import Vista.ActividadesEs;
 import Vista.ActualizarEs;
+import Vista.EditarActEs;
 import Vista.Estudiante_log;
+import Vista.TablaActEs;
+import Vista.VerAct;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorEstudiante implements ActionListener {
 
     Estudiante_log principal = new Estudiante_log(); //Menu principal 
     ActualizarEs perfil = new ActualizarEs(); // Configuración de Perfil
     Estudiantes_Modelo mode = new Estudiantes_Modelo(); //Modelo estudiante
+    ActModel amodel = new ActModel(); //Modelo de actividades
+    ActividadesEs actes = new ActividadesEs(); // Form para ver las actividades
+    VerAct ver = new VerAct(); // Panel para ver la actividad
+    EditarActEs edit = new EditarActEs(); // Panel para responder actividad
+    TablaActEs tbl = new TablaActEs();
     MetodosEstudiante metodos = new MetodosEstudiante();
     SesionEstudiante sessionManager = SesionEstudiante.getInstance();
 
@@ -30,6 +50,19 @@ public class ControladorEstudiante implements ActionListener {
         this.perfil.Btn_cancelar.addActionListener(this);
         this.perfil.btn_F.addActionListener(this);
         this.perfil.btn_M.addActionListener(this);
+        this.actes.btn_ver.addActionListener(this);
+        this.actes.btn_responder.addActionListener(this);
+        this.ver.btnResponder.addActionListener(this);
+        this.ver.btnVolver.addActionListener(this);
+        this.edit.btnResponder.addActionListener(this);
+        this.edit.btnCancelar.addActionListener(this);
+
+        tbl.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionar();
+            }
+        });
     }
 
     public void infoEs() {//Información de la sesion
@@ -135,6 +168,94 @@ public class ControladorEstudiante implements ActionListener {
             JOptionPane.showMessageDialog(principal, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
         } else {
             JOptionPane.showMessageDialog(principal, "Error, intente de nuevo");
+        }
+    }
+
+    public void TblAct() {
+        DefaultTableModel ModeloTabla = (DefaultTableModel) tbl.Tabla.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            String curso = sessionManager.getIdCurso();
+            Connection con = metodos.getConnection();
+
+            ps = con.prepareStatement("SELECT IdActividad, Titulo, FechaCreacion, ProfesorId, Materia From actividades WHERE idCurso = ?;");
+            ps.setString(1, curso);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+
+                ModeloTabla.addRow(fila);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
+    public void seleccionar() {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            int fila = tbl.Tabla.getSelectedRow();
+            int id = Integer.parseInt(tbl.Tabla.getValueAt(fila, 0).toString());
+
+            Connection con = metodos.getConnection();
+
+            ps = con.prepareStatement("SELECT Titulo, Descripcion, Materia FROM actividades WHERE IdActividad=? ");
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ver.TxtTitulo.setText(rs.getString("Titulo"));
+                ver.TextDescrip.setText(rs.getString("Descripcion"));
+                ver.BoxMaterias.setSelectedItem(rs.getString("Materia"));
+
+                edit.TxtTitulo.setText(rs.getString("Titulo"));
+
+            }
+
+        } catch (SQLException y) {
+            JOptionPane.showMessageDialog(null, y);
+        }
+    }
+
+    public void respuesta() {
+
+        amodel.setTitulo(edit.TxtTitulo.getText());
+        amodel.setRespuesta(edit.TextDesarr.getText());
+
+        int fila = tbl.Tabla.getSelectedRow();
+        String materia = (String) tbl.Tabla.getValueAt(fila, 4);
+        amodel.setMateria(materia);
+
+        LocalDateTime fechaHoraActual = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(fechaHoraActual);
+
+        amodel.setFechaCreacion(timestamp);
+
+        int r = metodos.responder(amodel);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(ActModel.class.getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Respuesta guardada", "Guardado", JOptionPane.OK_OPTION, icon);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
         }
     }
 
@@ -245,5 +366,140 @@ public class ControladorEstudiante implements ActionListener {
             System.exit(0);
 
         }
+
+        if (e.getSource() == principal.Actividades) {
+            actes.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            principal.Panel_right.add(actes, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(actes, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+            tbl.setSize(1056, 536);
+            actes.south.removeAll();
+            actes.south.add(tbl, BorderLayout.CENTER);
+            actes.south.setComponentZOrder(tbl, 0);
+            actes.south.revalidate();
+            actes.south.repaint();
+            TblAct();
+            actes.btn_responder.setEnabled(true);
+            actes.btn_ver.setEnabled(true);
+
+        }
+
+        if (e.getSource() == actes.btn_ver) {
+            if (tbl.Tabla.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una Actividad", "Error", JOptionPane.ERROR_MESSAGE);
+
+            } else {
+                ver.setSize(1056, 521);
+                actes.south.removeAll();
+                actes.south.add(ver, BorderLayout.CENTER);
+                actes.south.setComponentZOrder(ver, 0);
+                actes.south.revalidate();
+                actes.south.repaint();
+                seleccionar();
+                ver.BoxMaterias.setEnabled(false);
+                ver.TxtTitulo.setEnabled(false);
+                ver.TextDescrip.setEditable(false);
+            }
+        }
+
+        if (e.getSource() == actes.btn_responder || e.getSource() == ver.btnResponder) {
+            if (tbl.Tabla.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una Actividad", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int fila = tbl.Tabla.getSelectedRow();
+                int id = Integer.parseInt(tbl.Tabla.getValueAt(fila, 0).toString());
+
+                amodel.setIdActividad(id);
+
+                edit.setSize(1056, 521);
+                actes.south.removeAll();
+                actes.south.add(edit, BorderLayout.CENTER);
+                actes.south.setComponentZOrder(edit, 0);
+                actes.south.revalidate();
+                actes.south.repaint();
+                seleccionar();
+                actes.btn_ver.setEnabled(false);
+                actes.btn_responder.setEnabled(false);
+
+            }
+
+        }
+
+        if (e.getSource() == edit.btnResponder) {
+            String title = edit.TxtTitulo.getText();
+            String Des = edit.TextDesarr.getText();
+
+            if (title.equals("") || Des.equals("")) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                respuesta();
+                actes.setSize(1100, 760);
+                principal.Panel_right.removeAll();
+                principal.Panel_right.add(actes, BorderLayout.CENTER);
+                principal.Panel_right.setComponentZOrder(actes, 0);
+                principal.Panel_right.revalidate();
+                principal.Panel_right.repaint();
+                tbl.setSize(1056, 536);
+                actes.south.removeAll();
+                actes.south.add(tbl, BorderLayout.CENTER);
+                actes.south.setComponentZOrder(tbl, 0);
+                actes.south.revalidate();
+                actes.south.repaint();
+                TblAct();
+                actes.btn_responder.setEnabled(true);
+                actes.btn_ver.setEnabled(true);
+            }
+
+        }
+        
+        if (e.getSource() == edit.btnCancelar) {
+            Object[] options = {"Sí", "No"};
+            // Cargar un ícono personalizado desde un archivo de imagen
+            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+            ImageIcon icon = new ImageIcon(MetodosEstudiante.class
+                    .getResource("/Images/boton-eliminar.png"));
+
+            int choice = JOptionPane.showOptionDialog(
+                    null, // Componente padre, null para diálogo independiente
+                    "¿Descartar Cambios??", // Pregunta
+                    "Cancelar Registro", // Título del diálogo
+                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                    icon, // Icono personalizado, null para el icono predeterminado
+                    options, // Opciones de respuesta
+                    options[0]); // Opción predeterminada
+
+            // Verifica la respuesta del usuario
+            switch (choice) {
+                case JOptionPane.YES_OPTION:
+
+                    JOptionPane.showMessageDialog(null, "Cambios Descartados");
+                    actes.setSize(1100, 760);
+                principal.Panel_right.removeAll();
+                principal.Panel_right.add(actes, BorderLayout.CENTER);
+                principal.Panel_right.setComponentZOrder(actes, 0);
+                principal.Panel_right.revalidate();
+                principal.Panel_right.repaint();
+                tbl.setSize(1056, 536);
+                actes.south.removeAll();
+                actes.south.add(tbl, BorderLayout.CENTER);
+                actes.south.setComponentZOrder(tbl, 0);
+                actes.south.revalidate();
+                actes.south.repaint();
+                TblAct();
+                actes.btn_responder.setEnabled(true);
+                actes.btn_ver.setEnabled(true);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    System.out.println("El usuario seleccionó 'No'");
+                    break;
+                default:
+                    System.out.println("El usuario cerró el diálogo");
+                    break;
+            }
+        }
     }
+
 }
