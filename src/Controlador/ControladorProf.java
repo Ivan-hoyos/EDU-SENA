@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.ActModel;
 import Modelo.MetodosEstudiante;
 import Modelo.MetodosProf;
 import Modelo.ProfModel;
@@ -7,12 +8,26 @@ import Modelo.SesionProf;
 import Vista.ActividadesProf;
 import Vista.ActualizarProf;
 import Vista.CrearActividad;
+import Vista.EditarAct;
 import Vista.ProfLog;
+import Vista.TablaAct;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorProf implements ActionListener {
 
@@ -20,9 +35,12 @@ public class ControladorProf implements ActionListener {
     ActualizarProf perfil = new ActualizarProf(); // Configuración de Perfil
     ActividadesProf act = new ActividadesProf(); // Form de actividades
     CrearActividad cre = new CrearActividad(); // Form para crear actividades
+    EditarAct eact = new EditarAct(); // Form para editar las actividades
+    TablaAct tablaact = new TablaAct(); //Tabla de actividades
     ProfModel modeP = new ProfModel(); //Modelo profesor
     MetodosProf metodosP = new MetodosProf();
     SesionProf sessionManager = SesionProf.getInstance();
+    ActModel amdl = new ActModel();
 
     public ControladorProf(ProfLog principal) {
         this.principal.Actividades.addActionListener(this);
@@ -38,6 +56,19 @@ public class ControladorProf implements ActionListener {
         this.act.btn_crear.addActionListener(this);
         this.act.btn_editar.addActionListener(this);
         this.act.btn_eliminar.addActionListener(this);
+        this.cre.btnCrear.addActionListener(this);
+        this.cre.btnCancelar.addActionListener(this);
+        this.act.btn_buscar.addActionListener(this);
+        this.eact.btnCancelar.addActionListener(this);
+        this.eact.btnGuardad.addActionListener(this);
+
+        tablaact.Actividades.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionar();
+            }
+        });
+
     }
 
     public void infoP() {//Información de la sesion
@@ -81,34 +112,174 @@ public class ControladorProf implements ActionListener {
         //metodosP.horario();
     }
 
-    public void modificarI() {//Modificar información del estudiante
+    public void obtenerAct(ActModel amdl) {
 
-        modeP.setId_Profesor(Long.parseLong(perfil.Txt_DocumentP.getText()));
-        modeP.setNombres(perfil.Txt_nameP.getText());
-        modeP.setApellidos(perfil.Txt_LastNameP.getText());
-        modeP.setFechaNacimiento(perfil.Txt_Day_Born.getText());
-        String sexo = "";
-        if (perfil.btn_M.isSelected() == true) {
-            sexo = "M";
-            perfil.btn_F.setSelected(false);
-        } else if (perfil.btn_F.isSelected() == true) {
-            sexo = "F";
-            perfil.btn_M.setSelected(false);
+        String sql = "SELECT * From actividades WHERE idCurso = ? AND ProfesorId = ?;";
+        Connection con = metodosP.getConnection();
+        String curso = act.Box_Cursos.getSelectedItem().toString();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, curso);
+            ps.setInt(2, (int) sessionManager.getUsername());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String valor = rs.getString("idActividad");
+                String titulo = rs.getString("Titulo");
+                String descr = rs.getString("Descripcion");
+                String materia = rs.getString("Materia");
+
+                amdl.setMateria(materia);
+                amdl.setDescripcion(descr);
+                amdl.setTitulo(titulo);
+                eact.TxtTitulo.setText(titulo);
+                eact.TextDescrip.setText(descr);
+                eact.BoxMaterias.setSelectedItem(materia);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-        modeP.setSexo(sexo);
-        String profesion = (String) perfil.Materia.getSelectedItem();
-        modeP.setProfesion(profesion);
+    }
 
-        modeP.setDireccion(perfil.Txt_Direction.getText());
-        modeP.setTelefono(Long.parseLong(perfil.Txt_telephone.getText()));
-        modeP.setEmail(perfil.Txt_email.getText());
-        modeP.setContraseña(perfil.Txt_password.getText());
-        int r = metodosP.modificar(modeP);
+    public void TblAct() {
+
+        tablaact.setSize(1056, 521);
+        act.south.removeAll();
+        act.south.add(tablaact, BorderLayout.CENTER);
+        act.south.setComponentZOrder(tablaact, 0);
+        act.south.revalidate();
+        act.south.repaint();
+        cre.TxtTitulo.setText(null);
+        cre.TextDescrip.setText(null);
+        cre.BoxMaterias.setSelectedItem(null);
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) tablaact.Actividades.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            String curso = act.Box_Cursos.getSelectedItem().toString();
+            Connection con = metodosP.getConnection();
+
+            ps = con.prepareStatement("SELECT * From actividades WHERE idCurso = ? AND ProfesorId = ?;");
+            ps.setString(1, curso);
+            ps.setInt(2, (int) sessionManager.getUsername());
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+
+                Object[] fila = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+
+                ModeloTabla.addRow(fila);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
+    public void seleccionar() {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            int fila = tablaact.Actividades.getSelectedRow();
+            int id = Integer.parseInt(tablaact.Actividades.getValueAt(fila, 0).toString());
+
+            Connection con = metodosP.getConnection();
+
+            ps = con.prepareStatement("SELECT Titulo, Descripcion, Materia FROM actividades WHERE IdActividad=? ");
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                eact.TxtTitulo.setText(rs.getString("Titulo"));
+                eact.TextDescrip.setText(rs.getString("Descripcion"));
+                eact.BoxMaterias.setSelectedItem(rs.getString("Materia"));
+            }
+
+        } catch (SQLException y) {
+            JOptionPane.showMessageDialog(null, y);
+        }
+    }
+
+    public void CrearAct(ActModel amdl) {
+        String idCurso = act.Box_Cursos.getSelectedItem().toString();
+        amdl.setIdCurso(idCurso);
+        amdl.setTitulo(cre.TxtTitulo.getText());
+        amdl.setDescripcion(cre.TextDescrip.getText());
+        String materia = cre.BoxMaterias.getSelectedItem().toString();
+        amdl.setMateria(materia);
+
+        LocalDateTime fechaHoraActual = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(fechaHoraActual);
+
+        amdl.setFechaCreacion(timestamp);
+
+        int r = metodosP.Crear(amdl);
         if (r == 1) {
-            ImageIcon icon = new ImageIcon(MetodosEstudiante.class.getResource("/Images/comprobado.png"));
-            JOptionPane.showMessageDialog(principal, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Actividad guardada", "Guardado", JOptionPane.OK_OPTION, icon);
+
         } else {
-            JOptionPane.showMessageDialog(principal, "Error, intente de nuevo");
+            JOptionPane.showMessageDialog(cre, "Error, intente de nuevo");
+        }
+    }
+
+    public void ModAct(ActModel amdl) { //Modificar actividad
+        int fila = tablaact.Actividades.getSelectedRow();
+        int id = Integer.parseInt(tablaact.Actividades.getValueAt(fila, 0).toString());
+        amdl.setIdActividad(id);
+        String idCurso = act.Box_Cursos.getSelectedItem().toString();
+        amdl.setIdCurso(idCurso);
+        amdl.setTitulo(eact.TxtTitulo.getText());
+        amdl.setDescripcion(eact.TextDescrip.getText());
+        String materia = eact.BoxMaterias.getSelectedItem().toString();
+        amdl.setMateria(materia);
+
+        LocalDateTime fechaHoraActual = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(fechaHoraActual);
+
+        amdl.setFechaCreacion(timestamp);
+
+        int r = metodosP.Modificar(amdl);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Actividad Actualizada", "Guardado", JOptionPane.OK_OPTION, icon);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
+        }
+    }
+
+    public void EliminarAct(ActModel amdl) {
+        int fila = tablaact.Actividades.getSelectedRow();
+        int id = Integer.parseInt(tablaact.Actividades.getValueAt(fila, 0).toString());
+        amdl.setIdActividad(id);
+
+        int r = metodosP.eliminar(amdl);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Actividad Eliminada", "Eliminar", JOptionPane.OK_OPTION, icon);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
         }
     }
 
@@ -124,15 +295,234 @@ public class ControladorProf implements ActionListener {
             principal.Panel_right.setComponentZOrder(act, 0);
             principal.Panel_right.revalidate();
             principal.Panel_right.repaint();
+            act.Box_Cursos.setSelectedItem("Seleccione");
+            act.btn_editar.setEnabled(true);
+            act.btn_crear.setEnabled(true);
+            act.btn_eliminar.setEnabled(true);
+            // 
+        }
+
+        if (e.getSource() == act.btn_buscar) {
+
+            String seleccion = act.Box_Cursos.getSelectedItem().toString();
+
+            if (seleccion.equals("Seleccione")) {
+                JOptionPane.showMessageDialog(null, "SELECCIONE UN CURSO", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                TblAct();
+                obtenerAct(amdl);
+                act.btn_editar.setEnabled(true);
+                act.btn_crear.setEnabled(true);
+                act.btn_eliminar.setEnabled(true);
+
+            }
+
         }
 
         if (e.getSource() == act.btn_crear) {
-            cre.setSize(1056, 521);
-            act.south.removeAll();
-            act.south.add(cre, BorderLayout.CENTER);
-            act.south.setComponentZOrder(cre, 0);
-            act.south.revalidate();
-            act.south.repaint();
+            String seleccion = act.Box_Cursos.getSelectedItem().toString();
+
+            if (seleccion.equals("Seleccione")) {
+                JOptionPane.showMessageDialog(null, "SELECCIONE UN CURSO", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                cre.setSize(1056, 521);
+                act.south.removeAll();
+                act.south.add(cre, BorderLayout.CENTER);
+                act.south.setComponentZOrder(cre, 0);
+                act.south.revalidate();
+                act.south.repaint();
+                cre.TxtTitulo.setText(null);
+                cre.TextDescrip.setText(null);
+                cre.BoxMaterias.setSelectedItem(null);
+                act.btn_editar.setEnabled(false);
+                act.btn_crear.setEnabled(false);
+                act.btn_eliminar.setEnabled(false);
+            }
+
+        }
+
+        if (e.getSource() == cre.btnCrear) {
+            String title = cre.TxtTitulo.getText();
+            String Des = cre.TextDescrip.getText();
+            String mat = cre.BoxMaterias.getSelectedItem().toString();
+
+            if (title.equals("") || Des.equals("") || mat.equals(null)) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                act.btn_editar.setEnabled(false);
+                act.btn_crear.setEnabled(false);
+                act.btn_eliminar.setEnabled(false);
+                CrearAct(amdl);
+                obtenerAct(amdl);
+                cre.TxtTitulo.setText(null);
+                cre.TextDescrip.setText(null);
+                cre.BoxMaterias.setSelectedItem(null);
+            }
+
+        }
+
+        if (e.getSource() == cre.btnCancelar) {
+            Object[] options = {"Sí", "No"};
+            // Cargar un ícono personalizado desde un archivo de imagen
+            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/boton-eliminar.png"));
+
+            int choice = JOptionPane.showOptionDialog(
+                    null, // Componente padre, null para diálogo independiente
+                    "¿Descartar Cambios??", // Pregunta
+                    "Cancelar Registro", // Título del diálogo
+                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                    icon, // Icono personalizado, null para el icono predeterminado
+                    options, // Opciones de respuesta
+                    options[0]); // Opción predeterminada
+
+            // Verifica la respuesta del usuario
+            switch (choice) {
+                case JOptionPane.YES_OPTION:
+
+                    JOptionPane.showMessageDialog(null, "Cambios Descartados");
+                    tablaact.setSize(1056, 521);
+
+                    act.south.removeAll();
+                    act.south.add(tablaact, BorderLayout.CENTER);
+                    act.south.setComponentZOrder(tablaact, 0);
+                    act.south.revalidate();
+                    act.south.repaint();
+                    act.btn_editar.setEnabled(true);
+                    act.btn_crear.setEnabled(true);
+                    act.btn_eliminar.setEnabled(true);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    System.out.println("El usuario seleccionó 'No'");
+                    break;
+                default:
+                    System.out.println("El usuario cerró el diálogo");
+                    break;
+            }
+        }
+
+        if (e.getSource() == act.btn_editar) {
+            if (tablaact.Actividades.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una Actividad", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                eact.setSize(1056, 521);
+                act.south.removeAll();
+                act.south.add(eact, BorderLayout.CENTER);
+                act.south.setComponentZOrder(eact, 0);
+                act.south.revalidate();
+                act.south.repaint();
+                seleccionar();
+                act.btn_editar.setEnabled(false);
+                act.btn_crear.setEnabled(false);
+                act.btn_eliminar.setEnabled(false);
+            }
+
+        }
+
+        if (e.getSource() == eact.btnCancelar) {
+            Object[] options = {"Sí", "No"};
+            // Cargar un ícono personalizado desde un archivo de imagen
+            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/boton-eliminar.png"));
+
+            int choice = JOptionPane.showOptionDialog(
+                    null, // Componente padre, null para diálogo independiente
+                    "¿Descartar Cambios??", // Pregunta
+                    "Cancelar Registro", // Título del diálogo
+                    JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                    JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                    icon, // Icono personalizado, null para el icono predeterminado
+                    options, // Opciones de respuesta
+                    options[0]); // Opción predeterminada
+
+            // Verifica la respuesta del usuario
+            switch (choice) {
+                case JOptionPane.YES_OPTION:
+
+                    JOptionPane.showMessageDialog(null, "Cambios Descartados");
+                    tablaact.setSize(1056, 521);
+
+                    act.south.removeAll();
+                    act.south.add(tablaact, BorderLayout.CENTER);
+                    act.south.setComponentZOrder(tablaact, 0);
+                    act.south.revalidate();
+                    act.south.repaint();
+                    act.btn_editar.setEnabled(true);
+                    act.btn_crear.setEnabled(true);
+                    act.btn_eliminar.setEnabled(true);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    System.out.println("El usuario seleccionó 'No'");
+                    break;
+                default:
+                    System.out.println("El usuario cerró el diálogo");
+                    break;
+            }
+        }
+
+        if (e.getSource() == eact.btnGuardad) {
+            String title = eact.TxtTitulo.getText();
+            String Des = eact.TextDescrip.getText();
+            String mat = eact.BoxMaterias.getSelectedItem().toString();
+
+            if (title.equals("") || Des.equals("") || mat.equals(null)) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                ModAct(amdl);
+
+                act.south.removeAll();
+                act.south.add(tablaact, BorderLayout.CENTER);
+                act.south.setComponentZOrder(tablaact, 0);
+                act.south.revalidate();
+                act.south.repaint();
+                TblAct();
+                obtenerAct(amdl);
+                act.btn_editar.setEnabled(true);
+                act.btn_crear.setEnabled(true);
+                act.btn_eliminar.setEnabled(true);
+            }
+        }
+
+        if (e.getSource() == act.btn_eliminar) {
+            if (tablaact.Actividades.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una Actividad", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Object[] options = {"Sí", "No"};
+                // Cargar un ícono personalizado desde un archivo de imagen
+                //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+                ImageIcon icon = new ImageIcon(MetodosProf.class
+                        .getResource("/Images/boton-eliminar.png"));
+
+                int choice = JOptionPane.showOptionDialog(
+                        null, // Componente padre, null para diálogo independiente
+                        "¿Eliminar Actividad?", // Pregunta
+                        "Eliminar", // Título del diálogo
+                        JOptionPane.YES_NO_OPTION, // Tipo de opciones
+                        JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
+                        icon, // Icono personalizado, null para el icono predeterminado
+                        options, // Opciones de respuesta
+                        options[0]); // Opción predeterminada
+
+                // Verifica la respuesta del usuario
+                switch (choice) {
+                    case JOptionPane.YES_OPTION:
+                        EliminarAct(amdl);
+                        TblAct();
+                        obtenerAct(amdl);
+                        break;
+                    case JOptionPane.NO_OPTION:
+                        System.out.println("El usuario seleccionó 'No'");
+                        break;
+                    default:
+                        System.out.println("El usuario cerró el diálogo");
+                        break;
+                }
+
+            }
+
         }
 
         if (e.getSource() == perfil.btn_F) {
@@ -162,7 +552,7 @@ public class ControladorProf implements ActionListener {
             String pass = JOptionPane.showInputDialog(null, "Ingresar Contraseña", "Confirmar Contraseña", JOptionPane.OK_OPTION);
 
             if (pass.equals(sessionManager.getPassword())) {
-                modificarI();
+                ModAct(amdl);
                 perfil.btn_F.setEnabled(false);
                 perfil.btn_M.setEnabled(false);
                 perfil.Txt_DocumentP.setEnabled(false);

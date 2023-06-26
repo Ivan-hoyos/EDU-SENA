@@ -9,12 +9,12 @@ package Vista;
  *
  * @author CPE
  */
-public class CrearActividad extends javax.swing.JPanel {
+public class VerAct extends javax.swing.JPanel {
 
     /**
      * Creates new form CrearActividad
      */
-    public CrearActividad() {
+    public VerAct() {
         initComponents();
     }
 
@@ -39,8 +39,8 @@ public class CrearActividad extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnCrear = new javax.swing.JToggleButton();
-        btnCancelar = new javax.swing.JToggleButton();
+        btnResponder = new javax.swing.JToggleButton();
+        btnVolver = new javax.swing.JToggleButton();
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
@@ -50,7 +50,7 @@ public class CrearActividad extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1056, 521));
 
         south1.setBackground(new java.awt.Color(255, 255, 255));
-        south1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nueva Actividad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        south1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ver Actividad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
         south1.setForeground(new java.awt.Color(0, 173, 0));
         south1.setPreferredSize(new java.awt.Dimension(1044, 521));
 
@@ -95,17 +95,17 @@ public class CrearActividad extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("*");
 
-        btnCrear.setBackground(new java.awt.Color(0, 173, 0));
-        btnCrear.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCrear.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrear.setText("Crear Actividad");
-        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnResponder.setBackground(new java.awt.Color(0, 173, 0));
+        btnResponder.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnResponder.setForeground(new java.awt.Color(255, 255, 255));
+        btnResponder.setText("Responder");
+        btnResponder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCancelar.setBackground(new java.awt.Color(0, 173, 0));
-        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Descartar Cambios");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.setBackground(new java.awt.Color(0, 173, 0));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout south1Layout = new javax.swing.GroupLayout(south1);
         south1.setLayout(south1Layout);
@@ -134,9 +134,9 @@ public class CrearActividad extends javax.swing.JPanel {
                         .addGap(17, 17, 17))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(south1Layout.createSequentialGroup()
-                        .addComponent(btnCrear)
+                        .addComponent(btnResponder, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -163,8 +163,8 @@ public class CrearActividad extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnResponder, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -195,8 +195,8 @@ public class CrearActividad extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> BoxMaterias;
     public javax.swing.JTextArea TextDescrip;
     public javax.swing.JTextField TxtTitulo;
-    public javax.swing.JToggleButton btnCancelar;
-    public javax.swing.JToggleButton btnCrear;
+    public javax.swing.JToggleButton btnResponder;
+    public javax.swing.JToggleButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

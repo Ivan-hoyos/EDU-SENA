@@ -5,9 +5,14 @@
  */
 package Modelo;
 
+import Controlador.ControladorProf;
+import Vista.ActividadesProf;
+import Vista.CrearActividad;
 import Vista.Login;
+import Vista.ProfLog;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -17,6 +22,11 @@ import java.sql.SQLException;
 public class MetodosProf extends Conexion {
 
     Login log = new Login();
+    ProfLog principal = new ProfLog();
+    ActModel amdl = new ActModel();
+    CrearActividad cre = new CrearActividad();
+    ActividadesProf act = new ActividadesProf();
+    SesionProf sessionManager = SesionProf.getInstance();
 
     //Método para actualizar registros
     public int modificar(ProfModel mdl) {
@@ -39,6 +49,67 @@ public class MetodosProf extends Conexion {
 
         } catch (SQLException e) {
             System.out.println("No se pudo modificar");
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
+
+    public int Crear(ActModel amdl) { //Metodo para agregar actividades al combo box
+        int r = 1;
+        String sql = "INSERT INTO actividades  (Titulo, Descripcion, FechaCreacion,ProfesorId, IdCurso,  Materia) VALUES (?,?,?,?,?,?) ";
+        Connection con = getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            String curso = act.Box_Cursos.getSelectedItem().toString();
+            System.out.println(curso);
+            ps.setString(1, amdl.getTitulo());
+            ps.setString(2, amdl.getDescripcion());
+            ps.setTimestamp(3, amdl.getFechaCreacion());
+            ps.setInt(4, (int) sessionManager.getUsername());
+            ps.setString(5, amdl.getIdCurso());
+            ps.setString(6, amdl.getMateria());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
+
+    public int Modificar(ActModel amdl) { //Metodo para agregar actividades al combo box
+        int r = 1;
+        String sql = "UPDATE  actividades SET  Titulo=?, Descripcion=?, FechaCreacion=?, Materia=? WHERE IdActividad=?;";
+        Connection con = getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            String curso = act.Box_Cursos.getSelectedItem().toString();
+            System.out.println(curso);
+            ps.setString(1, amdl.getTitulo());
+            ps.setString(2, amdl.getDescripcion());
+            ps.setTimestamp(3, amdl.getFechaCreacion());
+            ps.setString(4, amdl.getMateria());
+            ps.setInt(5, amdl.getIdActividad());
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
+
+    public int eliminar(ActModel amdl) {
+        int r = 1;
+        String sql = "DELETE FROM actividades WHERE IdActividad=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, amdl.getIdActividad());
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
             System.out.println(e);
             return 0;
         }

@@ -75,7 +75,7 @@ public class Controlador_Admin implements ActionListener {
         this.R.btn_cancelar.addActionListener(this);
         this.es.btn_F.addActionListener(this);
         this.es.btn_M.addActionListener(this);
-
+        
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
             public void mouseClicked(MouseEvent e) {
