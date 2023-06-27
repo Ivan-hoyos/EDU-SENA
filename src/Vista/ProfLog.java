@@ -33,15 +33,12 @@ public class ProfLog extends javax.swing.JFrame {
         Icon_sena = new javax.swing.JLabel();
         perfil = new javax.swing.JButton();
         Actividades = new javax.swing.JButton();
-        Notas = new javax.swing.JButton();
-        Horarios = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         Panel_right = new javax.swing.JPanel();
         Background_image = new javax.swing.JLabel();
         Lbl_Edusena = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setPreferredSize(new java.awt.Dimension(1366, 768));
@@ -91,7 +88,7 @@ public class ProfLog extends javax.swing.JFrame {
                 perfilActionPerformed(evt);
             }
         });
-        Left_Panel.add(perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 250, 70));
+        Left_Panel.add(perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 250, 70));
 
         Actividades.setBackground(new java.awt.Color(255, 255, 255));
         Actividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -103,31 +100,7 @@ public class ProfLog extends javax.swing.JFrame {
         Actividades.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Actividades.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         Actividades.setIconTextGap(10);
-        Left_Panel.add(Actividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 250, 70));
-
-        Notas.setBackground(new java.awt.Color(255, 255, 255));
-        Notas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Notas.setForeground(new java.awt.Color(0, 173, 0));
-        Notas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/notas.png"))); // NOI18N
-        Notas.setText("Notas");
-        Notas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
-        Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Notas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Notas.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Notas.setIconTextGap(50);
-        Left_Panel.add(Notas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 250, 70));
-
-        Horarios.setBackground(new java.awt.Color(255, 255, 255));
-        Horarios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Horarios.setForeground(new java.awt.Color(0, 173, 0));
-        Horarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/horarios.png"))); // NOI18N
-        Horarios.setText("Horarios");
-        Horarios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
-        Horarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Horarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Horarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Horarios.setIconTextGap(34);
-        Left_Panel.add(Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 70));
+        Left_Panel.add(Actividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 250, 70));
 
         Exit.setBackground(new java.awt.Color(255, 255, 255));
         Exit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -139,7 +112,7 @@ public class ProfLog extends javax.swing.JFrame {
         Exit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Exit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         Exit.setIconTextGap(65);
-        Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 250, 70));
+        Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 250, 70));
 
         Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 768));
 
@@ -261,11 +234,9 @@ public class ProfLog extends javax.swing.JFrame {
     private javax.swing.JPanel Background;
     private javax.swing.JLabel Background_image;
     public javax.swing.JButton Exit;
-    public javax.swing.JButton Horarios;
     private javax.swing.JLabel Icon_sena;
     private javax.swing.JLabel Lbl_Edusena;
     public javax.swing.JPanel Left_Panel;
-    public javax.swing.JButton Notas;
     public javax.swing.JPanel Panel_right;
     public javax.swing.JButton perfil;
     // End of variables declaration//GEN-END:variables

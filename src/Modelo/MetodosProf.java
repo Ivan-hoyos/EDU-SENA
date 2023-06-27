@@ -57,7 +57,7 @@ public class MetodosProf extends Conexion {
 
     public int Crear(ActModel amdl) { //Metodo para agregar actividades al combo box
         int r = 1;
-        String sql = "INSERT INTO actividades  (Titulo, Descripcion, FechaCreacion,ProfesorId, IdCurso,  Materia) VALUES (?,?,?,?,?,?) ";
+        String sql = "INSERT INTO actividades  (Titulo, Descripcion, FechaCreacion,ProfesorId, IdCurso,  Materia, IdAsignatura) VALUES (?,?,?,?,?,?,?) ";
         Connection con = getConnection();
 
         try {
@@ -70,6 +70,7 @@ public class MetodosProf extends Conexion {
             ps.setInt(4, (int) sessionManager.getUsername());
             ps.setString(5, amdl.getIdCurso());
             ps.setString(6, amdl.getMateria());
+            ps.setInt(7, amdl.getIdMateria());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -80,7 +81,7 @@ public class MetodosProf extends Conexion {
 
     public int Modificar(ActModel amdl) { //Metodo para agregar actividades al combo box
         int r = 1;
-        String sql = "UPDATE  actividades SET  Titulo=?, Descripcion=?, FechaCreacion=?, Materia=? WHERE IdActividad=?;";
+        String sql = "UPDATE  actividades SET  Titulo=?, Descripcion=?, FechaCreacion=?, Materia=?, IdAsignatura=? WHERE IdActividad=?;";
         Connection con = getConnection();
 
         try {
@@ -91,7 +92,8 @@ public class MetodosProf extends Conexion {
             ps.setString(2, amdl.getDescripcion());
             ps.setTimestamp(3, amdl.getFechaCreacion());
             ps.setString(4, amdl.getMateria());
-            ps.setInt(5, amdl.getIdActividad());
+            ps.setInt(5, amdl.getIdMateria());
+            ps.setInt(6, amdl.getIdActividad());
 
             ps.executeUpdate();
         } catch (SQLException e) {

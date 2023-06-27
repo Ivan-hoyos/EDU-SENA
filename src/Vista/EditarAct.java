@@ -80,7 +80,7 @@ public class EditarAct extends javax.swing.JPanel {
 
         BoxMaterias.setBackground(new java.awt.Color(255, 255, 255));
         BoxMaterias.setForeground(new java.awt.Color(0, 0, 0));
-        BoxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingles", "Español", "Arte" }));
+        BoxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingles", "Historia", "Español", "Arte" }));
         BoxMaterias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

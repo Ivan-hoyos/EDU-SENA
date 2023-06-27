@@ -108,8 +108,8 @@ public class Controlador_Admin implements ActionListener {
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
         mode.setContraseña(es.Txt_password.getText());
-        String id_Curso = mode.getGrado() + mode.getSeccion();
-        mode.setId_Curso(id_Curso);
+        //String id_Curso = "No";
+        //mode.setId_Curso(id_Curso);
         int r = mte.create_Student(mode);
         if (r == 1) {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/comprobado.png"));
@@ -314,7 +314,9 @@ public class Controlador_Admin implements ActionListener {
         try {
             Connection con = mte.getConnection();
 
-            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, id_Curso FROM estudiantes");
+            ps = con.prepareStatement("Select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento FROM estudiantes WHERE id_Curso =?");
+            String curso = "No";
+            ps.setString(1, curso);
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
@@ -548,7 +550,7 @@ public class Controlador_Admin implements ActionListener {
 
         mode.setid_Estudiante(id);
         String idCurso = cu.Box_Cursos.getSelectedItem().toString();
-        mode.setId_Curso(null);
+        mode.setId_Curso("No");
 
         int r = mte.matricular(mode);
         if (r == 1) {

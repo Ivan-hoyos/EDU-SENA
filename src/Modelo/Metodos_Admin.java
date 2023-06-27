@@ -36,6 +36,7 @@ public class Metodos_Admin extends Conexion {
             ps.setString(7, mdl.getEmail());
             ps.setString(8, mdl.getContraseña());
             ps.setString(9, mdl.getSexo());
+           // ps.setString(10, mdl.getId_Curso());
             ps.executeUpdate();
             if (r == 1) {
 

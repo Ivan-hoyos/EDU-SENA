@@ -11,12 +11,12 @@ import javax.swing.table.TableColumn;
  *
  * @author CPE
  */
-public class TablaAct extends javax.swing.JPanel {
+public class TablaRes extends javax.swing.JPanel {
 
     /**
      * Creates new form TablaAct
      */
-    public TablaAct() {
+    public TablaRes() {
         initComponents();
         
     }
@@ -29,7 +29,7 @@ public class TablaAct extends javax.swing.JPanel {
         Actividades = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actividades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Respuestas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
 
         Actividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -11,8 +11,9 @@ import Vista.CrearActividad;
 import Vista.EditarAct;
 import Vista.ProfLog;
 import Vista.TablaAct;
+import Vista.Respuestasprof;
+import Vista.TablaRes;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -24,7 +25,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,16 +36,18 @@ public class ControladorProf implements ActionListener {
     ActividadesProf act = new ActividadesProf(); // Form de actividades
     CrearActividad cre = new CrearActividad(); // Form para crear actividades
     EditarAct eact = new EditarAct(); // Form para editar las actividades
+    Respuestasprof res = new Respuestasprof(); // Form de respuestas
     TablaAct tablaact = new TablaAct(); //Tabla de actividades
     ProfModel modeP = new ProfModel(); //Modelo profesor
+    TablaRes resT = new TablaRes(); //Tabla respuestas
     MetodosProf metodosP = new MetodosProf();
     SesionProf sessionManager = SesionProf.getInstance();
     ActModel amdl = new ActModel();
 
     public ControladorProf(ProfLog principal) {
         this.principal.Actividades.addActionListener(this);
-        this.principal.Notas.addActionListener(this);
-        this.principal.Horarios.addActionListener(this);
+        //this.principal.Notas.addActionListener(this);
+        //this.principal.Horarios.addActionListener(this);
         this.principal.perfil.addActionListener(this);
         this.principal.Exit.addActionListener(this);
         this.perfil.btn_modificar.addActionListener(this);
@@ -61,6 +63,11 @@ public class ControladorProf implements ActionListener {
         this.act.btn_buscar.addActionListener(this);
         this.eact.btnCancelar.addActionListener(this);
         this.eact.btnGuardad.addActionListener(this);
+        this.act.Respuestas.addActionListener(this);
+        this.res.atras.addActionListener(this);
+        this.res.btn_ver.addActionListener(this);
+        this.res.btn_calif.addActionListener(this);
+        this.res.comentario.addActionListener(this);
 
         tablaact.Actividades.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -190,6 +197,63 @@ public class ControladorProf implements ActionListener {
         }
     }
 
+    public void TblRes() {
+
+        resT.setSize(1056, 521);
+        res.south.removeAll();
+        res.south.add(resT, BorderLayout.CENTER);
+        res.south.setComponentZOrder(resT, 0);
+        res.south.revalidate();
+        res.south.repaint();
+        res.TtlAct.setText(null);
+
+        DefaultTableModel ModeloTabla = (DefaultTableModel) resT.Actividades.getModel();
+        ModeloTabla.setRowCount(0);
+
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+
+        try {
+            int fila = tablaact.Actividades.getSelectedRow();
+            int id = Integer.parseInt(tablaact.Actividades.getValueAt(fila, 0).toString());
+            
+           
+            String curso = (tablaact.Actividades.getValueAt(fila, 5).toString());
+            
+            amdl.setIdActividad(id);
+            amdl.setIdCurso(curso);
+            
+            Connection con = metodosP.getConnection();
+            
+            System.out.println(id);
+            System.out.println(curso);
+            
+            ps = con.prepareStatement("SELECT * From respuestas WHERE IdActividad = ? AND IdCurso = ?;");
+            ps.setInt(1, amdl.getIdActividad());
+            ps.setString(2, amdl.getIdCurso());
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+
+            while (rs.next()) {
+                res.TtlAct.setText(rs.getString("Titulo"));
+                
+                Object[] filas = new Object[columnas];
+
+                for (int i = 0; i < columnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+
+                ModeloTabla.addRow(filas);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+
     public void seleccionar() {
         PreparedStatement ps;
         ResultSet rs;
@@ -224,6 +288,9 @@ public class ControladorProf implements ActionListener {
         String materia = cre.BoxMaterias.getSelectedItem().toString();
         amdl.setMateria(materia);
 
+        int IdMateria = cre.BoxMaterias.getSelectedIndex() + 1;
+        amdl.setIdMateria(IdMateria);
+
         LocalDateTime fechaHoraActual = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(fechaHoraActual);
 
@@ -250,6 +317,9 @@ public class ControladorProf implements ActionListener {
         amdl.setDescripcion(eact.TextDescrip.getText());
         String materia = eact.BoxMaterias.getSelectedItem().toString();
         amdl.setMateria(materia);
+
+        int IdMateria = eact.BoxMaterias.getSelectedIndex() + 1;
+        amdl.setIdMateria(IdMateria);
 
         LocalDateTime fechaHoraActual = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(fechaHoraActual);
@@ -522,7 +592,37 @@ public class ControladorProf implements ActionListener {
                 }
 
             }
+        }
 
+        if (e.getSource() == act.Respuestas) {
+            res.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            principal.Panel_right.add(res, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(res, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+            TblRes();
+            /*resT.setSize(1056, 521);
+            res.south.removeAll();
+            res.south.add(resT, BorderLayout.CENTER);
+            res.south.setComponentZOrder(resT, 0);
+            res.south.revalidate();
+            res.south.repaint();*/
+
+        }
+
+        if (e.getSource() == res.atras) {
+            act.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            act.south.removeAll();
+            principal.Panel_right.add(act, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(act, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+            act.Box_Cursos.setSelectedItem("Seleccione");
+            act.btn_editar.setEnabled(true);
+            act.btn_crear.setEnabled(true);
+            act.btn_eliminar.setEnabled(true);
         }
 
         if (e.getSource() == perfil.btn_F) {

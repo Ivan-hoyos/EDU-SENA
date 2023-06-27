@@ -253,6 +253,8 @@ public class ControladorEstudiante implements ActionListener {
         if (r == 1) {
             ImageIcon icon = new ImageIcon(ActModel.class.getResource("/Images/comprobado.png"));
             JOptionPane.showMessageDialog(null, "Respuesta guardada", "Guardado", JOptionPane.OK_OPTION, icon);
+            edit.TxtTitulo.setText(null);
+            edit.TextDesarr.setText(null);
 
         } else {
             JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
@@ -453,7 +455,7 @@ public class ControladorEstudiante implements ActionListener {
             }
 
         }
-        
+
         if (e.getSource() == edit.btnCancelar) {
             Object[] options = {"Sí", "No"};
             // Cargar un ícono personalizado desde un archivo de imagen
@@ -477,20 +479,22 @@ public class ControladorEstudiante implements ActionListener {
 
                     JOptionPane.showMessageDialog(null, "Cambios Descartados");
                     actes.setSize(1100, 760);
-                principal.Panel_right.removeAll();
-                principal.Panel_right.add(actes, BorderLayout.CENTER);
-                principal.Panel_right.setComponentZOrder(actes, 0);
-                principal.Panel_right.revalidate();
-                principal.Panel_right.repaint();
-                tbl.setSize(1056, 536);
-                actes.south.removeAll();
-                actes.south.add(tbl, BorderLayout.CENTER);
-                actes.south.setComponentZOrder(tbl, 0);
-                actes.south.revalidate();
-                actes.south.repaint();
-                TblAct();
-                actes.btn_responder.setEnabled(true);
-                actes.btn_ver.setEnabled(true);
+                    principal.Panel_right.removeAll();
+                    principal.Panel_right.add(actes, BorderLayout.CENTER);
+                    principal.Panel_right.setComponentZOrder(actes, 0);
+                    principal.Panel_right.revalidate();
+                    principal.Panel_right.repaint();
+                    edit.TextDesarr.setText(null);
+                    
+                    tbl.setSize(1056, 536);
+                    actes.south.removeAll();
+                    actes.south.add(tbl, BorderLayout.CENTER);
+                    actes.south.setComponentZOrder(tbl, 0);
+                    actes.south.revalidate();
+                    actes.south.repaint();
+                    TblAct();
+                    actes.btn_responder.setEnabled(true);
+                    actes.btn_ver.setEnabled(true);
                     break;
                 case JOptionPane.NO_OPTION:
                     System.out.println("El usuario seleccionó 'No'");
@@ -499,6 +503,24 @@ public class ControladorEstudiante implements ActionListener {
                     System.out.println("El usuario cerró el diálogo");
                     break;
             }
+        }
+
+        if (e.getSource() == ver.btnVolver) {
+            actes.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            principal.Panel_right.add(actes, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(actes, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+            tbl.setSize(1056, 536);
+            actes.south.removeAll();
+            actes.south.add(tbl, BorderLayout.CENTER);
+            actes.south.setComponentZOrder(tbl, 0);
+            actes.south.revalidate();
+            actes.south.repaint();
+            TblAct();
+            actes.btn_responder.setEnabled(true);
+            actes.btn_ver.setEnabled(true);
         }
     }
 

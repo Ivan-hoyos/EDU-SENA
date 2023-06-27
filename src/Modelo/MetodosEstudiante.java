@@ -128,7 +128,7 @@ public class MetodosEstudiante extends Conexion {
 
     public int responder(ActModel mdl) {
         int r = 1;
-        String sql = "INSERT INTO respuestas(IdActividad, IdEstudiante, NombreEstudiante, IdCurso, Respuesta, FechaEnvio) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO respuestas(IdActividad, IdEstudiante, NombreEstudiante, IdCurso, Respuesta, FechaEnvio, Titulo) VALUES (?,?,?,?,?,?,?)";
         Connection con = getConnection();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -138,6 +138,7 @@ public class MetodosEstudiante extends Conexion {
             ps.setString(4, sessionManager.getIdCurso());
             ps.setString(5, mdl.getRespuesta());
             ps.setTimestamp(6, mdl.getFechaCreacion());
+            ps.setString(7, mdl.getTitulo());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

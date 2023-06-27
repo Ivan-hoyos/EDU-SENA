@@ -16,12 +16,14 @@ public class ActModel {
     private int ProfesorId;
     private String IdCurso;
     private String Materia;
+    private int idMateria;
     private String Respuesta;
 
     public ActModel() {
     }
 
     public ActModel(int IdActividad, String Titulo, String Descripcion, Timestamp FechaCreacion, int ProfesorId, String IdCurso, String Materia,
+            int IdMateria,
             String Respuesta) {
         this.IdActividad = IdActividad;
         this.Titulo = Titulo;
@@ -30,6 +32,7 @@ public class ActModel {
         this.ProfesorId = ProfesorId;
         this.IdCurso = IdCurso;
         this.Materia = Materia;
+        this.idMateria = idMateria;
         this.Respuesta = Respuesta;
     }
 
@@ -95,6 +98,14 @@ public class ActModel {
 
     public void setRespuesta(String Respuesta) {
         this.Respuesta = Respuesta;
+    }
+
+    public int getIdMateria() {
+        return idMateria;
+    }
+
+    public void setIdMateria(int idMateria) {
+        this.idMateria = idMateria;
     }
 
 }

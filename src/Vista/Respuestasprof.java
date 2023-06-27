@@ -21,11 +21,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Aprendiz
  */
-public class ActividadesProf extends javax.swing.JPanel {
+public class Respuestasprof extends javax.swing.JPanel {
 
 
 
-    public ActividadesProf() {
+    public Respuestasprof() {
         initComponents();
       
     }
@@ -44,15 +44,14 @@ public class ActividadesProf extends javax.swing.JPanel {
         Form = new javax.swing.JPanel();
         Lbl_Cursos = new javax.swing.JLabel();
         North = new javax.swing.JPanel();
-        lbl_SelecionCurso = new javax.swing.JLabel();
-        Box_Cursos = new javax.swing.JComboBox<>();
-        btn_buscar = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
+        TtlAct = new javax.swing.JLabel();
         south = new FondoPanel();
         North_Action = new javax.swing.JPanel();
-        btn_crear = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
-        Respuestas = new javax.swing.JToggleButton();
+        btn_ver = new javax.swing.JButton();
+        btn_calif = new javax.swing.JButton();
+        comentario = new javax.swing.JToggleButton();
+        atras = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,26 +60,23 @@ public class ActividadesProf extends javax.swing.JPanel {
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
         Form.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Form.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         Lbl_Cursos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Lbl_Cursos.setForeground(new java.awt.Color(0, 173, 0));
         Lbl_Cursos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lbl_Cursos.setText("Actividades");
+        Lbl_Cursos.setText("Respuestas");
 
         North.setBackground(new java.awt.Color(255, 255, 255));
-        North.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccionar Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        North.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actividad Seleccionada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 173, 0))); // NOI18N
 
-        lbl_SelecionCurso.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_SelecionCurso.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lbl_SelecionCurso.setForeground(new java.awt.Color(0, 173, 0));
-        lbl_SelecionCurso.setText("Curso");
+        Titulo.setBackground(new java.awt.Color(255, 255, 255));
+        Titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(0, 173, 0));
+        Titulo.setText("Titulo");
 
-        Box_Cursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "6A", "6B", "6C", "7A", "7B", "7C", "8A", "8B", "8C", "9A", "9B", "9C", "10A", "10B", "10C", "11A", "11B", "11C" }));
-
-        btn_buscar.setBackground(new java.awt.Color(0, 173, 0));
-        btn_buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_buscar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_buscar.setText("Seleccionar");
+        TtlAct.setText("jLabel1");
+        TtlAct.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         javax.swing.GroupLayout NorthLayout = new javax.swing.GroupLayout(North);
         North.setLayout(NorthLayout);
@@ -88,32 +84,29 @@ public class ActividadesProf extends javax.swing.JPanel {
             NorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NorthLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_SelecionCurso)
+                .addComponent(Titulo)
                 .addGap(18, 18, 18)
-                .addComponent(Box_Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addComponent(TtlAct, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         NorthLayout.setVerticalGroup(
             NorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NorthLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(NorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_SelecionCurso)
-                    .addComponent(Box_Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Titulo)
+                    .addComponent(TtlAct, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        south.setBackground(new java.awt.Color(204, 204, 204));
+        south.setBackground(new java.awt.Color(255, 255, 255));
         south.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         javax.swing.GroupLayout southLayout = new javax.swing.GroupLayout(south);
         south.setLayout(southLayout);
         southLayout.setHorizontalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         southLayout.setVerticalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,56 +114,49 @@ public class ActividadesProf extends javax.swing.JPanel {
         );
 
         North_Action.setBackground(new java.awt.Color(255, 255, 255));
-        North_Action.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actividades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        North_Action.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 173, 0))); // NOI18N
 
-        btn_crear.setBackground(new java.awt.Color(0, 173, 0));
-        btn_crear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_crear.setForeground(new java.awt.Color(255, 255, 255));
-        btn_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crear.png"))); // NOI18N
-        btn_crear.setText("Crear");
+        btn_ver.setBackground(new java.awt.Color(0, 173, 0));
+        btn_ver.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_ver.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ver.png"))); // NOI18N
+        btn_ver.setText("Inspeccionar");
 
-        btn_editar.setBackground(new java.awt.Color(0, 173, 0));
-        btn_editar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar1.png"))); // NOI18N
-        btn_editar.setText("Editar");
+        btn_calif.setBackground(new java.awt.Color(0, 173, 0));
+        btn_calif.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_calif.setForeground(new java.awt.Color(255, 255, 255));
+        btn_calif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar1.png"))); // NOI18N
+        btn_calif.setText("Calificar");
 
-        btn_eliminar.setBackground(new java.awt.Color(0, 173, 0));
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/borrar.png"))); // NOI18N
-        btn_eliminar.setText("Eliminar");
-
-        Respuestas.setBackground(new java.awt.Color(0, 173, 0));
-        Respuestas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/charla.png"))); // NOI18N
-        Respuestas.setText("Respuestas");
+        comentario.setBackground(new java.awt.Color(0, 173, 0));
+        comentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/charla.png"))); // NOI18N
+        comentario.setText("Comentario");
 
         javax.swing.GroupLayout North_ActionLayout = new javax.swing.GroupLayout(North_Action);
         North_Action.setLayout(North_ActionLayout);
         North_ActionLayout.setHorizontalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(North_ActionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_crear)
+                .addGap(32, 32, 32)
+                .addComponent(btn_ver)
+                .addGap(18, 18, 18)
+                .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btn_editar)
-                .addGap(29, 29, 29)
-                .addComponent(btn_eliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Respuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(comentario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         North_ActionLayout.setVerticalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, North_ActionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addGroup(North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_crear)
-                    .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Respuestas))
+                    .addComponent(btn_ver)
+                    .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comentario))
                 .addContainerGap())
         );
+
+        atras.setText("Atras");
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
@@ -184,7 +170,9 @@ public class ActividadesProf extends javax.swing.JPanel {
                             .addComponent(south, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(FormLayout.createSequentialGroup()
                                 .addComponent(Lbl_Cursos)
-                                .addGap(0, 919, Short.MAX_VALUE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(atras)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(FormLayout.createSequentialGroup()
                         .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -194,12 +182,14 @@ public class ActividadesProf extends javax.swing.JPanel {
         FormLayout.setVerticalGroup(
             FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FormLayout.createSequentialGroup()
-                .addComponent(Lbl_Cursos)
+                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Lbl_Cursos)
+                    .addComponent(atras))
                 .addGap(18, 18, 18)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(North_Action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -226,18 +216,17 @@ public class ActividadesProf extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> Box_Cursos;
     private javax.swing.JPanel Container;
     private javax.swing.JPanel Form;
     private javax.swing.JLabel Lbl_Cursos;
     private javax.swing.JPanel North;
     private javax.swing.JPanel North_Action;
-    public javax.swing.JToggleButton Respuestas;
-    public javax.swing.JButton btn_buscar;
-    public javax.swing.JButton btn_crear;
-    public javax.swing.JButton btn_editar;
-    public javax.swing.JButton btn_eliminar;
-    private javax.swing.JLabel lbl_SelecionCurso;
+    private javax.swing.JLabel Titulo;
+    public javax.swing.JLabel TtlAct;
+    public javax.swing.JButton atras;
+    public javax.swing.JButton btn_calif;
+    public javax.swing.JButton btn_ver;
+    public javax.swing.JToggleButton comentario;
     public javax.swing.JPanel south;
     // End of variables declaration//GEN-END:variables
     
