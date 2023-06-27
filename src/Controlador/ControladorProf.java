@@ -218,18 +218,17 @@ public class ControladorProf implements ActionListener {
         try {
             int fila = tablaact.Actividades.getSelectedRow();
             int id = Integer.parseInt(tablaact.Actividades.getValueAt(fila, 0).toString());
-            
-           
+
             String curso = (tablaact.Actividades.getValueAt(fila, 5).toString());
-            
+
             amdl.setIdActividad(id);
             amdl.setIdCurso(curso);
-            
+
             Connection con = metodosP.getConnection();
-            
+
             System.out.println(id);
             System.out.println(curso);
-            
+
             ps = con.prepareStatement("SELECT * From respuestas WHERE IdActividad = ? AND IdCurso = ?;");
             ps.setInt(1, amdl.getIdActividad());
             ps.setString(2, amdl.getIdCurso());
@@ -239,7 +238,7 @@ public class ControladorProf implements ActionListener {
 
             while (rs.next()) {
                 res.TtlAct.setText(rs.getString("Titulo"));
-                
+
                 Object[] filas = new Object[columnas];
 
                 for (int i = 0; i < columnas; i++) {
@@ -350,6 +349,36 @@ public class ControladorProf implements ActionListener {
 
         } else {
             JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
+        }
+    }
+
+    public void modificarP() {//Modificar información del profesor
+
+        modeP.setId_Profesor(Long.parseLong(perfil.Txt_DocumentP.getText()));
+        modeP.setNombres(perfil.Txt_nameP.getText());
+        modeP.setApellidos(perfil.Txt_LastNameP.getText());
+        modeP.setFechaNacimiento(perfil.Txt_Day_Born.getText());
+        String sexo = "";
+        if (perfil.btn_M.isSelected() == true) {
+            sexo = "M";
+            perfil.btn_F.setSelected(false);
+        } else if (perfil.btn_F.isSelected() == true) {
+            sexo = "F";
+            perfil.btn_M.setSelected(false);
+        }
+        modeP.setSexo(sexo);
+
+        modeP.setDireccion(perfil.Txt_Direction.getText());
+        modeP.setTelefono(Long.parseLong(perfil.Txt_telephone.getText()));
+        modeP.setEmail(perfil.Txt_email.getText());
+        modeP.setContraseña(perfil.Txt_password.getText());
+
+        int r = metodosP.modificar(modeP);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(MetodosEstudiante.class.getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(principal, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
+        } else {
+            JOptionPane.showMessageDialog(principal, "Error, intente de nuevo");
         }
     }
 
@@ -652,7 +681,7 @@ public class ControladorProf implements ActionListener {
             String pass = JOptionPane.showInputDialog(null, "Ingresar Contraseña", "Confirmar Contraseña", JOptionPane.OK_OPTION);
 
             if (pass.equals(sessionManager.getPassword())) {
-                ModAct(amdl);
+                modificarP();
                 perfil.btn_F.setEnabled(false);
                 perfil.btn_M.setEnabled(false);
                 perfil.Txt_DocumentP.setEnabled(false);

@@ -39,6 +39,7 @@ public class ProfLog extends javax.swing.JFrame {
         Lbl_Edusena = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setPreferredSize(new java.awt.Dimension(1366, 768));
