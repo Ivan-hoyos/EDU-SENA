@@ -36,7 +36,7 @@ public class TablaRes extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id Actividad", "Nombre Actividad", "Descripción", "Fecha Creación", "Documento Prof", "Curso", "Cod Materia", "Materia"
+                "Id Respuesta", "Id Actividad", "Titulo", "Id Estudiante", "Nombre Estudiante", "Curso", "Respuesta", "FechaEnvio"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -24,6 +24,7 @@ public class MetodosProf extends Conexion {
     Login log = new Login();
     ProfLog principal = new ProfLog();
     ActModel amdl = new ActModel();
+    Estudiantes_Modelo emodel = new Estudiantes_Modelo();
     CrearActividad cre = new CrearActividad();
     ActividadesProf act = new ActividadesProf();
     SesionProf sessionManager = SesionProf.getInstance();
@@ -118,4 +119,29 @@ public class MetodosProf extends Conexion {
         return 1;
     }
 
+        public int Calificar(ActModel amdl) { //Metodo para agregar actividades al combo box
+        int r = 1;
+        String sql = "INSERT INTO notas  (IdActividad, Titulo, id_Alumno,Periodo, id_Profesor,  id_Asignatura, Materia, id_Curso, Nota) VALUES (?,?,?,?,?,?,?,?,?) ";
+        Connection con = getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            String curso = act.Box_Cursos.getSelectedItem().toString();
+            System.out.println(curso);
+            ps.setInt(1, amdl.getIdActividad());
+            ps.setString(2, amdl.getTitulo());
+            ps.setInt(3, (int) emodel.getid_Estudiante());
+            ps.setInt(4, amdl.getPeriodo());
+            ps.setInt(5, (int) sessionManager.getUsername());
+            ps.setInt(6, amdl.getIdMateria());
+            ps.setString(7, amdl.getMateria());
+            ps.setString(8, amdl.getIdCurso());
+            ps.setFloat(9, amdl.getNota());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
 }

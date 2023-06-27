@@ -9,12 +9,12 @@ package Vista;
  *
  * @author CPE
  */
-public class VerAct extends javax.swing.JPanel {
+public class VerProf extends javax.swing.JPanel {
 
     /**
      * Creates new form CrearActividad
      */
-    public VerAct() {
+    public VerProf() {
         initComponents();
     }
 
@@ -30,17 +30,15 @@ public class VerAct extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         south1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        TxtTitulo = new javax.swing.JTextField();
+        Nombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TextDescrip = new javax.swing.JTextArea();
+        TextRespuesta = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        BoxMaterias = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        btnResponder = new javax.swing.JToggleButton();
+        btnCalificar = new javax.swing.JToggleButton();
         btnVolver = new javax.swing.JToggleButton();
+        TxtTitulo = new javax.swing.JTextField();
+        comentar = new javax.swing.JToggleButton();
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
@@ -50,7 +48,7 @@ public class VerAct extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1056, 521));
 
         south1.setBackground(new java.awt.Color(255, 255, 255));
-        south1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ver Actividad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
+        south1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inspección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 173, 0))); // NOI18N
         south1.setForeground(new java.awt.Color(0, 173, 0));
         south1.setPreferredSize(new java.awt.Dimension(1044, 521));
 
@@ -58,54 +56,47 @@ public class VerAct extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 173, 0));
         jLabel1.setText("Titulo");
 
-        TxtTitulo.setBackground(new java.awt.Color(255, 255, 255));
-        TxtTitulo.setForeground(new java.awt.Color(0, 0, 0));
-        TxtTitulo.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Nombre.setBackground(new java.awt.Color(255, 255, 255));
+        Nombre.setForeground(new java.awt.Color(0, 0, 0));
+        Nombre.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 173, 0));
-        jLabel2.setText("Descripción");
+        jLabel2.setText("Respuesta");
 
-        TextDescrip.setBackground(new java.awt.Color(255, 255, 255));
-        TextDescrip.setColumns(20);
-        TextDescrip.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
-        TextDescrip.setForeground(new java.awt.Color(0, 0, 0));
-        TextDescrip.setRows(5);
-        TextDescrip.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(222, 222, 222), 1, true));
-        jScrollPane1.setViewportView(TextDescrip);
+        TextRespuesta.setBackground(new java.awt.Color(255, 255, 255));
+        TextRespuesta.setColumns(20);
+        TextRespuesta.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
+        TextRespuesta.setForeground(new java.awt.Color(0, 0, 0));
+        TextRespuesta.setRows(5);
+        TextRespuesta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(222, 222, 222), 1, true));
+        jScrollPane1.setViewportView(TextRespuesta);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 173, 0));
-        jLabel3.setText("Materia");
+        jLabel3.setText("Estudiante");
 
-        BoxMaterias.setBackground(new java.awt.Color(255, 255, 255));
-        BoxMaterias.setForeground(new java.awt.Color(0, 0, 0));
-        BoxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingles", "Español", "Arte" }));
-        BoxMaterias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("*");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel5.setText("*");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel7.setText("*");
-
-        btnResponder.setBackground(new java.awt.Color(0, 173, 0));
-        btnResponder.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnResponder.setForeground(new java.awt.Color(255, 255, 255));
-        btnResponder.setText("Responder");
-        btnResponder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCalificar.setBackground(new java.awt.Color(0, 173, 0));
+        btnCalificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCalificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCalificar.setText("Calificar");
+        btnCalificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnVolver.setBackground(new java.awt.Color(0, 173, 0));
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        TxtTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        TxtTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        TxtTitulo.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        comentar.setBackground(new java.awt.Color(0, 173, 0));
+        comentar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        comentar.setForeground(new java.awt.Color(255, 255, 255));
+        comentar.setText("Comentar");
+        comentar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout south1Layout = new javax.swing.GroupLayout(south1);
         south1.setLayout(south1Layout);
@@ -114,27 +105,20 @@ public class VerAct extends javax.swing.JPanel {
             .addGroup(south1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(south1Layout.createSequentialGroup()
-                        .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(south1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))
-                            .addComponent(jLabel1)
-                            .addGroup(south1Layout.createSequentialGroup()
-                                .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)))
-                        .addGap(24, 24, 24)
-                        .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(BoxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 24, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(17, 17, 17))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(south1Layout.createSequentialGroup()
-                        .addComponent(btnResponder, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)))
+                    .addGroup(south1Layout.createSequentialGroup()
+                        .addComponent(btnCalificar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(comentar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -147,23 +131,19 @@ public class VerAct extends javax.swing.JPanel {
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BoxMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5))
-                    .addComponent(TxtTitulo))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7))
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnResponder, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                    .addComponent(btnCalificar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comentar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -191,18 +171,16 @@ public class VerAct extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> BoxMaterias;
-    public javax.swing.JTextArea TextDescrip;
+    public javax.swing.JTextField Nombre;
+    public javax.swing.JTextArea TextRespuesta;
     public javax.swing.JTextField TxtTitulo;
-    public javax.swing.JToggleButton btnResponder;
+    public javax.swing.JToggleButton btnCalificar;
     public javax.swing.JToggleButton btnVolver;
+    public javax.swing.JToggleButton comentar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel south1;
     // End of variables declaration//GEN-END:variables

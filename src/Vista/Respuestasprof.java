@@ -156,7 +156,7 @@ public class Respuestasprof extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        atras.setText("Atras");
+        atras.setText("Actividades");
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);

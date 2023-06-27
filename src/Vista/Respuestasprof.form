@@ -331,7 +331,7 @@
             </Container>
             <Component class="javax.swing.JButton" name="atras">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Atras"/>
+                <Property name="text" type="java.lang.String" value="Actividades"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

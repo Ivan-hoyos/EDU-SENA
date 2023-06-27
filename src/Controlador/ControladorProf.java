@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ActModel;
+import Modelo.Estudiantes_Modelo;
 import Modelo.MetodosEstudiante;
 import Modelo.MetodosProf;
 import Modelo.ProfModel;
@@ -13,6 +14,7 @@ import Vista.ProfLog;
 import Vista.TablaAct;
 import Vista.Respuestasprof;
 import Vista.TablaRes;
+import Vista.VerProf;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,8 +39,10 @@ public class ControladorProf implements ActionListener {
     CrearActividad cre = new CrearActividad(); // Form para crear actividades
     EditarAct eact = new EditarAct(); // Form para editar las actividades
     Respuestasprof res = new Respuestasprof(); // Form de respuestas
+    VerProf ver = new VerProf(); // Ver respuesta
     TablaAct tablaact = new TablaAct(); //Tabla de actividades
     ProfModel modeP = new ProfModel(); //Modelo profesor
+    Estudiantes_Modelo emodel = new Estudiantes_Modelo();
     TablaRes resT = new TablaRes(); //Tabla respuestas
     MetodosProf metodosP = new MetodosProf();
     SesionProf sessionManager = SesionProf.getInstance();
@@ -68,6 +72,9 @@ public class ControladorProf implements ActionListener {
         this.res.btn_ver.addActionListener(this);
         this.res.btn_calif.addActionListener(this);
         this.res.comentario.addActionListener(this);
+        this.ver.btnCalificar.addActionListener(this);
+        this.ver.comentar.addActionListener(this);
+        this.ver.btnVolver.addActionListener(this);
 
         tablaact.Actividades.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -190,6 +197,8 @@ public class ControladorProf implements ActionListener {
                 }
 
                 ModeloTabla.addRow(fila);
+                amdl.setIdMateria(rs.getInt("IdAsignatura"));
+                amdl.setMateria(rs.getString("Materia"));
             }
 
         } catch (SQLException e) {
@@ -272,6 +281,38 @@ public class ControladorProf implements ActionListener {
                 eact.TxtTitulo.setText(rs.getString("Titulo"));
                 eact.TextDescrip.setText(rs.getString("Descripcion"));
                 eact.BoxMaterias.setSelectedItem(rs.getString("Materia"));
+            }
+
+        } catch (SQLException y) {
+            JOptionPane.showMessageDialog(null, y);
+        }
+    }
+
+    public void seleccionarRes() {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            int fila = resT.Actividades.getSelectedRow();
+            int id = Integer.parseInt(resT.Actividades.getValueAt(fila, 0).toString());
+
+            Connection con = metodosP.getConnection();
+
+            ps = con.prepareStatement("SELECT Titulo, Respuesta, NombreEstudiante, IdEstudiante, Periodo FROM respuestas WHERE IdRespuesta=? ");
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ver.TxtTitulo.setText(rs.getString("Titulo"));
+                ver.TextRespuesta.setText(rs.getString("Respuesta"));
+                ver.Nombre.setText(rs.getString("NombreEstudiante"));
+                emodel.setid_Estudiante(rs.getInt("IdEstudiante"));
+                
+
+                ver.TxtTitulo.setEditable(false);
+                ver.TextRespuesta.setEditable(false);
+                ver.Nombre.setEditable(false);
             }
 
         } catch (SQLException y) {
@@ -379,6 +420,19 @@ public class ControladorProf implements ActionListener {
             JOptionPane.showMessageDialog(principal, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
         } else {
             JOptionPane.showMessageDialog(principal, "Error, intente de nuevo");
+        }
+    }
+
+    public void Calificar() {
+
+        int r = metodosP.Calificar(amdl);
+        if (r == 1) {
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Actividad Calificada", "Guardado", JOptionPane.OK_OPTION, icon);
+
+        } else {
+            JOptionPane.showMessageDialog(cre, "Error, intente de nuevo");
         }
     }
 
@@ -631,6 +685,9 @@ public class ControladorProf implements ActionListener {
             principal.Panel_right.revalidate();
             principal.Panel_right.repaint();
             TblRes();
+            res.btn_ver.setEnabled(true);
+            res.btn_calif.setEnabled(true);
+            res.comentario.setEnabled(true);
             /*resT.setSize(1056, 521);
             res.south.removeAll();
             res.south.add(resT, BorderLayout.CENTER);
@@ -638,6 +695,30 @@ public class ControladorProf implements ActionListener {
             res.south.revalidate();
             res.south.repaint();*/
 
+        }
+
+        if (e.getSource() == res.btn_ver) {
+            if (resT.Actividades.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una Respuesta", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                ver.setSize(1056, 521);
+                res.south.removeAll();
+                res.south.add(ver, BorderLayout.CENTER);
+                res.south.setComponentZOrder(ver, 0);
+                res.south.revalidate();
+                res.south.repaint();
+                seleccionarRes();
+                res.btn_ver.setEnabled(false);
+                res.btn_calif.setEnabled(false);
+                res.comentario.setEnabled(false);
+            }
+        }
+
+        if (e.getSource() == ver.btnCalificar) {
+            String nota = JOptionPane.showInputDialog(null, "Ingresar Nota: ", "Calificar", JOptionPane.OK_CANCEL_OPTION);
+
+            amdl.setNota(Float.parseFloat(nota));
+            Calificar();
         }
 
         if (e.getSource() == res.atras) {
