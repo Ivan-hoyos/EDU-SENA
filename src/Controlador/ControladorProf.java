@@ -484,7 +484,7 @@ public class ControladorProf implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == principal.Actividades) {
-            act.setSize(1100, 760);
+            act.setSize(1360, 770);
             principal.Panel_right.removeAll();
             act.south.removeAll();
             principal.Panel_right.add(act, BorderLayout.CENTER);
