@@ -49,7 +49,6 @@ public class Respuestasprof extends javax.swing.JPanel {
         south = new FondoPanel();
         North_Action = new javax.swing.JPanel();
         btn_ver = new javax.swing.JButton();
-        btn_calif = new javax.swing.JButton();
         atras = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -121,33 +120,25 @@ public class Respuestasprof extends javax.swing.JPanel {
         btn_ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ver.png"))); // NOI18N
         btn_ver.setText("Inspeccionar Respuesta");
 
-        btn_calif.setBackground(new java.awt.Color(0, 173, 0));
-        btn_calif.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_calif.setForeground(new java.awt.Color(255, 255, 255));
-        btn_calif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar.png"))); // NOI18N
-        btn_calif.setText("Calificar Respuesta");
-
         javax.swing.GroupLayout North_ActionLayout = new javax.swing.GroupLayout(North_Action);
         North_Action.setLayout(North_ActionLayout);
         North_ActionLayout.setHorizontalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(North_ActionLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(50, 50, 50)
                 .addComponent(btn_ver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         North_ActionLayout.setVerticalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, North_ActionLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_ver)
-                    .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_ver)
+                .addGap(14, 14, 14))
         );
 
+        atras.setBackground(new java.awt.Color(0, 173, 0));
+        atras.setForeground(new java.awt.Color(255, 255, 255));
         atras.setText("Actividades");
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
@@ -216,7 +207,6 @@ public class Respuestasprof extends javax.swing.JPanel {
     private javax.swing.JLabel Titulo;
     public javax.swing.JLabel TtlAct;
     public javax.swing.JButton atras;
-    public javax.swing.JButton btn_calif;
     public javax.swing.JButton btn_ver;
     public javax.swing.JPanel south;
     // End of variables declaration//GEN-END:variables

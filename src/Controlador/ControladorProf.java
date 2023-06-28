@@ -70,7 +70,6 @@ public class ControladorProf implements ActionListener {
         this.act.Respuestas.addActionListener(this);
         this.res.atras.addActionListener(this);
         this.res.btn_ver.addActionListener(this);
-        this.res.btn_calif.addActionListener(this);
         this.ver.btnCalificar.addActionListener(this);
         this.ver.btnVolver.addActionListener(this);
 
@@ -730,7 +729,6 @@ public class ControladorProf implements ActionListener {
             principal.Panel_right.repaint();
             TblRes();
             res.btn_ver.setEnabled(true);
-            res.btn_calif.setEnabled(true);
             ver.NOTA.setText(null);
             /*resT.setSize(1056, 521);
             res.south.removeAll();
@@ -753,7 +751,6 @@ public class ControladorProf implements ActionListener {
                 res.south.repaint();
                 seleccionarRes();
                 res.btn_ver.setEnabled(false);
-                res.btn_calif.setEnabled(false);
                 ver.NOTA.setEditable(false);
                 
             }
@@ -775,7 +772,7 @@ public class ControladorProf implements ActionListener {
                 principal.Panel_right.repaint();
                 TblRes();
                 res.btn_ver.setEnabled(true);
-                res.btn_calif.setEnabled(true);
+      
             } else {
                 String notaM = JOptionPane.showInputDialog(null, "Ingresar Nueva Nota: ", "Modificar Nota", JOptionPane.OK_CANCEL_OPTION);
                 amdl.setNota(Float.parseFloat(notaM));
@@ -789,32 +786,12 @@ public class ControladorProf implements ActionListener {
                 principal.Panel_right.repaint();
                 TblRes();
                 res.btn_ver.setEnabled(true);
-                res.btn_calif.setEnabled(true);
+            
                 //MODIFICAR
             }
 
         }
 
-        if (e.getSource() == res.btn_calif) {
-            if (resT.Actividades.getSelectedRow() == -1) {
-                JOptionPane.showMessageDialog(null, "Seleccione una Respuesta", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                String nota = JOptionPane.showInputDialog(null, "Ingresar Nota: ", "Calificar", JOptionPane.OK_CANCEL_OPTION);
-
-                amdl.setNota(Float.parseFloat(nota));
-                Calificar();
-                res.setSize(1100, 760);
-                principal.Panel_right.removeAll();
-                principal.Panel_right.add(res, BorderLayout.CENTER);
-                principal.Panel_right.setComponentZOrder(res, 0);
-                principal.Panel_right.revalidate();
-                principal.Panel_right.repaint();
-                TblRes();
-                res.btn_ver.setEnabled(true);
-                res.btn_calif.setEnabled(true);
-                
-            }
-        }
 
         if (e.getSource() == ver.btnVolver) {
             res.setSize(1100, 760);
@@ -825,7 +802,7 @@ public class ControladorProf implements ActionListener {
             principal.Panel_right.repaint();
             TblRes();
             res.btn_ver.setEnabled(true);
-            res.btn_calif.setEnabled(true);
+     
             ver.NOTA.setText(null);
         }
 
