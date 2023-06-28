@@ -25,7 +25,7 @@ public class Metodos_login extends Conexion {
         int r = 1;
 
         // mode.setContraseña(password);
-        String sql = "select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, Sexo, Direccion, Telefono, Email,  Contraseña, Rol, id_Curso from estudiantes where id_Estudiante='" + log.getid_Estudiante() + "'";
+        String sql = "select id_Estudiante, Nombres, Apellidos,Fecha_Nacimiento, Sexo, Direccion, Telefono, Email,  Contraseña, Rol, id_Curso from estudiantes where id_Estudiante='" + log.getid_Estudiante()+ "'";
         if (r == 1) {
             try {
 

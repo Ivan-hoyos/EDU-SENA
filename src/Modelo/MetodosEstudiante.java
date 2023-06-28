@@ -88,10 +88,9 @@ public class MetodosEstudiante extends Conexion {
 
     }
 
-
     public int responder(ActModel mdl) {
         int r = 1;
-        String sql = "INSERT INTO respuestas(IdActividad, IdEstudiante, NombreEstudiante, IdCurso, Respuesta, FechaEnvio, Titulo) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO respuestas(IdActividad, IdEstudiante, NombreEstudiante, IdCurso, Respuesta, FechaEnvio, Titulo, Periodo) VALUES (?,?,?,?,?,?,?,?)";
         Connection con = getConnection();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -102,6 +101,7 @@ public class MetodosEstudiante extends Conexion {
             ps.setString(5, mdl.getRespuesta());
             ps.setTimestamp(6, mdl.getFechaCreacion());
             ps.setString(7, mdl.getTitulo());
+            ps.setInt(8, mdl.getPeriodo());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

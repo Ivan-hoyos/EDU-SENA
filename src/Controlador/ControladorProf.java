@@ -220,6 +220,11 @@ public class ControladorProf implements ActionListener {
         PreparedStatement ps;
         ResultSet rs;
         ResultSetMetaData rsmd;
+
+        PreparedStatement psN;
+        ResultSet rsN;
+        ResultSetMetaData rsmdN;
+
         int columnas;
 
         try {
@@ -233,10 +238,7 @@ public class ControladorProf implements ActionListener {
 
             Connection con = metodosP.getConnection();
 
-            System.out.println(id);
-            System.out.println(curso);
-
-            ps = con.prepareStatement("SELECT * From respuestas WHERE IdActividad = ? AND IdCurso = ?;");
+            ps = con.prepareStatement("SELECT IdRespuesta, IdActividad, Titulo, IdEstudiante, NombreEstudiante, IdCurso, Respuesta, FechaEnvio From respuestas WHERE IdActividad = ? AND IdCurso = ?;");
             ps.setInt(1, amdl.getIdActividad());
             ps.setString(2, amdl.getIdCurso());
             rs = ps.executeQuery();
@@ -289,6 +291,9 @@ public class ControladorProf implements ActionListener {
     public void seleccionarRes() {
         PreparedStatement ps;
         ResultSet rs;
+
+        PreparedStatement psN;
+        ResultSet rsN;
         try {
             int fila = resT.Actividades.getSelectedRow();
             int id = Integer.parseInt(resT.Actividades.getValueAt(fila, 0).toString());
@@ -301,12 +306,14 @@ public class ControladorProf implements ActionListener {
             Connection con = metodosP.getConnection();
 
             ps = con.prepareStatement("SELECT Titulo, Respuesta, NombreEstudiante, IdEstudiante, Periodo FROM respuestas WHERE IdRespuesta=? ");
-
             ps.setInt(1, id);
-
             rs = ps.executeQuery();
 
-            while (rs.next()) {
+            psN = con.prepareStatement("SELECT Nota From notas WHERE id_Alumno = ?;");
+            psN.setInt(1, amdl.getIdestudiante());
+            rsN = psN.executeQuery();
+
+            while (rs.next() ) {
                 ver.TxtTitulo.setText(rs.getString("Titulo"));
                 ver.TextRespuesta.setText(rs.getString("Respuesta"));
                 ver.Nombre.setText(rs.getString("NombreEstudiante"));
@@ -318,6 +325,16 @@ public class ControladorProf implements ActionListener {
                 ver.TxtTitulo.setEditable(false);
                 ver.TextRespuesta.setEditable(false);
                 ver.Nombre.setEditable(false);
+            }
+
+            while (rsN.next()) {
+                float nota = rsN.getFloat("Nota");
+                amdl.setNota(nota);
+                if (amdl.getNota() < 1) {
+                    ver.NOTA.setText("0");
+                } else {
+                    ver.NOTA.setText(String.valueOf(nota));
+                }
             }
 
         } catch (SQLException y) {
@@ -437,9 +454,21 @@ public class ControladorProf implements ActionListener {
     public void Calificar() {
 
         int r = metodosP.Calificar(amdl);
+       
+        if (r == 1) {
 
-        System.out.println(amdl.getPeriodo());
-        System.out.println(amdl.getIdestudiante());
+            ImageIcon icon = new ImageIcon(MetodosProf.class
+                    .getResource("/Images/comprobado.png"));
+            JOptionPane.showMessageDialog(null, "Actividad Calificada", "Guardado", JOptionPane.OK_OPTION, icon);
+
+        } else {
+            JOptionPane.showMessageDialog(cre, "Error, intente de nuevo");
+        }
+    }
+
+    public void ModCalificar() {
+
+        int r = metodosP.ModCalificar(amdl);
 
         if (r == 1) {
             ImageIcon icon = new ImageIcon(MetodosProf.class
@@ -702,6 +731,7 @@ public class ControladorProf implements ActionListener {
             TblRes();
             res.btn_ver.setEnabled(true);
             res.btn_calif.setEnabled(true);
+            ver.NOTA.setText(null);
             /*resT.setSize(1056, 521);
             res.south.removeAll();
             res.south.add(resT, BorderLayout.CENTER);
@@ -724,23 +754,45 @@ public class ControladorProf implements ActionListener {
                 seleccionarRes();
                 res.btn_ver.setEnabled(false);
                 res.btn_calif.setEnabled(false);
+                ver.NOTA.setEditable(false);
+                
             }
         }
 
         if (e.getSource() == ver.btnCalificar) {
-            String nota = JOptionPane.showInputDialog(null, "Ingresar Nota: ", "Calificar", JOptionPane.OK_CANCEL_OPTION);
+            String notae = ver.NOTA.getText();
+            float nota = amdl.getNota();
 
-            amdl.setNota(Float.parseFloat(nota));
-            Calificar();
-            res.setSize(1100, 760);
-            principal.Panel_right.removeAll();
-            principal.Panel_right.add(res, BorderLayout.CENTER);
-            principal.Panel_right.setComponentZOrder(res, 0);
-            principal.Panel_right.revalidate();
-            principal.Panel_right.repaint();
-            TblRes();
-            res.btn_ver.setEnabled(true);
-            res.btn_calif.setEnabled(true);
+            if (nota < 1 || notae.equals(null) || notae.isEmpty()) {
+                String notaN = JOptionPane.showInputDialog(null, "Ingresar Nota: ", "Calificar", JOptionPane.OK_CANCEL_OPTION);
+                amdl.setNota(Float.parseFloat(notaN));
+                Calificar();
+                res.setSize(1100, 760);
+                principal.Panel_right.removeAll();
+                principal.Panel_right.add(res, BorderLayout.CENTER);
+                principal.Panel_right.setComponentZOrder(res, 0);
+                principal.Panel_right.revalidate();
+                principal.Panel_right.repaint();
+                TblRes();
+                res.btn_ver.setEnabled(true);
+                res.btn_calif.setEnabled(true);
+            } else {
+                String notaM = JOptionPane.showInputDialog(null, "Ingresar Nueva Nota: ", "Modificar Nota", JOptionPane.OK_CANCEL_OPTION);
+                amdl.setNota(Float.parseFloat(notaM));
+                ver.btnCalificar.setText("Modificar");
+                ModCalificar();
+                res.setSize(1100, 760);
+                principal.Panel_right.removeAll();
+                principal.Panel_right.add(res, BorderLayout.CENTER);
+                principal.Panel_right.setComponentZOrder(res, 0);
+                principal.Panel_right.revalidate();
+                principal.Panel_right.repaint();
+                TblRes();
+                res.btn_ver.setEnabled(true);
+                res.btn_calif.setEnabled(true);
+                //MODIFICAR
+            }
+
         }
 
         if (e.getSource() == res.btn_calif) {
@@ -760,6 +812,7 @@ public class ControladorProf implements ActionListener {
                 TblRes();
                 res.btn_ver.setEnabled(true);
                 res.btn_calif.setEnabled(true);
+                
             }
         }
 
@@ -773,6 +826,7 @@ public class ControladorProf implements ActionListener {
             TblRes();
             res.btn_ver.setEnabled(true);
             res.btn_calif.setEnabled(true);
+            ver.NOTA.setText(null);
         }
 
         if (e.getSource() == res.atras) {

@@ -147,4 +147,23 @@ public class MetodosProf extends Conexion {
         }
         return 1;
     }
+
+    public int ModCalificar(ActModel amdl) { //Metodo para agregar actividades al combo box
+        int r = 1;
+        String sql = "UPDATE  notas SET Nota=? WHERE IdRespuesta=? ";
+        Connection con = getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            String curso = act.Box_Cursos.getSelectedItem().toString();
+            System.out.println(curso);
+            ps.setFloat(1, amdl.getNota());
+            ps.setInt(2, amdl.getIdRespuesta());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        }
+        return 1;
+    }
 }

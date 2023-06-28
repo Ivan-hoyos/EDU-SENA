@@ -38,6 +38,8 @@ public class VerProf extends javax.swing.JPanel {
         btnCalificar = new javax.swing.JToggleButton();
         btnVolver = new javax.swing.JToggleButton();
         TxtTitulo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        NOTA = new javax.swing.JTextField();
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
@@ -91,6 +93,13 @@ public class VerProf extends javax.swing.JPanel {
         TxtTitulo.setForeground(new java.awt.Color(0, 0, 0));
         TxtTitulo.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 173, 1));
+        jLabel4.setText("Nota");
+
+        NOTA.setEditable(false);
+        NOTA.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout south1Layout = new javax.swing.GroupLayout(south1);
         south1.setLayout(south1Layout);
         south1Layout.setHorizontalGroup(
@@ -98,22 +107,31 @@ public class VerProf extends javax.swing.JPanel {
             .addGroup(south1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(south1Layout.createSequentialGroup()
                         .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(south1Layout.createSequentialGroup()
+                                .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(south1Layout.createSequentialGroup()
+                                        .addComponent(btnCalificar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(south1Layout.createSequentialGroup()
+                        .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
+                            .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                         .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
-                    .addGroup(south1Layout.createSequentialGroup()
-                        .addComponent(btnCalificar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, Short.MAX_VALUE)
+                        .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NOTA, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(95, 95, 95))))
         );
         south1Layout.setVerticalGroup(
             south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,11 +139,13 @@ public class VerProf extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NOTA, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -161,6 +181,7 @@ public class VerProf extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField NOTA;
     public javax.swing.JTextField Nombre;
     public javax.swing.JTextArea TextRespuesta;
     public javax.swing.JTextField TxtTitulo;
@@ -169,6 +190,7 @@ public class VerProf extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel south1;

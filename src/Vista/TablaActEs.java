@@ -41,14 +41,14 @@ public class TablaActEs extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "C. Actividad", "Nombre", "Fecha Creacion", "Documento P", "Materia", ""
+                "C. Actividad", "Nombre", "Fecha Creacion", "Documento P", "Materia", "Nota"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -60,6 +60,9 @@ public class TablaActEs extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(Tabla);
+        if (Tabla.getColumnModel().getColumnCount() > 0) {
+            Tabla.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

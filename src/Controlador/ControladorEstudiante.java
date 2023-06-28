@@ -186,6 +186,10 @@ public class ControladorEstudiante implements ActionListener {
         PreparedStatement ps;
         ResultSet rs;
         ResultSetMetaData rsmd;
+
+        PreparedStatement psN;
+        ResultSet rsN;
+        ResultSetMetaData rsmdN;
         int columnas;
 
         try {
@@ -198,15 +202,27 @@ public class ControladorEstudiante implements ActionListener {
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
 
-            while (rs.next()) {
+            psN = con.prepareStatement("SELECT Nota From notas WHERE id_Alumno = ?;");
+            int id = sessionManager.getUsername();
+            psN.setInt(1, id);
+            rsN = psN.executeQuery();
+            rsmdN = rsN.getMetaData();
 
-                Object[] fila = new Object[columnas];
+            while (rs.next() && rsN.next()) {
 
-                for (int i = 0; i < columnas; i++) {
+                Object[] fila = new Object[columnas + 1];
+
+                /*for (int i = 0; i < 4; i++) {
                     fila[i] = rs.getObject(i + 1);
+                }*/
+                for (int i = 1; i <= columnas; i++) {
+                    fila[i - 1] = rs.getObject(i);
+
                 }
+                fila[columnas] = rsN.getObject(1);
 
                 ModeloTabla.addRow(fila);
+
             }
 
         } catch (SQLException e) {
@@ -223,7 +239,7 @@ public class ControladorEstudiante implements ActionListener {
 
             Connection con = metodos.getConnection();
 
-            ps = con.prepareStatement("SELECT Titulo, Descripcion, Materia FROM actividades WHERE IdActividad=? ");
+            ps = con.prepareStatement("SELECT Titulo, Descripcion, Materia, Periodo FROM actividades WHERE IdActividad=? ");
 
             ps.setInt(1, id);
 
@@ -233,7 +249,8 @@ public class ControladorEstudiante implements ActionListener {
                 ver.TxtTitulo.setText(rs.getString("Titulo"));
                 ver.TextDescrip.setText(rs.getString("Descripcion"));
                 ver.BoxMaterias.setSelectedItem(rs.getString("Materia"));
-
+                int Periodo = Integer.parseInt(rs.getString("Periodo"));
+                amodel.setPeriodo(Periodo);
                 edit.TxtTitulo.setText(rs.getString("Titulo"));
 
             }
@@ -270,51 +287,44 @@ public class ControladorEstudiante implements ActionListener {
     }
 
     public void TblNotas() {
-        
-        
 
-    DefaultTableModel ModeloTabla = (DefaultTableModel) tnotas.Tabla.getModel();
-    ModeloTabla.setRowCount (0);
+        DefaultTableModel ModeloTabla = (DefaultTableModel) tnotas.Tabla.getModel();
+        ModeloTabla.setRowCount(0);
 
-    PreparedStatement ps;
-    ResultSet rs;
-    ResultSetMetaData rsmd;
-    int columnas;
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
 
-    
         try {
-        String curso = sessionManager.getIdCurso();
-        Connection con = metodos.getConnection();
+            String curso = sessionManager.getIdCurso();
+            Connection con = metodos.getConnection();
 
-        ps = con.prepareStatement("SELECT IdActividad, Titulo, FechaCreacion, ProfesorId, Materia From actividades WHERE idCurso = ?;");
-        ps.setString(1, curso);
-        rs = ps.executeQuery();
-        rsmd = rs.getMetaData();
-        columnas = rsmd.getColumnCount();
+            ps = con.prepareStatement("SELECT IdActividad, Titulo, FechaCreacion, ProfesorId, Materia From actividades WHERE idCurso = ?;");
+            ps.setString(1, curso);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
 
-        while (rs.next()) {
+            while (rs.next()) {
 
-            Object[] fila = new Object[columnas];
+                Object[] fila = new Object[columnas];
 
-            for (int i = 0; i < columnas; i++) {
-                fila[i] = rs.getObject(i + 1);
+                for (int i = 0; i < columnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+
+                ModeloTabla.addRow(fila);
             }
 
-            ModeloTabla.addRow(fila);
-        }
-
-    }
-    catch (SQLException e
-
-    
-        ) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
+        }
     }
-}
 
-@Override
+    @Override
 
-        public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == perfil.btn_F) {
             perfil.btn_M.setSelected(false);
@@ -413,12 +423,8 @@ public class ControladorEstudiante implements ActionListener {
         }
 
         if (e.getSource() == principal.Exit) { //Cerrar la aplicación
-            ImageIcon icon = new ImageIcon(MetodosEstudiante
-
-.class  
-
-
-.getResource("/Images/exit.png"));
+            ImageIcon icon = new ImageIcon(MetodosEstudiante.class
+                    .getResource("/Images/exit.png"));
             JOptionPane.showMessageDialog(principal, "Hasta Pronto :D", "Cerrar Sesión", JOptionPane.OK_OPTION, icon);
             System.exit(0);
 
@@ -515,12 +521,8 @@ public class ControladorEstudiante implements ActionListener {
             Object[] options = {"Sí", "No"};
             // Cargar un ícono personalizado desde un archivo de imagen
             //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
-            ImageIcon icon = new ImageIcon(MetodosEstudiante
-
-.class  
-
-
-.getResource("/Images/boton-eliminar.png"));
+            ImageIcon icon = new ImageIcon(MetodosEstudiante.class
+                    .getResource("/Images/boton-eliminar.png"));
 
             int choice = JOptionPane.showOptionDialog(
                     null, // Componente padre, null para diálogo independiente
