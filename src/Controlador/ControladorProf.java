@@ -71,9 +71,7 @@ public class ControladorProf implements ActionListener {
         this.res.atras.addActionListener(this);
         this.res.btn_ver.addActionListener(this);
         this.res.btn_calif.addActionListener(this);
-        this.res.comentario.addActionListener(this);
         this.ver.btnCalificar.addActionListener(this);
-        this.ver.comentar.addActionListener(this);
         this.ver.btnVolver.addActionListener(this);
 
         tablaact.Actividades.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
@@ -294,6 +292,11 @@ public class ControladorProf implements ActionListener {
         try {
             int fila = resT.Actividades.getSelectedRow();
             int id = Integer.parseInt(resT.Actividades.getValueAt(fila, 0).toString());
+            amdl.setIdRespuesta(id);
+
+            int fila1 = resT.Actividades.getSelectedRow();
+            int id1 = Integer.parseInt(resT.Actividades.getValueAt(fila1, 3).toString());
+            amdl.setIdestudiante(id1);
 
             Connection con = metodosP.getConnection();
 
@@ -307,8 +310,10 @@ public class ControladorProf implements ActionListener {
                 ver.TxtTitulo.setText(rs.getString("Titulo"));
                 ver.TextRespuesta.setText(rs.getString("Respuesta"));
                 ver.Nombre.setText(rs.getString("NombreEstudiante"));
-                emodel.setid_Estudiante(rs.getInt("IdEstudiante"));
-                
+                int idestudiante = rs.getInt("IdEstudiante");
+                int Periodo = rs.getInt("Periodo");
+                amdl.setPeriodo(Periodo);
+                amdl.setIdestudiante(idestudiante);
 
                 ver.TxtTitulo.setEditable(false);
                 ver.TextRespuesta.setEditable(false);
@@ -330,6 +335,9 @@ public class ControladorProf implements ActionListener {
 
         int IdMateria = cre.BoxMaterias.getSelectedIndex() + 1;
         amdl.setIdMateria(IdMateria);
+
+        int Periodo = cre.Periodo.getSelectedIndex() + 1;
+        amdl.setPeriodo(Periodo);
 
         LocalDateTime fechaHoraActual = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(fechaHoraActual);
@@ -357,6 +365,9 @@ public class ControladorProf implements ActionListener {
         amdl.setDescripcion(eact.TextDescrip.getText());
         String materia = eact.BoxMaterias.getSelectedItem().toString();
         amdl.setMateria(materia);
+
+        int Periodo = eact.Periodo.getSelectedIndex() + 1;
+        amdl.setPeriodo(Periodo);
 
         int IdMateria = eact.BoxMaterias.getSelectedIndex() + 1;
         amdl.setIdMateria(IdMateria);
@@ -426,6 +437,10 @@ public class ControladorProf implements ActionListener {
     public void Calificar() {
 
         int r = metodosP.Calificar(amdl);
+
+        System.out.println(amdl.getPeriodo());
+        System.out.println(amdl.getIdestudiante());
+
         if (r == 1) {
             ImageIcon icon = new ImageIcon(MetodosProf.class
                     .getResource("/Images/comprobado.png"));
@@ -687,7 +702,6 @@ public class ControladorProf implements ActionListener {
             TblRes();
             res.btn_ver.setEnabled(true);
             res.btn_calif.setEnabled(true);
-            res.comentario.setEnabled(true);
             /*resT.setSize(1056, 521);
             res.south.removeAll();
             res.south.add(resT, BorderLayout.CENTER);
@@ -710,7 +724,6 @@ public class ControladorProf implements ActionListener {
                 seleccionarRes();
                 res.btn_ver.setEnabled(false);
                 res.btn_calif.setEnabled(false);
-                res.comentario.setEnabled(false);
             }
         }
 
@@ -719,6 +732,47 @@ public class ControladorProf implements ActionListener {
 
             amdl.setNota(Float.parseFloat(nota));
             Calificar();
+            res.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            principal.Panel_right.add(res, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(res, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+            TblRes();
+            res.btn_ver.setEnabled(true);
+            res.btn_calif.setEnabled(true);
+        }
+
+        if (e.getSource() == res.btn_calif) {
+            if (resT.Actividades.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una Respuesta", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                String nota = JOptionPane.showInputDialog(null, "Ingresar Nota: ", "Calificar", JOptionPane.OK_CANCEL_OPTION);
+
+                amdl.setNota(Float.parseFloat(nota));
+                Calificar();
+                res.setSize(1100, 760);
+                principal.Panel_right.removeAll();
+                principal.Panel_right.add(res, BorderLayout.CENTER);
+                principal.Panel_right.setComponentZOrder(res, 0);
+                principal.Panel_right.revalidate();
+                principal.Panel_right.repaint();
+                TblRes();
+                res.btn_ver.setEnabled(true);
+                res.btn_calif.setEnabled(true);
+            }
+        }
+
+        if (e.getSource() == ver.btnVolver) {
+            res.setSize(1100, 760);
+            principal.Panel_right.removeAll();
+            principal.Panel_right.add(res, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(res, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+            TblRes();
+            res.btn_ver.setEnabled(true);
+            res.btn_calif.setEnabled(true);
         }
 
         if (e.getSource() == res.atras) {

@@ -27,7 +27,7 @@ public class Metodos_Admin extends Conexion {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO estudiantes (id_Estudiante, Nombres, Apellidos, Fecha_Nacimiento, Direccion,Telefono, Email, Contraseña,Sexo) VALUES (?,?,?,?,?,?,?,?,?)");
 
-            ps.setLong(1, mdl.getid_Estudiante());
+            ps.setInt(1, mdl.getid_Estudiante());
             ps.setString(2, mdl.getNombres());
             ps.setString(3, mdl.getApellidos());
             ps.setString(4, mdl.getFecha_Nacimiento());
@@ -67,7 +67,7 @@ public class Metodos_Admin extends Conexion {
             ps.setString(6, mdl.getEmail());
             ps.setString(7, mdl.getContraseña());
             ps.setString(8, mdl.getSexo());
-            ps.setString(9, Long.toString(mdl.getid_Estudiante()));
+            ps.setString(9, Integer.toString(mdl.getid_Estudiante()));
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -102,7 +102,7 @@ public class Metodos_Admin extends Conexion {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, mdl.getId_Curso());
-            ps.setString(2, Long.toString(mdl.getid_Estudiante()));
+            ps.setString(2, Integer.toString(mdl.getid_Estudiante()));
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -120,7 +120,7 @@ public class Metodos_Admin extends Conexion {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, mdl.getId_Curso());
-            ps.setString(2, Long.toString(mdl.getid_Estudiante()));
+            ps.setString(2, Integer.toString(mdl.getid_Estudiante()));
             ps.executeUpdate();
 
         } catch (SQLException e) {

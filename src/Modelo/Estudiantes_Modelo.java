@@ -2,7 +2,7 @@ package Modelo;
 
 public class Estudiantes_Modelo {
 
-    private long id_Estudiante;
+    private int id_Estudiante;
     private String Nombres;
     private String Apellidos;
     private String Fecha_Nacimiento;
@@ -21,7 +21,7 @@ public class Estudiantes_Modelo {
         
     }
 
-    public Estudiantes_Modelo(long id_Estudiante, String Nombres, String Apellidos, String Fecha_Nacimiento, String Sexo, byte Grado, String Seccion, String Direccion, long Telefono, String Email, String Contraseña, String id_Curso, String Rol) {
+    public Estudiantes_Modelo(int id_Estudiante, String Nombres, String Apellidos, String Fecha_Nacimiento, String Sexo, byte Grado, String Seccion, String Direccion, long Telefono, String Email, String Contraseña, String id_Curso, String Rol) {
         this.id_Estudiante = id_Estudiante;
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
@@ -39,11 +39,11 @@ public class Estudiantes_Modelo {
 
 
 
-    public long getid_Estudiante() {
+    public int getid_Estudiante() {
         return id_Estudiante;
     }
 
-    public void setid_Estudiante(long id_Estudiante) {
+    public void setid_Estudiante(int id_Estudiante) {
         this.id_Estudiante = id_Estudiante;
     }
 

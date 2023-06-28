@@ -132,7 +132,7 @@ public class ActividadesProf extends javax.swing.JPanel {
         btn_editar.setBackground(new java.awt.Color(0, 173, 0));
         btn_editar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar1.png"))); // NOI18N
+        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar.png"))); // NOI18N
         btn_editar.setText("Editar");
 
         btn_eliminar.setBackground(new java.awt.Color(0, 173, 0));

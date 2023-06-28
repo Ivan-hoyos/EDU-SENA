@@ -50,7 +50,6 @@ public class Respuestasprof extends javax.swing.JPanel {
         North_Action = new javax.swing.JPanel();
         btn_ver = new javax.swing.JButton();
         btn_calif = new javax.swing.JButton();
-        comentario = new javax.swing.JToggleButton();
         atras = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -120,30 +119,24 @@ public class Respuestasprof extends javax.swing.JPanel {
         btn_ver.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_ver.setForeground(new java.awt.Color(255, 255, 255));
         btn_ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ver.png"))); // NOI18N
-        btn_ver.setText("Inspeccionar");
+        btn_ver.setText("Inspeccionar Respuesta");
 
         btn_calif.setBackground(new java.awt.Color(0, 173, 0));
         btn_calif.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_calif.setForeground(new java.awt.Color(255, 255, 255));
-        btn_calif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar1.png"))); // NOI18N
-        btn_calif.setText("Calificar");
-
-        comentario.setBackground(new java.awt.Color(0, 173, 0));
-        comentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/charla.png"))); // NOI18N
-        comentario.setText("Comentario");
+        btn_calif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar.png"))); // NOI18N
+        btn_calif.setText("Calificar Respuesta");
 
         javax.swing.GroupLayout North_ActionLayout = new javax.swing.GroupLayout(North_Action);
         North_Action.setLayout(North_ActionLayout);
         North_ActionLayout.setHorizontalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(North_ActionLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(btn_ver)
-                .addGap(18, 18, 18)
-                .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(comentario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         North_ActionLayout.setVerticalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,8 +144,7 @@ public class Respuestasprof extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_ver)
-                    .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comentario))
+                    .addComponent(btn_calif, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -226,7 +218,6 @@ public class Respuestasprof extends javax.swing.JPanel {
     public javax.swing.JButton atras;
     public javax.swing.JButton btn_calif;
     public javax.swing.JButton btn_ver;
-    public javax.swing.JToggleButton comentario;
     public javax.swing.JPanel south;
     // End of variables declaration//GEN-END:variables
     

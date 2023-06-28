@@ -8,7 +8,9 @@ import Vista.ActividadesEs;
 import Vista.ActualizarEs;
 import Vista.EditarActEs;
 import Vista.Estudiante_log;
+import Vista.NotasEs;
 import Vista.TablaActEs;
+import Vista.TablaNotasEs;
 import Vista.VerAct;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -34,7 +36,9 @@ public class ControladorEstudiante implements ActionListener {
     ActModel amodel = new ActModel(); //Modelo de actividades
     ActividadesEs actes = new ActividadesEs(); // Form para ver las actividades
     VerAct ver = new VerAct(); // Panel para ver la actividad
+    NotasEs notas = new NotasEs(); // Panel de notas
     EditarActEs edit = new EditarActEs(); // Panel para responder actividad
+    TablaNotasEs tnotas = new TablaNotasEs(); //Tabla de notas
     TablaActEs tbl = new TablaActEs();
     MetodosEstudiante metodos = new MetodosEstudiante();
     SesionEstudiante sessionManager = SesionEstudiante.getInstance();
@@ -56,6 +60,10 @@ public class ControladorEstudiante implements ActionListener {
         this.ver.btnVolver.addActionListener(this);
         this.edit.btnResponder.addActionListener(this);
         this.edit.btnCancelar.addActionListener(this);
+        this.notas.Periodo1.addActionListener(this);
+        this.notas.Periodo2.addActionListener(this);
+        this.notas.Periodo3.addActionListener(this);
+        this.notas.Periodo4.addActionListener(this);
 
         tbl.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -142,7 +150,7 @@ public class ControladorEstudiante implements ActionListener {
 
     public void modificarI() {//Modificar información del estudiante
 
-        mode.setid_Estudiante(Long.parseLong(perfil.Txt_Document.getText()));
+        mode.setid_Estudiante(Integer.parseInt(perfil.Txt_Document.getText()));
         mode.setNombres(perfil.Txt_name.getText());
         mode.setApellidos(perfil.Txt_LastName.getText());
         mode.setFecha_Nacimiento(perfil.Txt_Day_Born.getText());
@@ -261,9 +269,52 @@ public class ControladorEstudiante implements ActionListener {
         }
     }
 
-    @Override
+    public void TblNotas() {
+        
+        
 
-    public void actionPerformed(ActionEvent e) {
+    DefaultTableModel ModeloTabla = (DefaultTableModel) tnotas.Tabla.getModel();
+    ModeloTabla.setRowCount (0);
+
+    PreparedStatement ps;
+    ResultSet rs;
+    ResultSetMetaData rsmd;
+    int columnas;
+
+    
+        try {
+        String curso = sessionManager.getIdCurso();
+        Connection con = metodos.getConnection();
+
+        ps = con.prepareStatement("SELECT IdActividad, Titulo, FechaCreacion, ProfesorId, Materia From actividades WHERE idCurso = ?;");
+        ps.setString(1, curso);
+        rs = ps.executeQuery();
+        rsmd = rs.getMetaData();
+        columnas = rsmd.getColumnCount();
+
+        while (rs.next()) {
+
+            Object[] fila = new Object[columnas];
+
+            for (int i = 0; i < columnas; i++) {
+                fila[i] = rs.getObject(i + 1);
+            }
+
+            ModeloTabla.addRow(fila);
+        }
+
+    }
+    catch (SQLException e
+
+    
+        ) {
+            JOptionPane.showMessageDialog(null, e.toString());
+    }
+}
+
+@Override
+
+        public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == perfil.btn_F) {
             perfil.btn_M.setSelected(false);
@@ -362,8 +413,12 @@ public class ControladorEstudiante implements ActionListener {
         }
 
         if (e.getSource() == principal.Exit) { //Cerrar la aplicación
-            ImageIcon icon = new ImageIcon(MetodosEstudiante.class
-                    .getResource("/Images/exit.png"));
+            ImageIcon icon = new ImageIcon(MetodosEstudiante
+
+.class  
+
+
+.getResource("/Images/exit.png"));
             JOptionPane.showMessageDialog(principal, "Hasta Pronto :D", "Cerrar Sesión", JOptionPane.OK_OPTION, icon);
             System.exit(0);
 
@@ -460,8 +515,12 @@ public class ControladorEstudiante implements ActionListener {
             Object[] options = {"Sí", "No"};
             // Cargar un ícono personalizado desde un archivo de imagen
             //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
-            ImageIcon icon = new ImageIcon(MetodosEstudiante.class
-                    .getResource("/Images/boton-eliminar.png"));
+            ImageIcon icon = new ImageIcon(MetodosEstudiante
+
+.class  
+
+
+.getResource("/Images/boton-eliminar.png"));
 
             int choice = JOptionPane.showOptionDialog(
                     null, // Componente padre, null para diálogo independiente
@@ -485,7 +544,7 @@ public class ControladorEstudiante implements ActionListener {
                     principal.Panel_right.revalidate();
                     principal.Panel_right.repaint();
                     edit.TextDesarr.setText(null);
-                    
+
                     tbl.setSize(1056, 536);
                     actes.south.removeAll();
                     actes.south.add(tbl, BorderLayout.CENTER);
@@ -522,6 +581,16 @@ public class ControladorEstudiante implements ActionListener {
             actes.btn_responder.setEnabled(true);
             actes.btn_ver.setEnabled(true);
         }
+
+        if (e.getSource() == principal.Notas) {
+            notas.setSize(1300, 760);
+            principal.Panel_right.removeAll();
+            principal.Panel_right.add(notas, BorderLayout.CENTER);
+            principal.Panel_right.setComponentZOrder(notas, 0);
+            principal.Panel_right.revalidate();
+            principal.Panel_right.repaint();
+        }
+
     }
 
 }

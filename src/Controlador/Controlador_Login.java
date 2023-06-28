@@ -48,7 +48,7 @@ public class Controlador_Login implements ActionListener {
     public void log() {
         String pass = new String(log.Password_user.getPassword());
         String user = log.Txt_username.getText();
-        mode.setid_Estudiante(Long.parseLong(log.Txt_username.getText()));
+        mode.setid_Estudiante(Integer.parseInt(log.Txt_username.getText()));
         mode.setContraseña(pass);
 
         int r = mte.log(mode);

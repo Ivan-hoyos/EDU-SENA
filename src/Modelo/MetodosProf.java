@@ -58,7 +58,7 @@ public class MetodosProf extends Conexion {
 
     public int Crear(ActModel amdl) { //Metodo para agregar actividades al combo box
         int r = 1;
-        String sql = "INSERT INTO actividades  (Titulo, Descripcion, FechaCreacion,ProfesorId, IdCurso,  Materia, IdAsignatura) VALUES (?,?,?,?,?,?,?) ";
+        String sql = "INSERT INTO actividades  (Titulo, Descripcion, FechaCreacion,ProfesorId, IdCurso,  Materia, IdAsignatura, Periodo) VALUES (?, ?,?,?,?,?,?,?) ";
         Connection con = getConnection();
 
         try {
@@ -72,6 +72,7 @@ public class MetodosProf extends Conexion {
             ps.setString(5, amdl.getIdCurso());
             ps.setString(6, amdl.getMateria());
             ps.setInt(7, amdl.getIdMateria());
+            ps.setInt(8, amdl.getPeriodo());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -82,7 +83,7 @@ public class MetodosProf extends Conexion {
 
     public int Modificar(ActModel amdl) { //Metodo para agregar actividades al combo box
         int r = 1;
-        String sql = "UPDATE  actividades SET  Titulo=?, Descripcion=?, FechaCreacion=?, Materia=?, IdAsignatura=? WHERE IdActividad=?;";
+        String sql = "UPDATE  actividades SET  Titulo=?, Descripcion=?, FechaCreacion=?, Materia=?, IdAsignatura=?, Periodo=? WHERE IdActividad=?;";
         Connection con = getConnection();
 
         try {
@@ -94,7 +95,8 @@ public class MetodosProf extends Conexion {
             ps.setTimestamp(3, amdl.getFechaCreacion());
             ps.setString(4, amdl.getMateria());
             ps.setInt(5, amdl.getIdMateria());
-            ps.setInt(6, amdl.getIdActividad());
+            ps.setInt(6, amdl.getPeriodo());
+            ps.setInt(7, amdl.getIdActividad());
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -111,7 +113,7 @@ public class MetodosProf extends Conexion {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, amdl.getIdActividad());
             ps.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
@@ -119,24 +121,25 @@ public class MetodosProf extends Conexion {
         return 1;
     }
 
-        public int Calificar(ActModel amdl) { //Metodo para agregar actividades al combo box
+    public int Calificar(ActModel amdl) { //Metodo para agregar actividades al combo box
         int r = 1;
-        String sql = "INSERT INTO notas  (IdActividad, Titulo, id_Alumno,Periodo, id_Profesor,  id_Asignatura, Materia, id_Curso, Nota) VALUES (?,?,?,?,?,?,?,?,?) ";
+        String sql = "INSERT INTO notas  (IdRespuesta, IdActividad, Titulo, id_Alumno,Periodo, id_Profesor,  id_Asignatura, Materia, id_Curso, Nota) VALUES (?,?,?,?,?,?,?,?,?,?) ";
         Connection con = getConnection();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             String curso = act.Box_Cursos.getSelectedItem().toString();
             System.out.println(curso);
-            ps.setInt(1, amdl.getIdActividad());
-            ps.setString(2, amdl.getTitulo());
-            ps.setInt(3, (int) emodel.getid_Estudiante());
-            ps.setInt(4, amdl.getPeriodo());
-            ps.setInt(5, (int) sessionManager.getUsername());
-            ps.setInt(6, amdl.getIdMateria());
-            ps.setString(7, amdl.getMateria());
-            ps.setString(8, amdl.getIdCurso());
-            ps.setFloat(9, amdl.getNota());
+            ps.setInt(1, amdl.getIdRespuesta());
+            ps.setInt(2, amdl.getIdActividad());
+            ps.setString(3, amdl.getTitulo());
+            ps.setInt(4, amdl.getIdestudiante());
+            ps.setInt(5, amdl.getPeriodo());
+            ps.setInt(6, (int) sessionManager.getUsername());
+            ps.setInt(7, amdl.getIdMateria());
+            ps.setString(8, amdl.getMateria());
+            ps.setString(9, amdl.getIdCurso());
+            ps.setFloat(10, amdl.getNota());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

@@ -93,7 +93,7 @@ public class Controlador_Admin implements ActionListener {
     }
 
     public void create_Student() {//Metodo para crear un estudiante nuevo
-        mode.setid_Estudiante(Long.parseLong(es.Txt_DocumentStudent.getText()));
+        mode.setid_Estudiante(Integer.parseInt(es.Txt_DocumentStudent.getText()));
         mode.setNombres(es.Txt_nameStudent.getText());
         mode.setApellidos(es.Txt_LastNameStudent.getText());
         mode.setFecha_Nacimiento(es.Txt_Day_Born.getText());
@@ -122,7 +122,7 @@ public class Controlador_Admin implements ActionListener {
     }
 
     public void modificar() { //modificar un estudiante
-        mode.setid_Estudiante(Long.parseLong(es.Txt_DocumentStudent.getText()));
+        mode.setid_Estudiante(Integer.parseInt(es.Txt_DocumentStudent.getText()));
         mode.setNombres(es.Txt_nameStudent.getText());
         mode.setApellidos(es.Txt_LastNameStudent.getText());
         mode.setFecha_Nacimiento(es.Txt_Day_Born.getText());
@@ -524,7 +524,7 @@ public class Controlador_Admin implements ActionListener {
 
     public void Matricular() { //modificar id curso de un estudiante
         int fila = m.Tabla.getSelectedRow();
-        Long id = Long.parseLong(m.Tabla.getValueAt(fila, 0).toString());
+        int id = Integer.parseInt(m.Tabla.getValueAt(fila, 0).toString());
         mode.setid_Estudiante(id);
 
         String idCurso = cu.Box_Cursos.getSelectedItem().toString();
@@ -546,7 +546,7 @@ public class Controlador_Admin implements ActionListener {
 
     public void Retirar_Matricula() { //modificar id curso de un estudiante
         int fila = cu.tabla_e.getSelectedRow();
-        Long id = Long.parseLong(cu.tabla_e.getValueAt(fila, 0).toString());
+        int id = Integer.parseInt(cu.tabla_e.getValueAt(fila, 0).toString());
 
         mode.setid_Estudiante(id);
         String idCurso = cu.Box_Cursos.getSelectedItem().toString();

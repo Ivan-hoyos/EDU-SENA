@@ -38,7 +38,6 @@ public class VerProf extends javax.swing.JPanel {
         btnCalificar = new javax.swing.JToggleButton();
         btnVolver = new javax.swing.JToggleButton();
         TxtTitulo = new javax.swing.JTextField();
-        comentar = new javax.swing.JToggleButton();
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
@@ -92,12 +91,6 @@ public class VerProf extends javax.swing.JPanel {
         TxtTitulo.setForeground(new java.awt.Color(0, 0, 0));
         TxtTitulo.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        comentar.setBackground(new java.awt.Color(0, 173, 0));
-        comentar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        comentar.setForeground(new java.awt.Color(255, 255, 255));
-        comentar.setText("Comentar");
-        comentar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         javax.swing.GroupLayout south1Layout = new javax.swing.GroupLayout(south1);
         south1.setLayout(south1Layout);
         south1Layout.setHorizontalGroup(
@@ -114,11 +107,9 @@ public class VerProf extends javax.swing.JPanel {
                         .addGap(39, 39, 39)
                         .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)))
+                            .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
                     .addGroup(south1Layout.createSequentialGroup()
                         .addComponent(btnCalificar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comentar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -140,10 +131,9 @@ public class VerProf extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalificar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comentar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(south1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCalificar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -176,7 +166,6 @@ public class VerProf extends javax.swing.JPanel {
     public javax.swing.JTextField TxtTitulo;
     public javax.swing.JToggleButton btnCalificar;
     public javax.swing.JToggleButton btnVolver;
-    public javax.swing.JToggleButton comentar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

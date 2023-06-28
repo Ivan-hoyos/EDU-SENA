@@ -20,13 +20,15 @@ public class ActModel {
     private String Respuesta;
     private int Periodo;
     private float Nota;
+    private int IdRespuesta;
+    private int idestudiante;
 
     public ActModel() {
     }
 
     public ActModel(int IdActividad, String Titulo, String Descripcion, Timestamp FechaCreacion, int ProfesorId, String IdCurso, String Materia,
             int IdMateria,
-            String Respuesta, int Periodo, float Notas) {
+            String Respuesta, int Periodo, float Notas, int IdRespuesta, int idestudiante) {
         this.IdActividad = IdActividad;
         this.Titulo = Titulo;
         this.Descripcion = Descripcion;
@@ -38,6 +40,8 @@ public class ActModel {
         this.Respuesta = Respuesta;
         this.Periodo = Periodo;
         this.Nota = Notas;
+        this.IdRespuesta = IdRespuesta;
+        this.idestudiante = idestudiante;
     }
 
     public int getIdActividad() {
@@ -126,6 +130,22 @@ public class ActModel {
 
     public void setNota(float Nota) {
         this.Nota = Nota;
+    }
+
+    public int getIdRespuesta() {
+        return IdRespuesta;
+    }
+
+    public void setIdRespuesta(int IdRespuesta) {
+        this.IdRespuesta = IdRespuesta;
+    }
+
+    public int getIdestudiante() {
+        return idestudiante;
+    }
+
+    public void setIdestudiante(int idestudiante) {
+        this.idestudiante = idestudiante;
     }
 
 }

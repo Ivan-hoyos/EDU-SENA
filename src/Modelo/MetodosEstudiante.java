@@ -60,7 +60,7 @@ public class MetodosEstudiante extends Conexion {
             ResultSet rs_Student = ps.executeQuery();
             if (rs_Student.next()) {
                 //Si existe el usuario
-                Long user = Long.parseLong(rs_Student.getString("id_Estudiante"));
+                int user = Integer.parseInt(rs_Student.getString("id_Estudiante"));
                 String pass = rs_Student.getString("Contraseña");
                 String fecha = rs_Student.getString("Fecha_Nacimiento");
                 String Sexo = rs_Student.getString("Sexo");
@@ -88,43 +88,6 @@ public class MetodosEstudiante extends Conexion {
 
     }
 
-    public void horario() {
-        try {
-            Connection con = getConnection();
-            String consulta = "SELECT H.Dia, H.HoraInicio, H.HoraFin, C.id_Cursos, A.Nombre AS idMateria,  P.id_Profesor, "
-                    + "P.Nombres AS NombreProfesor FROM Horarios H JOIN Cursos C ON H.idCurso = C.id_Cursos JOIN Profesores P "
-                    + "ON H.idProfesor = P.id_Profesor JOIN asignaturas A ON H.idMateria = A.id_Asignatura ORDER BY H.Dia, H.HoraInicio;";
-
-            Statement statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery(consulta);
-
-            while (resultSet.next()) {
-                String dia = resultSet.getString("Dia");
-                int horaInicio = resultSet.getInt("HoraInicio");
-                int horaFin = resultSet.getInt("HoraFin");
-                String idCurso = resultSet.getString("id_Cursos");
-                String nombreCurso = resultSet.getString("idMateria");
-                long idProfesor = resultSet.getLong("id_Profesor");
-                String nombreProfesor = resultSet.getString("NombreProfesor");
-
-                // Aquí puedes utilizar los datos obtenidos para mostrar el horario en la vista general
-                System.out.println("Día: " + dia);
-                System.out.println("Hora de inicio: " + horaInicio);
-                System.out.println("Hora de fin: " + horaFin);
-                System.out.println("ID del curso: " + idCurso);
-                System.out.println("Nombre del curso: " + nombreCurso);
-                System.out.println("ID del profesor: " + idProfesor);
-                System.out.println("Nombre del profesor: " + nombreProfesor);
-                System.out.println("--------------------------");
-            }
-
-            resultSet.close();
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("e");
-        }
-    }
 
     public int responder(ActModel mdl) {
         int r = 1;
