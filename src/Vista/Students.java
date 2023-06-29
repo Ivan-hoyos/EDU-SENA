@@ -4,15 +4,6 @@
  */
 package Vista;
 
-import Modelo.Conexion;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author Aprendiz
@@ -63,7 +54,7 @@ public class Students extends javax.swing.JPanel {
         Lbl_Email = new javax.swing.JLabel();
         Txt_email = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
-        Txt_password = new javax.swing.JTextField();
+        TxtPass = new javax.swing.JPasswordField();
         table_container = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
@@ -229,8 +220,7 @@ public class Students extends javax.swing.JPanel {
         Lbl_password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Lbl_password.setText("Contraseña");
 
-        Txt_password.setBackground(new java.awt.Color(235, 235, 235));
-        Txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TxtPass.setBackground(new java.awt.Color(235, 235, 235));
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
@@ -247,8 +237,12 @@ public class Students extends javax.swing.JPanel {
                                 .addComponent(Lbl_Born)
                                 .addGap(18, 18, 18)
                                 .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(FormLayout.createSequentialGroup()
+                                .addComponent(Lbl_password)
+                                .addGap(93, 93, 93)
+                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(43, 43, 43)
                         .addComponent(Lbl_Email)
                         .addGap(64, 64, 64)
@@ -277,16 +271,15 @@ public class Students extends javax.swing.JPanel {
                                 .addGap(223, 223, 223)
                                 .addComponent(Lbl_LastName)
                                 .addGap(18, 18, 18)
-                                .addComponent(Txt_LastNameStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(Lbl_password))
+                                .addComponent(Txt_LastNameStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FormLayout.setVerticalGroup(
             FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FormLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Lbl_Student, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Lbl_Student)
+                .addGap(34, 34, 34)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_Document, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_DocumentStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,7 +314,7 @@ public class Students extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -361,7 +354,9 @@ public class Students extends javax.swing.JPanel {
         );
         table_containerLayout.setVerticalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+            .addGroup(table_containerLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -386,8 +381,8 @@ public class Students extends javax.swing.JPanel {
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table_container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(table_container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 760));
@@ -428,13 +423,13 @@ public class Students extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_password;
     private javax.swing.JPanel North_panel;
     public javax.swing.JTable Tabla;
+    public javax.swing.JPasswordField TxtPass;
     public javax.swing.JTextField Txt_Day_Born;
     public javax.swing.JTextField Txt_Direction;
     public javax.swing.JTextField Txt_DocumentStudent;
     public javax.swing.JTextField Txt_LastNameStudent;
     public javax.swing.JTextField Txt_email;
     public javax.swing.JTextField Txt_nameStudent;
-    public javax.swing.JTextField Txt_password;
     public javax.swing.JTextField Txt_telephone;
     public javax.swing.JRadioButton btn_F;
     public javax.swing.JRadioButton btn_M;

@@ -148,7 +148,7 @@ public class Metodos_Admin extends Conexion {
         try {
 
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO profesores (id_Profesor, Nombres, Apellidos, Direccion,Telefono, Email, Contraseña, Profesion) VALUES (?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO profesores (id_Profesor, Nombres, Apellidos, Direccion,Telefono, Email, Contraseña, Profesion, id_Materia) VALUES (?,?,?,?,?,?,?,?,?)");
 
             ps.setLong(1, pmdl.getId_Profesor());
             ps.setString(2, pmdl.getNombres());
@@ -158,6 +158,7 @@ public class Metodos_Admin extends Conexion {
             ps.setString(6, pmdl.getEmail());
             ps.setString(7, pmdl.getContraseña());
             ps.setString(8, pmdl.getProfesion());
+            ps.setInt(9, pmdl.getIdMateria());
             ps.executeUpdate();
             if (r == 1) {
 

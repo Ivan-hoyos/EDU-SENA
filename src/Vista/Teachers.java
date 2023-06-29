@@ -46,20 +46,24 @@ public class Teachers extends javax.swing.JPanel {
         Lbl_Email = new javax.swing.JLabel();
         Txt_emailp = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
-        Txt_passwordp = new javax.swing.JTextField();
         Materia = new javax.swing.JComboBox<>();
         Lbl_Email1 = new javax.swing.JLabel();
+        TxtPass = new javax.swing.JPasswordField();
         table_container = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablap = new javax.swing.JTable();
 
+        setMinimumSize(new java.awt.Dimension(1100, 760));
+        setPreferredSize(new java.awt.Dimension(1100, 760));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Container.setBackground(new java.awt.Color(255, 255, 255));
+        Container.setPreferredSize(new java.awt.Dimension(1195, 760));
 
         North_panel.setBackground(new java.awt.Color(0, 173, 0));
         North_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         North_panel.setOpaque(false);
+        North_panel.setPreferredSize(new java.awt.Dimension(186, 309));
 
         btn_crear.setBackground(new java.awt.Color(0, 173, 0));
         btn_crear.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -76,7 +80,8 @@ public class Teachers extends javax.swing.JPanel {
         btn_limpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
         btn_limpiar.setText("Limpiar Campos");
-        btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_limpiar.setPreferredSize(new java.awt.Dimension(69, 23));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_limpiarActionPerformed(evt);
@@ -87,7 +92,8 @@ public class Teachers extends javax.swing.JPanel {
         btn_moficar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_moficar.setForeground(new java.awt.Color(255, 255, 255));
         btn_moficar.setText("Modificar");
-        btn_moficar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_moficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_moficar.setPreferredSize(new java.awt.Dimension(69, 23));
         btn_moficar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_moficarActionPerformed(evt);
@@ -98,7 +104,8 @@ public class Teachers extends javax.swing.JPanel {
         Btn_Delete.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Btn_Delete.setForeground(new java.awt.Color(255, 255, 255));
         Btn_Delete.setText("Eliminar");
-        Btn_Delete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Btn_Delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Delete.setPreferredSize(new java.awt.Dimension(69, 23));
         Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_DeleteActionPerformed(evt);
@@ -121,7 +128,7 @@ public class Teachers extends javax.swing.JPanel {
         North_panelLayout.setVerticalGroup(
             North_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, North_panelLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,6 +141,7 @@ public class Teachers extends javax.swing.JPanel {
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
         Form.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Form.setPreferredSize(new java.awt.Dimension(853, 309));
 
         Lbl_Student.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Lbl_Student.setForeground(new java.awt.Color(0, 173, 0));
@@ -193,15 +201,14 @@ public class Teachers extends javax.swing.JPanel {
         Lbl_password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Lbl_password.setText("Contraseña");
 
-        Txt_passwordp.setBackground(new java.awt.Color(235, 235, 235));
-        Txt_passwordp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        Materia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemáticas", "Ciencias Naturales", "Lenguaje y Literatura", "Historia", "Geografía", "Educación Física", "Artes", "Música", "Inglés", "Tecnología" }));
+        Materia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingles", "Historia", "Español", "Arte", "Matemáticas", "Biología", "Geografía", "Física", "Química", "Educación Física" }));
 
         Lbl_Email1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lbl_Email1.setForeground(new java.awt.Color(0, 173, 0));
         Lbl_Email1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Lbl_Email1.setText("Profesión");
+
+        TxtPass.setBackground(new java.awt.Color(235, 235, 235));
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
@@ -214,9 +221,12 @@ public class Teachers extends javax.swing.JPanel {
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(FormLayout.createSequentialGroup()
-                                .addComponent(Lbl_Document)
-                                .addGap(42, 42, 42)
-                                .addComponent(Txt_Documentp, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(FormLayout.createSequentialGroup()
+                                        .addComponent(Lbl_Document)
+                                        .addGap(42, 42, 42)
+                                        .addComponent(Txt_Documentp, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(TxtPass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(39, 39, 39)
                                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(FormLayout.createSequentialGroup()
@@ -229,9 +239,9 @@ public class Teachers extends javax.swing.JPanel {
                                             .addComponent(Lbl_Email1))
                                         .addGap(52, 52, 52)
                                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Txt_namep, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                            .addComponent(Txt_namep)
                                             .addComponent(Txt_emailp)
-                                            .addComponent(Materia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(Materia, 0, 162, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(Lbl_Telephone))))
                             .addGroup(FormLayout.createSequentialGroup()
@@ -239,9 +249,7 @@ public class Teachers extends javax.swing.JPanel {
                                     .addComponent(Lbl_Direction)
                                     .addComponent(Lbl_password))
                                 .addGap(67, 67, 67)
-                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Txt_Directionp, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                                    .addComponent(Txt_passwordp))))
+                                .addComponent(Txt_Directionp, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Txt_telephonep)
@@ -252,8 +260,8 @@ public class Teachers extends javax.swing.JPanel {
             FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FormLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Lbl_Student, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Lbl_Student)
+                .addGap(34, 34, 34)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Lbl_Document, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,14 +281,15 @@ public class Teachers extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_passwordp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lbl_Email1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lbl_Email1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         table_container.setBackground(new java.awt.Color(255, 255, 255));
         table_container.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        table_container.setPreferredSize(new java.awt.Dimension(454, 383));
 
         Tablap.setBackground(new java.awt.Color(255, 255, 255));
         Tablap.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -310,13 +319,11 @@ public class Teachers extends javax.swing.JPanel {
         table_container.setLayout(table_containerLayout);
         table_containerLayout.setHorizontalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
         );
         table_containerLayout.setVerticalGroup(
             table_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(table_containerLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -326,12 +333,12 @@ public class Teachers extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(table_container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(table_container, javax.swing.GroupLayout.DEFAULT_SIZE, 1093, Short.MAX_VALUE)
                     .addGroup(ContainerLayout.createSequentialGroup()
-                        .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(North_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(132, 132, 132))
+                .addGap(41, 41, 41))
         );
         ContainerLayout.setVerticalGroup(
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,11 +348,11 @@ public class Teachers extends javax.swing.JPanel {
                     .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table_container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addComponent(table_container, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 790));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 760));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
@@ -383,12 +390,12 @@ public class Teachers extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> Materia;
     private javax.swing.JPanel North_panel;
     public javax.swing.JTable Tablap;
+    public javax.swing.JPasswordField TxtPass;
     public javax.swing.JTextField Txt_Directionp;
     public javax.swing.JTextField Txt_Documentp;
     public javax.swing.JTextField Txt_LastNamep;
     public javax.swing.JTextField Txt_emailp;
     public javax.swing.JTextField Txt_namep;
-    public javax.swing.JTextField Txt_passwordp;
     public javax.swing.JTextField Txt_telephonep;
     public javax.swing.JButton btn_crear;
     public javax.swing.JButton btn_limpiar;

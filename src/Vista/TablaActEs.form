@@ -7,10 +7,7 @@
     </Property>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-        <TitledBorder title="Actividades">
-          <Font PropertyName="font" name="Tahoma" size="12" style="1"/>
-          <Color PropertyName="color" blue="0" green="ad" red="0" type="rgb"/>
-        </TitledBorder>
+        <TitledBorder/>
       </Border>
     </Property>
   </Properties>
@@ -29,17 +26,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1028" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="1082" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="0" pref="1028" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="1082" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="495" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="0" pref="495" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="515" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,13 +52,12 @@
         <Component class="javax.swing.JTable" name="Tabla">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="4">
+              <Table columnCount="5" rowCount="4">
                 <Column editable="false" title="C. Actividad" type="java.lang.Object"/>
                 <Column editable="false" title="Nombre" type="java.lang.Object"/>
                 <Column editable="false" title="Fecha Creacion" type="java.lang.Object"/>
                 <Column editable="false" title="Documento P" type="java.lang.Object"/>
                 <Column editable="false" title="Materia" type="java.lang.Object"/>
-                <Column editable="false" title="Nota" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -87,11 +83,6 @@
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>

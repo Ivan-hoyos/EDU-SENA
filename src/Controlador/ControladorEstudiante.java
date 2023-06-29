@@ -8,7 +8,6 @@ import Vista.ActividadesEs;
 import Vista.ActualizarEs;
 import Vista.EditarActEs;
 import Vista.Estudiante_log;
-import Vista.NotasEs;
 import Vista.TablaActEs;
 import Vista.TablaNotasEs;
 import Vista.VerAct;
@@ -36,7 +35,6 @@ public class ControladorEstudiante implements ActionListener {
     ActModel amodel = new ActModel(); //Modelo de actividades
     ActividadesEs actes = new ActividadesEs(); // Form para ver las actividades
     VerAct ver = new VerAct(); // Panel para ver la actividad
-    NotasEs notas = new NotasEs(); // Panel de notas
     EditarActEs edit = new EditarActEs(); // Panel para responder actividad
     TablaNotasEs tnotas = new TablaNotasEs(); //Tabla de notas
     TablaActEs tbl = new TablaActEs();
@@ -45,8 +43,6 @@ public class ControladorEstudiante implements ActionListener {
 
     public ControladorEstudiante(Estudiante_log principal) {
         this.principal.Actividades.addActionListener(this);
-        this.principal.Notas.addActionListener(this);
-        this.principal.Horarios.addActionListener(this);
         this.principal.perfil.addActionListener(this);
         this.principal.Exit.addActionListener(this);
         this.perfil.btn_modificar.addActionListener(this);
@@ -60,10 +56,6 @@ public class ControladorEstudiante implements ActionListener {
         this.ver.btnVolver.addActionListener(this);
         this.edit.btnResponder.addActionListener(this);
         this.edit.btnCancelar.addActionListener(this);
-        this.notas.Periodo1.addActionListener(this);
-        this.notas.Periodo2.addActionListener(this);
-        this.notas.Periodo3.addActionListener(this);
-        this.notas.Periodo4.addActionListener(this);
 
         tbl.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
@@ -202,13 +194,14 @@ public class ControladorEstudiante implements ActionListener {
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
 
-            psN = con.prepareStatement("SELECT Nota From notas WHERE id_Alumno = ?;");
+            /*psN = con.prepareStatement("SELECT Nota From notas WHERE id_Alumno = ?;");
             int id = sessionManager.getUsername();
             psN.setInt(1, id);
             rsN = psN.executeQuery();
             rsmdN = rsN.getMetaData();
-
-            while (rs.next() && rsN.next()) {
+            fila[columnas] = rsN.getObject(1);
+             */
+            while (rs.next()) {
 
                 Object[] fila = new Object[columnas + 1];
 
@@ -219,7 +212,6 @@ public class ControladorEstudiante implements ActionListener {
                     fila[i - 1] = rs.getObject(i);
 
                 }
-                fila[columnas] = rsN.getObject(1);
 
                 ModeloTabla.addRow(fila);
 
@@ -240,7 +232,10 @@ public class ControladorEstudiante implements ActionListener {
             Connection con = metodos.getConnection();
 
             ps = con.prepareStatement("SELECT Titulo, Descripcion, Materia, Periodo FROM actividades WHERE IdActividad=? ");
-
+            
+            PreparedStatement psN = con.prepareStatement("SELECT Nota From notas WHERE id_Alumno = ?;");
+            psN.setInt(1, sessionManager.getUsername());
+            ResultSet rsN = psN.executeQuery();
             ps.setInt(1, id);
 
             rs = ps.executeQuery();
@@ -253,6 +248,16 @@ public class ControladorEstudiante implements ActionListener {
                 amodel.setPeriodo(Periodo);
                 edit.TxtTitulo.setText(rs.getString("Titulo"));
 
+            }
+
+            while (rsN.next()) {
+                float nota = rsN.getFloat("Nota");
+                mode.setNotas(nota);
+                if (mode.getNotas() < 1) {
+                    ver.nota.setText("0");
+                } else {
+                    ver.nota.setText(String.valueOf(nota));
+                }
             }
 
         } catch (SQLException y) {
@@ -334,7 +339,7 @@ public class ControladorEstudiante implements ActionListener {
         }
 
         if (e.getSource() == principal.perfil) { //Mostrar perfil del estudiante
-            perfil.setSize(1100, 760);
+            perfil.setSize(1360, 770);
             principal.Panel_right.removeAll();
             principal.Panel_right.add(perfil, BorderLayout.CENTER);
             principal.Panel_right.setComponentZOrder(perfil, 0);
@@ -431,13 +436,13 @@ public class ControladorEstudiante implements ActionListener {
         }
 
         if (e.getSource() == principal.Actividades) {
-            actes.setSize(1100, 760);
+            actes.setSize(1360, 770);
             principal.Panel_right.removeAll();
             principal.Panel_right.add(actes, BorderLayout.CENTER);
             principal.Panel_right.setComponentZOrder(actes, 0);
             principal.Panel_right.revalidate();
             principal.Panel_right.repaint();
-            tbl.setSize(1056, 536);
+            tbl.setSize(1070, 536);
             actes.south.removeAll();
             actes.south.add(tbl, BorderLayout.CENTER);
             actes.south.setComponentZOrder(tbl, 0);
@@ -582,15 +587,6 @@ public class ControladorEstudiante implements ActionListener {
             TblAct();
             actes.btn_responder.setEnabled(true);
             actes.btn_ver.setEnabled(true);
-        }
-
-        if (e.getSource() == principal.Notas) {
-            notas.setSize(1300, 760);
-            principal.Panel_right.removeAll();
-            principal.Panel_right.add(notas, BorderLayout.CENTER);
-            principal.Panel_right.setComponentZOrder(notas, 0);
-            principal.Panel_right.revalidate();
-            principal.Panel_right.repaint();
         }
 
     }

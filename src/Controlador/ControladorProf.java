@@ -156,7 +156,7 @@ public class ControladorProf implements ActionListener {
 
     public void TblAct() {
 
-        tablaact.setSize(1056, 521);
+        tablaact.setSize(1070, 520);
         act.south.removeAll();
         act.south.add(tablaact, BorderLayout.CENTER);
         act.south.setComponentZOrder(tablaact, 0);
@@ -205,7 +205,7 @@ public class ControladorProf implements ActionListener {
 
     public void TblRes() {
 
-        resT.setSize(1056, 521);
+        resT.setSize(1070, 520);
         res.south.removeAll();
         res.south.add(resT, BorderLayout.CENTER);
         res.south.setComponentZOrder(resT, 0);
@@ -521,7 +521,7 @@ public class ControladorProf implements ActionListener {
             if (seleccion.equals("Seleccione")) {
                 JOptionPane.showMessageDialog(null, "SELECCIONE UN CURSO", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                cre.setSize(1056, 521);
+                cre.setSize(1084, 520);
                 act.south.removeAll();
                 act.south.add(cre, BorderLayout.CENTER);
                 act.south.setComponentZOrder(cre, 0);
@@ -603,7 +603,7 @@ public class ControladorProf implements ActionListener {
             if (tablaact.Actividades.getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Seleccione una Actividad", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                eact.setSize(1056, 521);
+                eact.setSize(1084, 521);
                 act.south.removeAll();
                 act.south.add(eact, BorderLayout.CENTER);
                 act.south.setComponentZOrder(eact, 0);
@@ -721,7 +721,7 @@ public class ControladorProf implements ActionListener {
         }
 
         if (e.getSource() == act.Respuestas) {
-            res.setSize(1100, 760);
+            res.setSize(1100, 770);
             principal.Panel_right.removeAll();
             principal.Panel_right.add(res, BorderLayout.CENTER);
             principal.Panel_right.setComponentZOrder(res, 0);
@@ -730,12 +730,7 @@ public class ControladorProf implements ActionListener {
             TblRes();
             res.btn_ver.setEnabled(true);
             ver.NOTA.setText(null);
-            /*resT.setSize(1056, 521);
-            res.south.removeAll();
-            res.south.add(resT, BorderLayout.CENTER);
-            res.south.setComponentZOrder(resT, 0);
-            res.south.revalidate();
-            res.south.repaint();*/
+
 
         }
 

@@ -53,7 +53,6 @@ public class Controlador_Admin implements ActionListener {
         this.admin.Estudiantes.addMouseListener(l);
         this.admin.Profesores.addActionListener(this);
         this.admin.Cursos.addActionListener(this);
-        this.admin.Horarios.addActionListener(this);
         this.admin.Exit.addActionListener(this);
         this.es.btn_create.addActionListener(this);
         this.es.btn_clean.addActionListener(this);
@@ -75,7 +74,7 @@ public class Controlador_Admin implements ActionListener {
         this.R.btn_cancelar.addActionListener(this);
         this.es.btn_F.addActionListener(this);
         this.es.btn_M.addActionListener(this);
-        
+
         es.Tabla.addMouseListener(new MouseAdapter() {// Evento para seleccionar un registro en la tabla de estudiantes
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -107,7 +106,8 @@ public class Controlador_Admin implements ActionListener {
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
-        mode.setContraseña(es.Txt_password.getText());
+        String password = new String(es.TxtPass.getPassword());
+        mode.setContraseña(password);
         //String id_Curso = "No";
         //mode.setId_Curso(id_Curso);
         int r = mte.create_Student(mode);
@@ -136,15 +136,16 @@ public class Controlador_Admin implements ActionListener {
         mode.setDireccion(es.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(es.Txt_telephone.getText()));
         mode.setEmail(es.Txt_email.getText());
-        mode.setContraseña(es.Txt_password.getText());
+        String password = new String(es.TxtPass.getPassword());
+        mode.setContraseña(password);
         String id_Curso = mode.getGrado() + mode.getSeccion();
         mode.setId_Curso(id_Curso);
         int r = mte.modificar(mode);
         if (r == 1) {
             ImageIcon icon = new ImageIcon(Metodos_Admin.class.getResource("/Images/comprobado.png"));
-            JOptionPane.showMessageDialog(es, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
+            JOptionPane.showMessageDialog(null, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
         } else {
-            JOptionPane.showMessageDialog(es, "Error, intente de nuevo");
+            JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
         }
     }
 
@@ -178,7 +179,7 @@ public class Controlador_Admin implements ActionListener {
                     mte.eliminar(doc);
                     limpiarcajas();
                     showtable();
-                    JOptionPane.showMessageDialog(admin, "Estudiante Eliminado", "Eliminado", JOptionPane.OK_OPTION, icon);
+                    JOptionPane.showMessageDialog(null, "Estudiante Eliminado", "Eliminado", JOptionPane.OK_OPTION, icon);
                     break;
                 case JOptionPane.NO_OPTION:
                     System.out.println("El usuario seleccionó 'No'");
@@ -209,7 +210,7 @@ public class Controlador_Admin implements ActionListener {
     public void show_e() {//Metodo para mostrar el formulario Student
         int r = mte.show_e();
         if (r == 1) {
-            es.setSize(1100, 760);
+            es.setSize(1360, 770);
             admin.Panel_right.removeAll();
             admin.Panel_right.add(es, BorderLayout.CENTER);
             admin.Panel_right.setComponentZOrder(es, 0);
@@ -222,7 +223,7 @@ public class Controlador_Admin implements ActionListener {
 
     public void show_p() {//Metodo para mostrar el formulario Profesor
 
-        p.setSize(1100, 760);
+        p.setSize(1360, 770);
         admin.Panel_right.removeAll();
         admin.Panel_right.add(p, BorderLayout.CENTER);
         admin.Panel_right.setComponentZOrder(p, 0);
@@ -233,7 +234,7 @@ public class Controlador_Admin implements ActionListener {
 
     public void show_cursos() {//Metodo para mostrar el formulario cursos
 
-        cu.setSize(1100, 760);
+        cu.setSize(1360, 770);
         admin.Panel_right.removeAll();
         admin.Panel_right.add(cu, BorderLayout.CENTER);
         admin.Panel_right.setComponentZOrder(cu, 0);
@@ -259,7 +260,7 @@ public class Controlador_Admin implements ActionListener {
     public void showMatricular() {//Metodo para mostrar el formulario cursos
 
         m.setVisible(true);
-        m.setLocationRelativeTo(cu);
+        m.setLocationRelativeTo(admin);
 
     }
 
@@ -411,14 +412,11 @@ public class Controlador_Admin implements ActionListener {
                     es.btn_M.setSelected(false);
                 }
 
-                //String grado = rs.getString("Grado");
-                //es.Box_grade.setSelectedItem(grado);
-                //String seccion = rs.getString("Seccion");
-                //es.Box_section.setSelectedItem(seccion);
                 es.Txt_Direction.setText(rs.getString("Direccion"));
                 es.Txt_telephone.setText(rs.getString("Telefono"));
                 es.Txt_email.setText(rs.getString("Email"));
-                es.Txt_password.setText(rs.getString("Contraseña"));
+                es.TxtPass.setText(rs.getString("Contraseña"));
+                //  es.Txt_password.setText(rs.getString("Contraseña"));
 
             }
 
@@ -445,9 +443,7 @@ public class Controlador_Admin implements ActionListener {
         es.Txt_Direction.setText(null);
         es.Txt_telephone.setText(null);
         es.Txt_email.setText(null);
-        //es.Box_grade.setSelectedItem("Seleccione");
-        //es.Box_section.setSelectedItem("Seleccione");
-        es.Txt_password.setText(null);
+        es.TxtPass.setText(null);
 
         es.Txt_DocumentStudent.setEditable(true);
         es.Txt_DocumentStudent.setForeground(Color.black);
@@ -462,10 +458,11 @@ public class Controlador_Admin implements ActionListener {
         pmode.setDireccion(p.Txt_Directionp.getText());
         pmode.setTelefono(Long.parseLong(p.Txt_telephonep.getText()));
         pmode.setEmail(p.Txt_emailp.getText());
-        pmode.setContraseña(p.Txt_passwordp.getText());
+        String password = new String(p.TxtPass.getPassword());
+        pmode.setContraseña(password);
         pmode.setProfesion(p.Materia.getSelectedItem().toString());
         int idMateria = p.Materia.getSelectedIndex();
-        //pmode.setidMateria(idMateria);
+        pmode.setIdMateria(idMateria);
         //System.out.println(pmode.getidMateria());
         int r = mte.createProf(pmode);
         if (r == 1) {
@@ -485,10 +482,12 @@ public class Controlador_Admin implements ActionListener {
         pmode.setDireccion(p.Txt_Directionp.getText());
         pmode.setTelefono(Long.parseLong(p.Txt_telephonep.getText()));
         pmode.setEmail(p.Txt_emailp.getText());
-        pmode.setContraseña(p.Txt_passwordp.getText());
+        String password = new String(p.TxtPass.getPassword());
+        pmode.setContraseña(password);
+
         pmode.setProfesion(p.Materia.getSelectedItem().toString());
-        //int idMateria = p.Materia.getSelectedIndex();
-        //pmode.setidMateria(idMateria);
+        int idMateria = p.Materia.getSelectedIndex();
+        pmode.setIdMateria(idMateria);
 
         int r = mte.modificarP(pmode);
         if (r == 1) {
@@ -536,8 +535,6 @@ public class Controlador_Admin implements ActionListener {
                     .getResource("/Images/comprobado.png"));
             JOptionPane.showMessageDialog(m, "Estudiante matriculado al curso " + idCurso + "", "Guardado", JOptionPane.CLOSED_OPTION, icon);
             m.dispose();
-            //cu.Box_Cursos.setSelectedIndex(0);
-            //cu.jTextField1.setText(null);
             seleccionarCur();
         } else {
             JOptionPane.showMessageDialog(m, "Error, intente de nuevo");
@@ -558,8 +555,7 @@ public class Controlador_Admin implements ActionListener {
                     .getResource("/Images/comprobado.png"));
             JOptionPane.showMessageDialog(R, "Estudiante retirado del curso " + idCurso + "", "Retirado", JOptionPane.CLOSED_OPTION, icon);
             R.dispose();
-            //cu.Box_Cursos.setSelectedIndex(0);
-            //cu.jTextField1.setText(null);
+
             seleccionarCur();
         } else {
             JOptionPane.showMessageDialog(R, "Error, intente de nuevo");
@@ -571,11 +567,10 @@ public class Controlador_Admin implements ActionListener {
         int fila = p.Tablap.getSelectedRow();
 
         if (fila == -1) {
-            JOptionPane.showMessageDialog(p, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             Object[] options = {"Sí", "No"};
-            // Cargar un ícono personalizado desde un archivo de imagen
-            //ImageIcon icon = new ImageIcon("/Images/boton-eliminar.png");
+
             ImageIcon icon = new ImageIcon(Metodos_Admin.class
                     .getResource("/Images/boton-eliminar.png"));
 
@@ -674,7 +669,7 @@ public class Controlador_Admin implements ActionListener {
                 p.Txt_Directionp.setText(rs.getString("Direccion"));
                 p.Txt_telephonep.setText(rs.getString("Telefono"));
                 p.Txt_emailp.setText(rs.getString("Email"));
-                p.Txt_passwordp.setText(rs.getString("Contraseña"));
+                p.TxtPass.setText(rs.getString("Contraseña"));
                 String profesion = rs.getString("Profesion");
                 p.Materia.setSelectedItem(profesion);
 
@@ -697,7 +692,7 @@ public class Controlador_Admin implements ActionListener {
         p.Txt_Directionp.setText(null);
         p.Txt_telephonep.setText(null);
         p.Txt_emailp.setText(null);
-        p.Txt_passwordp.setText(null);
+        p.TxtPass.setText(null);
         p.Materia.setSelectedItem(null);
 
         p.Txt_Documentp.setEditable(true);
@@ -824,10 +819,16 @@ public class Controlador_Admin implements ActionListener {
 
         if (e.getSource()
                 == es.btn_moficar) {
-            modificar();
-            limpiarcajas();
-            showtable();
+            if (es.Tabla.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione un Estudiante", "Error", JOptionPane.ERROR_MESSAGE);
 
+            } else {
+
+                modificar();
+                limpiarcajas();
+                showtable();
+
+            }
         }
 
         if (e.getSource() == es.Btn_Delete) {
@@ -851,10 +852,15 @@ public class Controlador_Admin implements ActionListener {
         }
 
         if (e.getSource() == p.btn_moficar) {
-            modificarP();
-            limpiarcajasP();
-            showtableP();
+            if (p.Tablap.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione un Profesor", "Error", JOptionPane.ERROR_MESSAGE);
 
+            } else {
+                modificarP();
+                limpiarcajasP();
+                showtableP();
+
+            }
         }
 
         if (e.getSource() == p.Btn_Delete) {
@@ -876,23 +882,25 @@ public class Controlador_Admin implements ActionListener {
         }
 
         if (e.getSource()
-                == admin.Horarios) {
-            JOptionPane.showMessageDialog(admin, "Horarios");
-        }
-
-        if (e.getSource()
                 == admin.Exit) {
             exit();
         }
         if (e.getSource() == cu.btn_buscar) {
-            seleccionarCur();
+            String idCurso = cu.Box_Cursos.getSelectedItem().toString();
+            int fila = cu.tabla_e.getSelectedRow();
+            if (idCurso.equals("Seleccione")) {
+                JOptionPane.showMessageDialog(null, "Seleccione un curso");
+            } else {
+                seleccionarCur();
+            }
+
         }
 
         if (e.getSource() == cu.btn_matricular) {
             String idCurso = cu.Box_Cursos.getSelectedItem().toString();
 
             if (idCurso.equals("Seleccione")) {
-                JOptionPane.showMessageDialog(admin, "Seleccione un curso");
+                JOptionPane.showMessageDialog(null, "Seleccione un curso");
             } else {
                 showMatricular();
 
@@ -939,7 +947,7 @@ public class Controlador_Admin implements ActionListener {
             String idCurso = cu.Box_Cursos.getSelectedItem().toString();
             int fila = cu.tabla_e.getSelectedRow();
             if (idCurso.equals("Seleccione")) {
-                JOptionPane.showMessageDialog(admin, "Seleccione un curso");
+                JOptionPane.showMessageDialog(null, "Seleccione un curso");
             } else {
                 if (fila == -1) {
                     JOptionPane.showMessageDialog(null, "Seleccione un Registro", "Error", JOptionPane.ERROR_MESSAGE);

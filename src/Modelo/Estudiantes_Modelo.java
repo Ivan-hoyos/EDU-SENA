@@ -15,13 +15,15 @@ public class Estudiantes_Modelo {
     private String Contraseña;
     private String id_Curso;
     private String Rol;
+    private float notas;
 
     
     public Estudiantes_Modelo(){
         
     }
 
-    public Estudiantes_Modelo(int id_Estudiante, String Nombres, String Apellidos, String Fecha_Nacimiento, String Sexo, byte Grado, String Seccion, String Direccion, long Telefono, String Email, String Contraseña, String id_Curso, String Rol) {
+    public Estudiantes_Modelo(int id_Estudiante, String Nombres, String Apellidos, String Fecha_Nacimiento, String Sexo, byte Grado, String Seccion, String Direccion, long Telefono, String Email, String Contraseña, String id_Curso, String Rol,
+            float notas) {
         this.id_Estudiante = id_Estudiante;
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
@@ -35,6 +37,7 @@ public class Estudiantes_Modelo {
         this.Contraseña = Contraseña;
         this.id_Curso = id_Curso;
         this.Rol = Rol;
+        this.notas = notas;
     }
 
 
@@ -142,6 +145,16 @@ public class Estudiantes_Modelo {
     public void setRol(String Rol) {
         this.Rol = Rol;
     }
+
+    public float getNotas() {
+        return notas;
+    }
+
+    public void setNotas(float notas) {
+        this.notas = notas;
+    }
+
+   
     
 
 }

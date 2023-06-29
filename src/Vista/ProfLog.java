@@ -115,7 +115,7 @@ public class ProfLog extends javax.swing.JFrame {
         Exit.setIconTextGap(65);
         Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 250, 70));
 
-        Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 768));
+        Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 770));
 
         Panel_right.setBackground(new java.awt.Color(255, 255, 255));
         Panel_right.setPreferredSize(new java.awt.Dimension(1600, 1310));
@@ -155,11 +155,11 @@ public class ProfLog extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1614, Short.MAX_VALUE)
+            .addGap(0, 1366, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, 1614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, 1366, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(

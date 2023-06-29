@@ -54,13 +54,15 @@ public class ActividadesProf extends javax.swing.JPanel {
         btn_eliminar = new javax.swing.JButton();
         Respuestas = new javax.swing.JToggleButton();
 
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1100, 760));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Container.setBackground(new java.awt.Color(255, 255, 255));
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
         Form.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Form.setPreferredSize(new java.awt.Dimension(1098, 770));
 
         Lbl_Cursos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Lbl_Cursos.setForeground(new java.awt.Color(0, 173, 0));
@@ -113,7 +115,7 @@ public class ActividadesProf extends javax.swing.JPanel {
         south.setLayout(southLayout);
         southLayout.setHorizontalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGap(0, 1082, Short.MAX_VALUE)
         );
         southLayout.setVerticalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +167,7 @@ public class ActividadesProf extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, North_ActionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_crear)
+                    .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Respuestas))
@@ -184,7 +186,7 @@ public class ActividadesProf extends javax.swing.JPanel {
                             .addComponent(south, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(FormLayout.createSequentialGroup()
                                 .addComponent(Lbl_Cursos)
-                                .addGap(0, 919, Short.MAX_VALUE))))
+                                .addGap(0, 947, Short.MAX_VALUE))))
                     .addGroup(FormLayout.createSequentialGroup()
                         .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -199,9 +201,9 @@ public class ActividadesProf extends javax.swing.JPanel {
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(North_Action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -217,11 +219,11 @@ public class ActividadesProf extends javax.swing.JPanel {
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Form, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 730));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 820));
     }// </editor-fold>//GEN-END:initComponents
 
 

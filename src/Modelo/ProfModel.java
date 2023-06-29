@@ -14,13 +14,14 @@ public class ProfModel {
     private String Profesion;
     private String Sexo;
     String idCurso;
+    int IdMateria;
 
     public ProfModel() {
 
     }
 
     public ProfModel(long id_Profesor, String Nombres, String Apellidos, String fechaNacimiento, String Direccion, long Telefono, String Email, String Contraseña, String Rol, String Profesion, String Sexo,
-            String idCurso) {
+            String idCurso, int IdMateria) {
         this.id_Profesor = id_Profesor;
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
@@ -33,6 +34,7 @@ public class ProfModel {
         this.Profesion = Profesion;
         this.Sexo = Sexo;
         this.idCurso = idCurso;
+        this.IdMateria = IdMateria;
 
     }
 
@@ -131,5 +133,15 @@ public class ProfModel {
     public void setidCurso(String idCurso){
         this.idCurso = idCurso;
     }
+
+
+    public int getIdMateria() {
+        return IdMateria;
+    }
+
+    public void setIdMateria(int IdMateria) {
+        this.IdMateria = IdMateria;
+    }
+    
 
 }

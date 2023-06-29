@@ -45,13 +45,13 @@ public class Admin extends javax.swing.JFrame {
         Estudiantes = new javax.swing.JButton();
         Profesores = new javax.swing.JButton();
         Cursos = new javax.swing.JButton();
-        Horarios = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         Panel_right = new javax.swing.JPanel();
         Background_image = new javax.swing.JLabel();
         Lbl_Edusena = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1360, 770));
         setResizable(false);
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
@@ -128,18 +128,6 @@ public class Admin extends javax.swing.JFrame {
         Cursos.setIconTextGap(58);
         Left_Panel.add(Cursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 70));
 
-        Horarios.setBackground(new java.awt.Color(255, 255, 255));
-        Horarios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Horarios.setForeground(new java.awt.Color(0, 173, 0));
-        Horarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/horarios.png"))); // NOI18N
-        Horarios.setText("Horarios");
-        Horarios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
-        Horarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Horarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Horarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Horarios.setIconTextGap(45);
-        Left_Panel.add(Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 250, 70));
-
         Exit.setBackground(new java.awt.Color(255, 255, 255));
         Exit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Exit.setForeground(new java.awt.Color(0, 173, 0));
@@ -150,12 +138,12 @@ public class Admin extends javax.swing.JFrame {
         Exit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Exit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         Exit.setIconTextGap(73);
-        Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 250, 70));
+        Left_Panel.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 250, 70));
 
         Background.add(Left_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 768));
 
         Panel_right.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_right.setPreferredSize(new java.awt.Dimension(1600, 1310));
+        Panel_right.setPreferredSize(new java.awt.Dimension(1360, 770));
 
         Background_image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Background_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.png"))); // NOI18N
@@ -170,20 +158,20 @@ public class Admin extends javax.swing.JFrame {
         Panel_rightLayout.setHorizontalGroup(
             Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_rightLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
+                .addGap(298, 298, 298)
                 .addGroup(Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Background_image, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Lbl_Edusena, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(599, Short.MAX_VALUE))
         );
         Panel_rightLayout.setVerticalGroup(
             Panel_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_rightLayout.createSequentialGroup()
-                .addGap(191, 191, 191)
+                .addContainerGap(185, Short.MAX_VALUE)
                 .addComponent(Background_image, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Lbl_Edusena, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(191, 191, 191))
+                .addGap(168, 168, 168))
         );
 
         Background.add(Panel_right, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 0, 1360, 770));
@@ -262,7 +250,6 @@ public class Admin extends javax.swing.JFrame {
     public javax.swing.JButton Cursos;
     public javax.swing.JButton Estudiantes;
     public javax.swing.JButton Exit;
-    public javax.swing.JButton Horarios;
     private javax.swing.JLabel Icon_sena;
     private javax.swing.JLabel Lbl_Edusena;
     public javax.swing.JPanel Left_Panel;

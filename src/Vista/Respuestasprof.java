@@ -52,6 +52,7 @@ public class Respuestasprof extends javax.swing.JPanel {
         atras = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1100, 770));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Container.setBackground(new java.awt.Color(255, 255, 255));
@@ -108,7 +109,7 @@ public class Respuestasprof extends javax.swing.JPanel {
         );
         southLayout.setVerticalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 489, Short.MAX_VALUE)
         );
 
         North_Action.setBackground(new java.awt.Color(255, 255, 255));
@@ -127,7 +128,7 @@ public class Respuestasprof extends javax.swing.JPanel {
             .addGroup(North_ActionLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(btn_ver)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         North_ActionLayout.setVerticalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +173,9 @@ public class Respuestasprof extends javax.swing.JPanel {
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(North_Action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -191,10 +192,10 @@ public class Respuestasprof extends javax.swing.JPanel {
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 730));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 820));
     }// </editor-fold>//GEN-END:initComponents
 
 

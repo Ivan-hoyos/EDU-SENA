@@ -39,10 +39,13 @@ public class ActividadesEs extends javax.swing.JPanel {
         btn_responder = new javax.swing.JButton();
         south = new FondoPanel();
 
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(1100, 760));
+        setPreferredSize(new java.awt.Dimension(1100, 760));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Container.setBackground(new java.awt.Color(255, 255, 255));
+        Container.setPreferredSize(new java.awt.Dimension(1100, 672));
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
         Form.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -91,7 +94,7 @@ public class ActividadesEs extends javax.swing.JPanel {
         south.setLayout(southLayout);
         southLayout.setHorizontalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGap(0, 1082, Short.MAX_VALUE)
         );
         southLayout.setVerticalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +113,7 @@ public class ActividadesEs extends javax.swing.JPanel {
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(FormLayout.createSequentialGroup()
                                 .addComponent(Lbl_Cursos)
-                                .addGap(0, 919, Short.MAX_VALUE))
+                                .addGap(0, 947, Short.MAX_VALUE))
                             .addComponent(south, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -120,9 +123,9 @@ public class ActividadesEs extends javax.swing.JPanel {
                 .addComponent(Lbl_Cursos)
                 .addGap(21, 21, 21)
                 .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -138,11 +141,10 @@ public class ActividadesEs extends javax.swing.JPanel {
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 730));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 770));
     }// </editor-fold>//GEN-END:initComponents
 
 
