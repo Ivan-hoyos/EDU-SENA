@@ -178,7 +178,7 @@ public class Students extends javax.swing.JPanel {
         Lbl_Format.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         Lbl_Format.setForeground(new java.awt.Color(153, 153, 153));
         Lbl_Format.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_Format.setText("Formato: dd/MM/yyyy");
+        Lbl_Format.setText("Formato: yyyy-MM-dd");
 
         Txt_Day_Born.setBackground(new java.awt.Color(235, 235, 235));
         Txt_Day_Born.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -188,8 +188,10 @@ public class Students extends javax.swing.JPanel {
         sexo.setText("Sexo");
 
         btn_M.setText("Masculino");
+        btn_M.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btn_F.setText("Femenino");
+        btn_F.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         Lbl_Direction.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lbl_Direction.setForeground(new java.awt.Color(0, 173, 0));
@@ -229,7 +231,6 @@ public class Students extends javax.swing.JPanel {
             .addGroup(FormLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Lbl_Format)
                     .addComponent(Lbl_Telephone)
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -260,7 +261,9 @@ public class Students extends javax.swing.JPanel {
                         .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Lbl_Student)
                     .addGroup(FormLayout.createSequentialGroup()
-                        .addComponent(Lbl_Document)
+                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Lbl_Format, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lbl_Document, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(67, 67, 67)
                         .addComponent(Txt_DocumentStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)

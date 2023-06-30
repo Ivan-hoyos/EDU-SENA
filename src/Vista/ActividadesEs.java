@@ -62,11 +62,13 @@ public class ActividadesEs extends javax.swing.JPanel {
         btn_ver.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_ver.setForeground(new java.awt.Color(255, 255, 255));
         btn_ver.setText("Ver Actividad");
+        btn_ver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btn_responder.setBackground(new java.awt.Color(0, 173, 0));
         btn_responder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_responder.setForeground(new java.awt.Color(255, 255, 255));
         btn_responder.setText("Responder");
+        btn_responder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout NorthLayout = new javax.swing.GroupLayout(North);
         North.setLayout(NorthLayout);

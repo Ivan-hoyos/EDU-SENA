@@ -61,14 +61,16 @@ public class ActualizarProf extends javax.swing.JPanel {
         Lbl_Email = new javax.swing.JLabel();
         Txt_email = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
-        Txt_password = new javax.swing.JTextField();
         Lbl_Email1 = new javax.swing.JLabel();
         Materia = new javax.swing.JComboBox<>();
         btn_editar = new javax.swing.JButton();
+        TxtPass = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Container.setBackground(new java.awt.Color(255, 255, 255));
+        Container.setPreferredSize(new java.awt.Dimension(1100, 770));
 
         North_panel.setBackground(new java.awt.Color(0, 173, 0));
         North_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -119,6 +121,7 @@ public class ActualizarProf extends javax.swing.JPanel {
 
         Form.setBackground(new java.awt.Color(255, 255, 255));
         Form.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Form.setPreferredSize(new java.awt.Dimension(880, 755));
 
         Lbl_Student.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Lbl_Student.setForeground(new java.awt.Color(0, 173, 0));
@@ -157,7 +160,7 @@ public class ActualizarProf extends javax.swing.JPanel {
         Lbl_Format.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         Lbl_Format.setForeground(new java.awt.Color(153, 153, 153));
         Lbl_Format.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_Format.setText("Formato: dd/MM/yyyy");
+        Lbl_Format.setText("Formato: yyyy-MM-dd");
 
         Txt_Day_Born.setBackground(new java.awt.Color(235, 235, 235));
         Txt_Day_Born.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -199,14 +202,6 @@ public class ActualizarProf extends javax.swing.JPanel {
         Lbl_password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Lbl_password.setText("Contraseña");
 
-        Txt_password.setBackground(new java.awt.Color(235, 235, 235));
-        Txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_passwordActionPerformed(evt);
-            }
-        });
-
         Lbl_Email1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lbl_Email1.setForeground(new java.awt.Color(0, 173, 0));
         Lbl_Email1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -225,6 +220,12 @@ public class ActualizarProf extends javax.swing.JPanel {
             }
         });
 
+        TxtPass.setBackground(new java.awt.Color(235, 235, 235));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(235, 0, 0));
+        jLabel1.setText("*");
+
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
         FormLayout.setHorizontalGroup(
@@ -234,44 +235,53 @@ public class ActualizarProf extends javax.swing.JPanel {
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbl_Document)
                             .addComponent(Lbl_Name1)
                             .addComponent(Lbl_Student)
                             .addGroup(FormLayout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Lbl_Format)
-                                    .addGroup(FormLayout.createSequentialGroup()
-                                        .addComponent(Lbl_Born)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(FormLayout.createSequentialGroup()
-                                                .addComponent(btn_M)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btn_F))
-                                            .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Lbl_Format, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Lbl_Document, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(sexo)
-                                    .addComponent(Lbl_Direction)
-                                    .addComponent(Lbl_Telephone)
+                                    .addComponent(Lbl_LastName)
+                                    .addGroup(FormLayout.createSequentialGroup()
+                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(FormLayout.createSequentialGroup()
+                                                .addComponent(Lbl_Telephone)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FormLayout.createSequentialGroup()
+                                                .addComponent(Lbl_Direction)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FormLayout.createSequentialGroup()
+                                                .addComponent(Lbl_Born)
+                                                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addGroup(FormLayout.createSequentialGroup()
+                                                        .addGap(18, 18, Short.MAX_VALUE)
+                                                        .addComponent(btn_F))
+                                                    .addGroup(FormLayout.createSequentialGroup()
+                                                        .addGap(30, 30, 30)
+                                                        .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(Txt_LastNameP, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(Txt_nameP, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(Txt_DocumentP, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(btn_M))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1))
                                     .addGroup(FormLayout.createSequentialGroup()
                                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Lbl_Email)
                                             .addComponent(Lbl_password)
                                             .addComponent(Lbl_Email1))
-                                        .addGap(93, 93, 93)
+                                        .addGap(105, 105, 105)
                                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(Txt_nameP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                                .addComponent(Txt_DocumentP, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(Txt_LastNameP)
-                                                .addComponent(Txt_telephone, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(Txt_email)
-                                                .addComponent(Txt_password))))
-                                    .addComponent(Lbl_LastName))
-                                .addGap(123, 123, 123)))
-                        .addGap(0, 243, Short.MAX_VALUE))
+                                            .addComponent(TxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Materia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE))
                     .addComponent(btn_editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -281,25 +291,24 @@ public class ActualizarProf extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(Lbl_Student)
                 .addGap(18, 18, 18)
-                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FormLayout.createSequentialGroup()
-                        .addComponent(Lbl_Document, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(Lbl_Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(Lbl_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FormLayout.createSequentialGroup()
-                        .addComponent(Txt_DocumentP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(Txt_nameP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(Txt_LastNameP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_Document, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Txt_DocumentP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Txt_nameP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Txt_LastNameP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Lbl_Format, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lbl_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lbl_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(25, 25, 25)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sexo)
@@ -310,24 +319,24 @@ public class ActualizarProf extends javax.swing.JPanel {
                     .addComponent(Lbl_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_Direction, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Txt_telephone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lbl_Telephone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_Telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(TxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_Email1)
                     .addComponent(Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -336,7 +345,7 @@ public class ActualizarProf extends javax.swing.JPanel {
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(North_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
@@ -346,12 +355,12 @@ public class ActualizarProf extends javax.swing.JPanel {
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(North_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 740));
+        add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 770));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
@@ -366,10 +375,6 @@ public class ActualizarProf extends javax.swing.JPanel {
         // Modificar
 
     }//GEN-LAST:event_btn_modificarActionPerformed
-
-    private void Txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_passwordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -389,18 +394,19 @@ public class ActualizarProf extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_password;
     public javax.swing.JComboBox<String> Materia;
     private javax.swing.JPanel North_panel;
+    public javax.swing.JPasswordField TxtPass;
     public javax.swing.JTextField Txt_Day_Born;
     public javax.swing.JTextField Txt_Direction;
     public javax.swing.JTextField Txt_DocumentP;
     public javax.swing.JTextField Txt_LastNameP;
     public javax.swing.JTextField Txt_email;
     public javax.swing.JTextField Txt_nameP;
-    public javax.swing.JTextField Txt_password;
     public javax.swing.JTextField Txt_telephone;
     public javax.swing.JRadioButton btn_F;
     public javax.swing.JRadioButton btn_M;
     public javax.swing.JButton btn_editar;
     public javax.swing.JButton btn_modificar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel sexo;
     // End of variables declaration//GEN-END:variables
 

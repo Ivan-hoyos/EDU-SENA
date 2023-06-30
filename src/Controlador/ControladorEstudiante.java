@@ -73,7 +73,7 @@ public class ControladorEstudiante implements ActionListener {
         perfil.Txt_Direction.setText(sessionManager.getDireccion());
         perfil.Txt_telephone.setText(Long.toString(sessionManager.getTelefono()));
         perfil.Txt_email.setText(sessionManager.getEmail());
-        perfil.Txt_password.setText(sessionManager.getPassword());
+        perfil.Txtpass.setText(sessionManager.getPassword());
         String sexo = sessionManager.getSexo();
 
         if (sexo.equals("M")) {
@@ -96,7 +96,7 @@ public class ControladorEstudiante implements ActionListener {
         perfil.Txt_Direction.setEnabled(false);
         perfil.Txt_telephone.setEnabled(false);
         perfil.Txt_email.setEnabled(false);
-        perfil.Txt_password.setEnabled(false);
+        perfil.Txtpass.setEnabled(false);
 
     }
 
@@ -111,7 +111,7 @@ public class ControladorEstudiante implements ActionListener {
             perfil.Txt_Direction.setText(mode.getDireccion());
             perfil.Txt_telephone.setText(Long.toString(mode.getTelefono()));
             perfil.Txt_email.setText(mode.getEmail());
-            perfil.Txt_password.setText(mode.getContraseña());
+            perfil.Txtpass.setText(mode.getContraseña());
             String sexo = mode.getSexo();
 
             if (sexo.equals("M")) {
@@ -134,7 +134,7 @@ public class ControladorEstudiante implements ActionListener {
             perfil.Txt_Direction.setEnabled(false);
             perfil.Txt_telephone.setEnabled(false);
             perfil.Txt_email.setEnabled(false);
-            perfil.Txt_password.setEnabled(false);
+            perfil.Txtpass.setEnabled(false);
         } else {
             System.out.println("XD");
         }
@@ -159,7 +159,8 @@ public class ControladorEstudiante implements ActionListener {
         mode.setDireccion(perfil.Txt_Direction.getText());
         mode.setTelefono(Long.parseLong(perfil.Txt_telephone.getText()));
         mode.setEmail(perfil.Txt_email.getText());
-        mode.setContraseña(perfil.Txt_password.getText());
+        String pass = new String(perfil.Txtpass.getPassword());
+        mode.setContraseña(pass);
         String id_Curso = mode.getGrado() + mode.getSeccion();
         mode.setId_Curso(id_Curso);
         int r = metodos.modificar(mode);
@@ -352,7 +353,7 @@ public class ControladorEstudiante implements ActionListener {
         }
 
         if (e.getSource() == perfil.btn_modificar) {
-            String npass = perfil.Txt_password.getText();
+            String npass = new String(perfil.Txtpass.getPassword());
             System.out.println("Nueva: " + npass);
             if (!npass.equals(sessionManager.getPassword())) {
                 String pass = JOptionPane.showInputDialog(null, "Ingresar Contraseña Anterior", "Confirmar Contraseña", JOptionPane.OK_OPTION);
@@ -372,7 +373,7 @@ public class ControladorEstudiante implements ActionListener {
                         perfil.Txt_Direction.setEnabled(false);
                         perfil.Txt_telephone.setEnabled(false);
                         perfil.Txt_email.setEnabled(false);
-                        perfil.Txt_password.setEnabled(false);
+                        perfil.Txtpass.setEnabled(false);
                         perfil.btn_editar.setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "LAS CONTRASEÑAS NO SON COMPATIBLES", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -396,7 +397,7 @@ public class ControladorEstudiante implements ActionListener {
                     perfil.Txt_Direction.setEnabled(false);
                     perfil.Txt_telephone.setEnabled(false);
                     perfil.Txt_email.setEnabled(false);
-                    perfil.Txt_password.setEnabled(false);
+                    perfil.Txtpass.setEnabled(false);
                     perfil.btn_editar.setEnabled(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -416,7 +417,7 @@ public class ControladorEstudiante implements ActionListener {
             perfil.Txt_Direction.setEnabled(true);
             perfil.Txt_telephone.setEnabled(true);
             perfil.Txt_email.setEnabled(true);
-            perfil.Txt_password.setEnabled(true);
+            perfil.Txtpass.setEnabled(true);
         }
 
         if (e.getSource() == perfil.Btn_cancelar) {
@@ -459,7 +460,7 @@ public class ControladorEstudiante implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Seleccione una Actividad", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
-                ver.setSize(1056, 521);
+                ver.setSize(1100, 530);
                 actes.south.removeAll();
                 actes.south.add(ver, BorderLayout.CENTER);
                 actes.south.setComponentZOrder(ver, 0);
@@ -481,7 +482,7 @@ public class ControladorEstudiante implements ActionListener {
 
                 amodel.setIdActividad(id);
 
-                edit.setSize(1056, 521);
+                edit.setSize(1100, 530);
                 actes.south.removeAll();
                 actes.south.add(edit, BorderLayout.CENTER);
                 actes.south.setComponentZOrder(edit, 0);
@@ -503,13 +504,13 @@ public class ControladorEstudiante implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Todos los campos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 respuesta();
-                actes.setSize(1100, 760);
+                actes.setSize(1360, 770);
                 principal.Panel_right.removeAll();
                 principal.Panel_right.add(actes, BorderLayout.CENTER);
                 principal.Panel_right.setComponentZOrder(actes, 0);
                 principal.Panel_right.revalidate();
                 principal.Panel_right.repaint();
-                tbl.setSize(1056, 536);
+                tbl.setSize(1100, 530);
                 actes.south.removeAll();
                 actes.south.add(tbl, BorderLayout.CENTER);
                 actes.south.setComponentZOrder(tbl, 0);
@@ -544,7 +545,7 @@ public class ControladorEstudiante implements ActionListener {
                 case JOptionPane.YES_OPTION:
 
                     JOptionPane.showMessageDialog(null, "Cambios Descartados");
-                    actes.setSize(1100, 760);
+                    actes.setSize(1360, 770);
                     principal.Panel_right.removeAll();
                     principal.Panel_right.add(actes, BorderLayout.CENTER);
                     principal.Panel_right.setComponentZOrder(actes, 0);

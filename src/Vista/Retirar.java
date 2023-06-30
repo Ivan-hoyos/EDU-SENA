@@ -45,8 +45,7 @@ public class Retirar extends javax.swing.JFrame {
         Tabla.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Documento", "Nombres", "Apellidos", "Fecha Nacimiento", "Curso"

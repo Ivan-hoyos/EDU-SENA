@@ -95,18 +95,20 @@ public class ControladorProf implements ActionListener {
         perfil.Txt_Direction.setText(sessionManager.getDireccion());
         perfil.Txt_telephone.setText(Long.toString(sessionManager.getTelefono()));
         perfil.Txt_email.setText(sessionManager.getEmail());
-        perfil.Txt_password.setText(sessionManager.getPassword());
+        perfil.TxtPass.setText(sessionManager.getPassword());
         perfil.Materia.setSelectedItem(sessionManager.getProfesion());
         String sexo = sessionManager.getSexo();
+
+        if (sexo.equals("N")) {
+            perfil.btn_F.setSelected(false);
+            perfil.btn_M.setSelected(false);
+        }
 
         if (sexo.equals("M")) {
             perfil.btn_M.setSelected(true);
             perfil.btn_F.setSelected(false);
         } else if (sexo.equals("F")) {
             perfil.btn_F.setSelected(true);
-            perfil.btn_M.setSelected(false);
-        } else {
-            perfil.btn_F.setSelected(false);
             perfil.btn_M.setSelected(false);
         }
         perfil.btn_F.setEnabled(false);
@@ -118,7 +120,7 @@ public class ControladorProf implements ActionListener {
         perfil.Txt_Direction.setEnabled(false);
         perfil.Txt_telephone.setEnabled(false);
         perfil.Txt_email.setEnabled(false);
-        perfil.Txt_password.setEnabled(false);
+        perfil.TxtPass.setEnabled(false);
         perfil.Materia.setEnabled(false);
         //metodosP.horario();
     }
@@ -312,7 +314,7 @@ public class ControladorProf implements ActionListener {
             psN.setInt(1, amdl.getIdestudiante());
             rsN = psN.executeQuery();
 
-            while (rs.next() ) {
+            while (rs.next()) {
                 ver.TxtTitulo.setText(rs.getString("Titulo"));
                 ver.TextRespuesta.setText(rs.getString("Respuesta"));
                 ver.Nombre.setText(rs.getString("NombreEstudiante"));
@@ -439,11 +441,15 @@ public class ControladorProf implements ActionListener {
         modeP.setDireccion(perfil.Txt_Direction.getText());
         modeP.setTelefono(Long.parseLong(perfil.Txt_telephone.getText()));
         modeP.setEmail(perfil.Txt_email.getText());
-        modeP.setContraseña(perfil.Txt_password.getText());
+
+        String pass = new String(perfil.TxtPass.getPassword());
+
+        modeP.setContraseña(pass);
 
         int r = metodosP.modificar(modeP);
         if (r == 1) {
-            ImageIcon icon = new ImageIcon(MetodosEstudiante.class.getResource("/Images/comprobado.png"));
+            ImageIcon icon = new ImageIcon(MetodosEstudiante.class
+                    .getResource("/Images/comprobado.png"));
             JOptionPane.showMessageDialog(principal, "Registro actualizado!!", "Actualizado", JOptionPane.CLOSED_OPTION, icon);
         } else {
             JOptionPane.showMessageDialog(principal, "Error, intente de nuevo");
@@ -453,7 +459,7 @@ public class ControladorProf implements ActionListener {
     public void Calificar() {
 
         int r = metodosP.Calificar(amdl);
-       
+
         if (r == 1) {
 
             ImageIcon icon = new ImageIcon(MetodosProf.class
@@ -550,6 +556,10 @@ public class ControladorProf implements ActionListener {
                 act.btn_eliminar.setEnabled(false);
                 CrearAct(amdl);
                 obtenerAct(amdl);
+                TblAct();
+                act.btn_editar.setEnabled(true);
+                act.btn_crear.setEnabled(true);
+                act.btn_eliminar.setEnabled(true);
                 cre.TxtTitulo.setText(null);
                 cre.TextDescrip.setText(null);
                 cre.BoxMaterias.setSelectedItem(null);
@@ -579,13 +589,7 @@ public class ControladorProf implements ActionListener {
                 case JOptionPane.YES_OPTION:
 
                     JOptionPane.showMessageDialog(null, "Cambios Descartados");
-                    tablaact.setSize(1056, 521);
-
-                    act.south.removeAll();
-                    act.south.add(tablaact, BorderLayout.CENTER);
-                    act.south.setComponentZOrder(tablaact, 0);
-                    act.south.revalidate();
-                    act.south.repaint();
+                    TblAct();
                     act.btn_editar.setEnabled(true);
                     act.btn_crear.setEnabled(true);
                     act.btn_eliminar.setEnabled(true);
@@ -639,13 +643,8 @@ public class ControladorProf implements ActionListener {
                 case JOptionPane.YES_OPTION:
 
                     JOptionPane.showMessageDialog(null, "Cambios Descartados");
-                    tablaact.setSize(1056, 521);
+                    TblAct();
 
-                    act.south.removeAll();
-                    act.south.add(tablaact, BorderLayout.CENTER);
-                    act.south.setComponentZOrder(tablaact, 0);
-                    act.south.revalidate();
-                    act.south.repaint();
                     act.btn_editar.setEnabled(true);
                     act.btn_crear.setEnabled(true);
                     act.btn_eliminar.setEnabled(true);
@@ -731,14 +730,13 @@ public class ControladorProf implements ActionListener {
             res.btn_ver.setEnabled(true);
             ver.NOTA.setText(null);
 
-
         }
 
         if (e.getSource() == res.btn_ver) {
             if (resT.Actividades.getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Seleccione una Respuesta", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                ver.setSize(1056, 521);
+                ver.setSize(1065, 522);
                 res.south.removeAll();
                 res.south.add(ver, BorderLayout.CENTER);
                 res.south.setComponentZOrder(ver, 0);
@@ -747,7 +745,7 @@ public class ControladorProf implements ActionListener {
                 seleccionarRes();
                 res.btn_ver.setEnabled(false);
                 ver.NOTA.setEditable(false);
-                
+
             }
         }
 
@@ -767,7 +765,7 @@ public class ControladorProf implements ActionListener {
                 principal.Panel_right.repaint();
                 TblRes();
                 res.btn_ver.setEnabled(true);
-      
+
             } else {
                 String notaM = JOptionPane.showInputDialog(null, "Ingresar Nueva Nota: ", "Modificar Nota", JOptionPane.OK_CANCEL_OPTION);
                 amdl.setNota(Float.parseFloat(notaM));
@@ -781,12 +779,11 @@ public class ControladorProf implements ActionListener {
                 principal.Panel_right.repaint();
                 TblRes();
                 res.btn_ver.setEnabled(true);
-            
+
                 //MODIFICAR
             }
 
         }
-
 
         if (e.getSource() == ver.btnVolver) {
             res.setSize(1100, 760);
@@ -797,7 +794,7 @@ public class ControladorProf implements ActionListener {
             principal.Panel_right.repaint();
             TblRes();
             res.btn_ver.setEnabled(true);
-     
+
             ver.NOTA.setText(null);
         }
 
@@ -824,7 +821,7 @@ public class ControladorProf implements ActionListener {
 
         if (e.getSource() == principal.perfil) { //Mostrar perfil del estudiante
 
-            perfil.setSize(1100, 760);
+            perfil.setSize(1360, 770);
             principal.Panel_right.removeAll();
             principal.Panel_right.add(perfil, BorderLayout.CENTER);
             principal.Panel_right.setComponentZOrder(perfil, 0);
@@ -852,7 +849,7 @@ public class ControladorProf implements ActionListener {
                 perfil.Txt_Direction.setEnabled(false);
                 perfil.Txt_telephone.setEnabled(false);
                 perfil.Txt_email.setEnabled(false);
-                perfil.Txt_password.setEnabled(false);
+                perfil.TxtPass.setEnabled(false);
                 perfil.Materia.setEnabled(false);
                 perfil.btn_editar.setEnabled(true);
 
@@ -875,7 +872,7 @@ public class ControladorProf implements ActionListener {
             perfil.Txt_Direction.setEnabled(true);
             perfil.Txt_telephone.setEnabled(true);
             perfil.Txt_email.setEnabled(true);
-            perfil.Txt_password.setEnabled(true);
+            perfil.TxtPass.setEnabled(true);
             perfil.Materia.setEnabled(true);
         }
 

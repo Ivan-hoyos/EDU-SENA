@@ -461,7 +461,7 @@ public class Controlador_Admin implements ActionListener {
         String password = new String(p.TxtPass.getPassword());
         pmode.setContraseña(password);
         pmode.setProfesion(p.Materia.getSelectedItem().toString());
-        int idMateria = p.Materia.getSelectedIndex();
+        int idMateria = p.Materia.getSelectedIndex()+1;
         pmode.setIdMateria(idMateria);
         //System.out.println(pmode.getidMateria());
         int r = mte.createProf(pmode);

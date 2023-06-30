@@ -61,8 +61,8 @@ public class ActualizarEs extends javax.swing.JPanel {
         Lbl_Email = new javax.swing.JLabel();
         Txt_email = new javax.swing.JTextField();
         Lbl_password = new javax.swing.JLabel();
-        Txt_password = new javax.swing.JTextField();
         btn_editar = new javax.swing.JButton();
+        Txtpass = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(1100, 770));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -157,7 +157,7 @@ public class ActualizarEs extends javax.swing.JPanel {
         Lbl_Format.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         Lbl_Format.setForeground(new java.awt.Color(153, 153, 153));
         Lbl_Format.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_Format.setText("Formato: dd/MM/yyyy");
+        Lbl_Format.setText("Formato: yyyy-MM-dd");
 
         Txt_Day_Born.setBackground(new java.awt.Color(235, 235, 235));
         Txt_Day_Born.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -199,14 +199,6 @@ public class ActualizarEs extends javax.swing.JPanel {
         Lbl_password.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Lbl_password.setText("Contraseña");
 
-        Txt_password.setBackground(new java.awt.Color(235, 235, 235));
-        Txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_passwordActionPerformed(evt);
-            }
-        });
-
         btn_editar.setBackground(new java.awt.Color(0, 173, 0));
         btn_editar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,6 +210,8 @@ public class ActualizarEs extends javax.swing.JPanel {
             }
         });
 
+        Txtpass.setBackground(new java.awt.Color(235, 235, 235));
+
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
         FormLayout.setHorizontalGroup(
@@ -228,18 +222,11 @@ public class ActualizarEs extends javax.swing.JPanel {
                     .addComponent(btn_editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
                     .addGroup(FormLayout.createSequentialGroup()
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbl_password)
                             .addComponent(Lbl_Student)
                             .addComponent(Lbl_LastName)
                             .addComponent(Lbl_Name1)
-                            .addComponent(Lbl_Document)
-                            .addComponent(Lbl_Format)
                             .addComponent(sexo)
                             .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FormLayout.createSequentialGroup()
-                                    .addComponent(Lbl_Email)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(FormLayout.createSequentialGroup()
                                     .addComponent(Lbl_Direction)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,8 +251,18 @@ public class ActualizarEs extends javax.swing.JPanel {
                                                     .addComponent(Txt_Day_Born, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addComponent(Txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Txt_Document, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(FormLayout.createSequentialGroup()
+                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Lbl_Email)
+                                        .addComponent(Lbl_password))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                        .addComponent(Txtpass, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))))
+                            .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Lbl_Format, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Lbl_Document, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 388, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         FormLayout.setVerticalGroup(
@@ -311,8 +308,8 @@ public class ActualizarEs extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                    .addComponent(Txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -354,10 +351,6 @@ public class ActualizarEs extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btn_modificarActionPerformed
 
-    private void Txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_passwordActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton Btn_cancelar;
@@ -380,8 +373,8 @@ public class ActualizarEs extends javax.swing.JPanel {
     public javax.swing.JTextField Txt_LastName;
     public javax.swing.JTextField Txt_email;
     public javax.swing.JTextField Txt_name;
-    public javax.swing.JTextField Txt_password;
     public javax.swing.JTextField Txt_telephone;
+    public javax.swing.JPasswordField Txtpass;
     public javax.swing.JRadioButton btn_F;
     public javax.swing.JRadioButton btn_M;
     public javax.swing.JButton btn_editar;

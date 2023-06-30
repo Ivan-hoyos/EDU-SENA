@@ -83,6 +83,7 @@ public class ActividadesProf extends javax.swing.JPanel {
         btn_buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_buscar.setForeground(new java.awt.Color(255, 255, 255));
         btn_buscar.setText("Seleccionar");
+        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout NorthLayout = new javax.swing.GroupLayout(North);
         North.setLayout(NorthLayout);
@@ -130,22 +131,26 @@ public class ActividadesProf extends javax.swing.JPanel {
         btn_crear.setForeground(new java.awt.Color(255, 255, 255));
         btn_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crear.png"))); // NOI18N
         btn_crear.setText("Crear");
+        btn_crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btn_editar.setBackground(new java.awt.Color(0, 173, 0));
         btn_editar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editar.png"))); // NOI18N
         btn_editar.setText("Editar");
+        btn_editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btn_eliminar.setBackground(new java.awt.Color(0, 173, 0));
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/borrar.png"))); // NOI18N
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         Respuestas.setBackground(new java.awt.Color(0, 173, 0));
         Respuestas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/charla.png"))); // NOI18N
         Respuestas.setText("Respuestas");
+        Respuestas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout North_ActionLayout = new javax.swing.GroupLayout(North_Action);
         North_Action.setLayout(North_ActionLayout);
@@ -203,7 +208,7 @@ public class ActividadesProf extends javax.swing.JPanel {
                     .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);

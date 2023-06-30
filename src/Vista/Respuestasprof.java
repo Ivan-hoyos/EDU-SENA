@@ -100,6 +100,7 @@ public class Respuestasprof extends javax.swing.JPanel {
 
         south.setBackground(new java.awt.Color(255, 255, 255));
         south.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        south.setPreferredSize(new java.awt.Dimension(20, 520));
 
         javax.swing.GroupLayout southLayout = new javax.swing.GroupLayout(south);
         south.setLayout(southLayout);
@@ -109,7 +110,7 @@ public class Respuestasprof extends javax.swing.JPanel {
         );
         southLayout.setVerticalGroup(
             southLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 489, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         North_Action.setBackground(new java.awt.Color(255, 255, 255));
@@ -120,6 +121,7 @@ public class Respuestasprof extends javax.swing.JPanel {
         btn_ver.setForeground(new java.awt.Color(255, 255, 255));
         btn_ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ver.png"))); // NOI18N
         btn_ver.setText("Inspeccionar Respuesta");
+        btn_ver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout North_ActionLayout = new javax.swing.GroupLayout(North_Action);
         North_Action.setLayout(North_ActionLayout);
@@ -128,7 +130,7 @@ public class Respuestasprof extends javax.swing.JPanel {
             .addGroup(North_ActionLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(btn_ver)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         North_ActionLayout.setVerticalGroup(
             North_ActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,6 +143,7 @@ public class Respuestasprof extends javax.swing.JPanel {
         atras.setBackground(new java.awt.Color(0, 173, 0));
         atras.setForeground(new java.awt.Color(255, 255, 255));
         atras.setText("Actividades");
+        atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout FormLayout = new javax.swing.GroupLayout(Form);
         Form.setLayout(FormLayout);
@@ -151,7 +154,7 @@ public class Respuestasprof extends javax.swing.JPanel {
                     .addGroup(FormLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(FormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(south, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(south, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
                             .addGroup(FormLayout.createSequentialGroup()
                                 .addComponent(Lbl_Cursos)
                                 .addGap(18, 18, 18)
@@ -175,7 +178,7 @@ public class Respuestasprof extends javax.swing.JPanel {
                     .addComponent(North, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(south, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
@@ -192,7 +195,7 @@ public class Respuestasprof extends javax.swing.JPanel {
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 820));
